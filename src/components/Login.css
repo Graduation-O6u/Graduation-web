@@ -1,0 +1,270 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins;
+}
+
+body {
+    background-color: #f7f7fc;
+    height: 600px;
+}
+
+.logoimg {
+    padding-top: 50px;
+    padding-left: 50px;
+}
+
+.welcome {
+    margin-left: 150px;
+    margin-top: 200px;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+h3 {
+    margin-left: 150px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.jobber {
+    color: #5d5fef;
+}
+
+.form {
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid grey;
+    width: 35%;
+    height: 550px;
+    margin-left: 800px;
+    position: absolute;
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 20px;
+}
+
+.inputbox {
+    position: relative;
+    width: 98%;
+}
+
+.inputbox input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #929292;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+    background: #fafafa;
+}
+
+.inputbox span {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: #5d5fef;
+    transition: 0.5s;
+}
+
+.inputbox input:valid~span,
+.inputbox input:focus~span {
+    color: #5d5fef;
+    transform: translateX(10px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #fafafa;
+    border-left: 1px solid #5d5fef;
+    border-right: 1px solid #5d5fef;
+    letter-spacing: 0.2em;
+}
+
+.inputbox input:valid,
+.inputbox input:focus {
+    border: 1px solid #5d5fef;
+}
+
+#pass {
+    position: absolute;
+    top: 100px;
+    width: 90%;
+}
+
+.rememberme {
+    position: absolute;
+    top: 170px;
+    right: 300px;
+}
+
+.rememberme input,
+.rememberme label {
+    cursor: pointer;
+    color: #5d5fef;
+}
+
+.rememberme input {
+    accent-color: #5d5fef;
+}
+
+#forgot {
+    position: absolute;
+    top: 170px;
+    left: 300px;
+}
+
+
+#signin-button {
+    position: absolute;
+    top: 230px;
+    width: 85%;
+    height: 60px;
+    background-color: #5d5fef;
+    border-radius: 10px;
+    border: 1px solid grey;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.leftsvg {
+    position: absolute;
+    top: 280px;
+    left: 20px;
+}
+
+.continue {
+    position: absolute;
+    top: 310px;
+    color: grey;
+}
+
+.rightsvg {
+    position: absolute;
+    top: 280px;
+    left: 300px;
+}
+
+.photos {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 300px;
+}
+
+#pic {
+    cursor: pointer;
+}
+
+#signup {
+    position: absolute;
+    top: 460px;
+    color: grey;
+}
+
+#signup a {
+    text-decoration: none;
+}
+
+#joinus {
+    position: absolute;
+    top: 500px;
+    width: 200px;
+    height: 60px;
+    left: 150px;
+    background-color: #5d5fef;
+    border-radius: 10px;
+    border: 1px solid grey;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#learnmore {
+    position: absolute;
+    top: 500px;
+    width: 200px;
+    height: 60px;
+    left: 400px;
+    color: #5d5fef;
+    border-radius: 10px;
+    border: 1px solid #5d5fef;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#login-model {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.model {
+    background: white;
+    padding: 10px 0px 20px 0px;
+    border-radius: 30px;
+    width: 450px;
+    text-align: center;
+}
+
+.top-form {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.top-form .close-model {
+    cursor: pointer;
+    padding: 0 20px;
+    font-size: 20px;
+}
+
+.login-form h2 {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.login-form form input {
+    width: 75%;
+    margin-bottom: 20px;
+    padding: 12px 12px;
+    box-sizing: border-box;
+    border: 1px solid #d0d5d8;
+    border-radius: 15px;
+}
+
+.login-form button {
+    padding: 12px 0;
+    width: 50%;
+    background: #5d5fef;
+    border: 0;
+    border-radius: 20px;
+    color: white;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+.numbers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+form .numbers input {
+    width: 50px;
+    margin: 10px;
+    text-align: center;
+    position: relative;
+    bottom: 10px;
+}
