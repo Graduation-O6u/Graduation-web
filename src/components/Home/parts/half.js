@@ -1,13 +1,13 @@
 import React from "react";
-import "../Home.css"
+import styles from "../Home.module.css"
 const Half = () => {
     return (
-        <div className="half-page">
-            <div className="top-img-text">
+        <div className={styles.halfPage}>
+            <div className={styles.topImgText}>
                 <img src="/images/photoo.png" alt=""></img>
-                <div className="who"><p>Who We Are</p></div>
+                <div className={styles.who}><p>Who We Are</p></div>
             </div>
-            <p className="prag">a network of software development job openings to
+            <p className={styles.prag}>a network of software development job openings to
                 assist developers in finding a job and company that they enjoy.
                 We understand how difficult it can be to find the right job, especially if you don't
                 know where to begin looking. That is why we created I Need Dev, a one-stop shop for all

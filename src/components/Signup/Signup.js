@@ -1,36 +1,36 @@
-import '../components/Signup.css';
-import Logo from '../images #/Jobber.png';
-import Google from '../images #/Google.png'
-import Apple from '../images #/Apple.png'
-import Facebook from '../images #/facebook.png'
+import styles from '../Signup/Signup.module.css';
+import Logo from '../../images #/Jobber.png';
+import Google from '../../images #/Google.png'
+import Apple from '../../images #/Apple.png'
+import Facebook from '../../images #/facebook.png'
 
 const Signup = () => {
     return (
-        <div>
-            <img src={Logo} title="Logo Image" className='logoimg' />
-            <h1 className='welcome'>Welcome to <span className='jobber'>Jobber</span></h1>
+        <div className={styles.body}>
+            <img src={Logo} title="Logo Image" className={styles.logoimg} />
+            <h1 className={styles.welcome}>Welcome to <span className={styles.jobber}>Jobber</span></h1>
             <h3>Take the first step toward your new career</h3>
-            <button id='joinus'>Join us</button>
-            <button id='learnmore'>Learn more</button>
+            <button id={styles.joinus}>Join us</button>
+            <button id={styles.learnmore}>Learn more</button>
             <form>
 
-                <div className='inputbox'>
+                <div className={styles.inputbox}>
                     <input type="text" required="required" />
                     <span>Name</span>
                 </div>
-                <div className='inputbox' id='email'>
+                <div className={styles.inputbox} id='email'>
                     <input type="email" required="required" />
                     <span>Email</span>
                 </div>
-                <div className='inputbox' id='pass'>
+                <div className={styles.inputbox} id={styles.pass}>
                     <input type="password" required="required" maxLength={12} />
                     <span>Password</span>
                 </div>
-                <div className='inputbox' id='pass2'>
+                <div className={styles.inputbox} id={styles.pass2}>
                     <input type="password" required="required" maxLength={12} />
                     <span>Confirm Password</span>
                 </div>
-                <div class="select">
+                <div className={styles.select}>
                     <select name="format" id="format">
                         <option selected >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;City</option>
                         <option value="cairo">Cairo</option>
@@ -40,7 +40,7 @@ const Signup = () => {
                         <option value="Behiera">El-Behiera</option>
                     </select>
                 </div>
-                <div class="select2">
+                <div className={styles.select2}>
                     <select name="format" id="format">
                         <option selected >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Job Title</option>
                         <option value="cairo">Computer Engineer</option>
@@ -50,29 +50,29 @@ const Signup = () => {
                         <option value="Behiera">Back-End Developer</option>
                     </select>
                 </div>
-                <div className='file'>
-                    <input type='file' id='file' />
-                    <label for='file'>Upload Your CV</label>
+                <div className={styles.file}>
+                    <input type='file' id={styles.file} />
+                    <label className={styles.label} for='file'>Upload Your CV</label>
                 </div>
-                <button id='signup-button'>Sign Up</button>
-                <h6 className='terms'>By clicking Sign Up , you agree to our <span id='terms'> Terms</span> ,<span id='terms'> Privacy Policy</span > and<span id='terms'> Cookies Policy</span> </h6>
-                <svg height="80" width="150" className='leftsvg'>
+                <button id={styles.signupButton}>Sign Up</button>
+                <h6 className={styles.terms}>By clicking Sign Up , you agree to our <span id={styles.terms}> Terms</span> ,<span id={styles.terms}> Privacy Policy</span > and<span id={styles.terms}> Cookies Policy</span> </h6>
+                <svg height="80" width="150" className={styles.leftsvg}>
                     <g fill="none">
                         <path stroke="black" d="M5 40 l215 0" />
                     </g>
                 </svg>
-                <h6 className='continue'>or continue with</h6>
-                <svg height="80" width="150" className='rightsvg'>
+                <h6 className={styles.continue}>or continue with</h6>
+                <svg height="80" width="150" className={styles.rightsvg}>
                     <g fill="none">
                         <path stroke="black" d="M5 40 l215 0" />
                     </g>
                 </svg>
-                <div className='photos'>
-                    <img src={Google} title="Google Login" id='pic' />
-                    <img src={Apple} title="Apple Login" id='pic' />
-                    <img src={Facebook} title="Facebook Login" id='pic' />
+                <div className={styles.photos}>
+                    <img src={Google} title="Google Login" id={styles.pic} />
+                    <img src={Apple} title="Apple Login" id={styles.pic} />
+                    <img src={Facebook} title="Facebook Login" id={styles.pic} />
                 </div>
-                <h5 id='login'>Already have an account ? <a href="#login" title="Login">Login</a></h5>
+                <h5 id={styles.login}>Already have an account ? <a href="#login" title="Login">Login</a></h5>
             </form>
         </div>
     );

@@ -50,7 +50,7 @@
     background: var(--bg);
 }
 
-.box-image {
+.boxImage {
     position: absolute;
     left: 46%;
     top: 28%;
@@ -93,36 +93,34 @@
 }
 
 .logo {
-    margin-top: 2.5%;
-    margin-left: 4%;
-    color: #acacb0;
-    font-size: 40px;
+    padding-top: 50px;
+    padding-left: 50px;
 }
 
 .logo span {
     color: #7a7bf2;
 }
 
-.nav-link {
+.navLink {
     display: flex;
     justify-content: flex-end;
     list-style: none;
     width: 80%;
 }
 
-.nav-link span {
+.navLink span {
     color: #7a7bf2;
 }
 
-.non-but,
+.nonBut,
 .butt {
     display: flex;
     margin: 0% 5%;
     font-size: 20px;
 }
 
-.nav-link li {
-    margin-top: 11.5%;
+.navLink li {
+    margin-top: 11%;
 }
 
 .home,
@@ -160,15 +158,15 @@
     color: #7a7bf2;
     margin-top: 12%;
     width: 71px;
-    ;
+
 }
 
-.search-box {
+.searchBox {
     margin-top: 5%;
     margin-left: 5%;
 }
 
-.text-inp {
+.textInp {
     width: 350px;
     height: 45px;
     background-color: #f0f1f6;
@@ -198,7 +196,7 @@
     margin-left: -2px;
 }
 
-.text-box {
+.textBox {
     margin-left: 5%;
     margin-top: 10%;
     font-family: 'inter', sans-serif;
@@ -222,20 +220,20 @@
     color: gray;
 }
 
-.text-box2 {
+.textBox2 {
     margin-top: 10%;
     text-align: center;
 }
 
-.text-box2 h2 {
+.textBox2 h2 {
     color: #2c2c2ce3;
 }
 
-.top-img-text {
+.topImgText {
     display: flex;
 }
 
-.top-img-text img {
+.topImgText img {
     width: 600px;
     height: 500px;
     margin-left: 10%;
@@ -268,7 +266,7 @@
     line-height: 34px;
 }
 
-.top-img-text2 {
+.topImgText2 {
     display: flex;
 }
 
@@ -297,7 +295,7 @@
     line-height: 75px;
 }
 
-.box-footer {
+.boxFooter {
     margin-bottom: 2%;
     line-height: 40px;
 
@@ -338,7 +336,7 @@
     padding: 1%;
 }
 
-.icon-app {
+.iconApp {
 
     font-size: 35px;
 }

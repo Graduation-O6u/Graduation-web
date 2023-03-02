@@ -1,5 +1,5 @@
 import React from "react";
-import "../Home.css"
+import styles from "../Home.module.css"
 import { Icon } from '@iconify/react';
 import messageIcon from '@iconify/icons-ep/message';
 import baselineLocalPhone from '@iconify/icons-ic/baseline-local-phone';
@@ -7,19 +7,19 @@ import googlePlayIcon from '@iconify/icons-logos/google-play-icon';
 import appleIcon from '@iconify/icons-bi/apple';
 const Footer = () => {
     return (
-        <div className="box-footer">
-            <div className="Us">
-                <div className="email">
-                    <div className="Us">
-                        <Icon icon={messageIcon} className="icon1" />
-                        <p>Chat to us</p><br></br>
+        <div className={styles.boxFooter}>
+            <div className={styles.Us}>
+                <div className={styles.email}>
+                    <div className={styles.Us}>
+                        <Icon icon={messageIcon} className={styles.icon1} />
+                        <p>Chat with us</p><br></br>
                     </div>
                     <p>our friendly team is here to help!</p>
                     <p>jobber@gmail.com</p>
                 </div>
-                <div className="call">
-                    <div className="Us">
-                        <Icon icon={baselineLocalPhone} className="icon1" />
+                <div className={styles.call}>
+                    <div className={styles.Us}>
+                        <Icon icon={baselineLocalPhone} className={styles.icon1} />
                         <p>Call us</p><br></br>
                     </div>
                     <p>Mon-Fri from 9Pm to 4Pm.</p>

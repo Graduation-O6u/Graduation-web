@@ -1,6 +1,7 @@
 import React from "react";
-import "../Home.css";
+import styles from "../Home.module.css";
 import { useNavigate } from "react-router-dom";
+import Logo from '../../../images #/Jobber.png';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -11,33 +12,31 @@ const Navbar = () => {
     navigate("/signup");
   }
   return (
-    <nav className="navbar">
-      <h3 className="logo">
-        Jo<span>bb</span>er
-      </h3>
-      <ul className="nav-link">
-        <div className="non-but">
+    <nav className={styles.navbar}>
+      <img src={Logo} title="Logo Image" className={styles.logo} />
+      <ul className={styles.navLink}>
+        <div className={styles.nonBut}>
           <li>
-            <a href="#home" className="home">
+            <a href="#home" className={styles.home}>
               Home
             </a>
           </li>
           <li>
-            <a href="#about" className="aboutus">
+            <a href="#about" className={styles.aboutus}>
               About Us
             </a>
           </li>
           <li>
-            <a href="#contact" className="contact">
+            <a href="#contact" className={styles.contact}>
               Contact Us
             </a>
           </li>
         </div>
-        <div className="butt">
-          <button className="login" onClick={loginClick}>
+        <div className={styles.butt}>
+          <button className={styles.login} onClick={loginClick}>
             login
           </button>
-          <button className="signup" onClick={signupClick}>
+          <button className={styles.signup} onClick={signupClick}>
             sign up
           </button>
         </div>
