@@ -3,8 +3,19 @@ import Logo from '../../images #/Jobber.png';
 import Google from '../../images #/Google.png'
 import Apple from '../../images #/Apple.png'
 import Facebook from '../../images #/facebook.png'
+import React, {useState, useEffect} from 'react';
 
 const Signup = () => {
+
+    const [jobs, setJobs] = useState([""]);
+    const [cities, setCities] = useState([""]);
+
+    useEffect(() => {
+        loadJobs();
+        loadCities();
+    }, [])
+
+
     return (
         <div className={styles.body}>
             <img src={Logo} title="Logo Image" className={styles.logoimg} />
@@ -33,21 +44,39 @@ const Signup = () => {
                 <div className={styles.select}>
                     <select name="format" id="format">
                         <option selected >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;City</option>
-                        <option value="cairo">Cairo</option>
+                        {/* <option value="cairo">Cairo</option>
                         <option value="giza">Giza</option>
                         <option value="alex">Alexandria</option>
                         <option value="aswan">Aswan</option>
-                        <option value="Behiera">El-Behiera</option>
+                        <option value="Behiera">El-Behiera</option> */}
+
+                        {
+                            cities.map(city => {
+                                return (
+                                    <option value={city.code}> {city.name} </option>
+                                );
+                            })
+                        }
+
                     </select>
                 </div>
                 <div className={styles.select2}>
                     <select name="format" id="format">
                         <option selected >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Job Title</option>
-                        <option value="cairo">Computer Engineer</option>
+                        {/* <option value="cairo">Computer Engineer</option>
                         <option value="giza">Dentist</option>
                         <option value="alex">Front-End Developer</option>
                         <option value="aswan">Flutter Developer</option>
-                        <option value="Behiera">Back-End Developer</option>
+                        <option value="Behiera">Back-End Developer</option> */}
+
+                        {
+                            jobs.map(job => {
+                                return (
+                                    <option value={job.id}> {job.title} </option>
+                                );
+                            })
+                        }
+
                     </select>
                 </div>
                 <div className={styles.file}>
@@ -76,6 +105,63 @@ const Signup = () => {
             </form>
         </div>
     );
+
+
+    //===============================================================================================================================
+    function loadJobs(){
+        const JOBS_URL = "https://graduation-backend-production.up.railway.app/auth/jobs";
+        fetch(JOBS_URL)
+            .then((response) => response.json())
+            .then((json) => onGetJobsData(json));
+    }
+
+    function onGetJobsData(json) {
+        setJobs(json.data);
+    }
+
+    function loadCities(){
+        const CITIES_URL = "https://graduation-backend-production.up.railway.app/auth/cities";
+        fetch(CITIES_URL)
+            .then((response) => response.json())
+            .then((json) => onGetCitiesData(json));
+    }
+
+    function onGetCitiesData(json) {
+        setCities(json.data);
+    }
+
+
+    function getDataAndSignUp(){
+
+        const person = {name:"", 
+                        email:"",
+                        password:"",
+                        jobId:"",
+                        cityId:""};
+
+
+        const SIGN_UP_URL = "https://graduation-backend-production.up.railway.app/auth/signup";
+        fetch(SIGN_UP_URL,{
+            method: "POST",
+            body: JSON.stringify(person)
+        })
+            .then((response) => response.json())
+            .then((json) => onGetSignUpResponse(json));
+    }
+
+    function onGetSignUpResponse(json){
+        let status = json.type;
+        if(status=="Success"){
+            window.alert("success signup");
+        }else{
+            window.alert("Error Happened");
+        }
+    }
+
+
+
+
+
 }
 
 export default Signup;
