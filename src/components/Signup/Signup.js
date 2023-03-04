@@ -3,7 +3,7 @@ import Logo from '../../images #/Jobber.png';
 import Google from '../../images #/Google.png'
 import Apple from '../../images #/Apple.png'
 import Facebook from '../../images #/facebook.png'
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Signup = () => {
 
@@ -23,21 +23,21 @@ const Signup = () => {
             <h3>Take the first step toward your new career</h3>
             <button id={styles.joinus}>Join us</button>
             <button id={styles.learnmore}>Learn more</button>
-            <form>
+            <form className={styles.form}>
 
-                <div className={styles.inputbox}>
+                <div className={styles.inputbox1}>
                     <input type="text" required="required" />
                     <span>Name</span>
                 </div>
-                <div className={styles.inputbox} id='email'>
+                <div className={styles.inputbox1} id='email'>
                     <input type="email" required="required" />
                     <span>Email</span>
                 </div>
-                <div className={styles.inputbox} id={styles.pass}>
+                <div className={styles.inputbox1} id={styles.pass}>
                     <input type="password" required="required" maxLength={12} />
                     <span>Password</span>
                 </div>
-                <div className={styles.inputbox} id={styles.pass2}>
+                <div className={styles.inputbox1} id={styles.pass2}>
                     <input type="password" required="required" maxLength={12} />
                     <span>Confirm Password</span>
                 </div>
@@ -81,7 +81,7 @@ const Signup = () => {
                 </div>
                 <div className={styles.file}>
                     <input type='file' id={styles.file} />
-                    <label className={styles.label} for='file'>Upload Your CV</label>
+                    <label className={styles.label} for={styles.file}>Upload Your CV</label>
                 </div>
                 <button id={styles.signupButton}>Sign Up</button>
                 <h6 className={styles.terms}>By clicking Sign Up , you agree to our <span id={styles.terms}> Terms</span> ,<span id={styles.terms}> Privacy Policy</span > and<span id={styles.terms}> Cookies Policy</span> </h6>
@@ -108,7 +108,7 @@ const Signup = () => {
 
 
     //===============================================================================================================================
-    function loadJobs(){
+    function loadJobs() {
         const JOBS_URL = "https://graduation-backend-production.up.railway.app/auth/jobs";
         fetch(JOBS_URL)
             .then((response) => response.json())
@@ -119,7 +119,7 @@ const Signup = () => {
         setJobs(json.data);
     }
 
-    function loadCities(){
+    function loadCities() {
         const CITIES_URL = "https://graduation-backend-production.up.railway.app/auth/cities";
         fetch(CITIES_URL)
             .then((response) => response.json())
@@ -131,17 +131,19 @@ const Signup = () => {
     }
 
 
-    function getDataAndSignUp(){
+    function getDataAndSignUp() {
 
-        const person = {name:"", 
-                        email:"",
-                        password:"",
-                        jobId:"",
-                        cityId:""};
+        const person = {
+            name: "",
+            email: "",
+            password: "",
+            jobId: "",
+            cityId: ""
+        };
 
 
         const SIGN_UP_URL = "https://graduation-backend-production.up.railway.app/auth/signup";
-        fetch(SIGN_UP_URL,{
+        fetch(SIGN_UP_URL, {
             method: "POST",
             body: JSON.stringify(person)
         })
@@ -149,11 +151,11 @@ const Signup = () => {
             .then((json) => onGetSignUpResponse(json));
     }
 
-    function onGetSignUpResponse(json){
+    function onGetSignUpResponse(json) {
         let status = json.type;
-        if(status=="Success"){
+        if (status == "Success") {
             window.alert("success signup");
-        }else{
+        } else {
             window.alert("Error Happened");
         }
     }

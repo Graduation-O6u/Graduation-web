@@ -22,8 +22,8 @@ const Login = () => {
 
     function popup() {
         return <>
-            <div id={styles.loginModel}>
-                <div className={styles.model}>
+            <div id={styles.loginModal}>
+                <div className={styles.modal}>
                     <div className={styles.topForm}>
                         <div onClick={showHidePopup} className={styles.closeModal}>&#10006;</div>
                     </div>
@@ -41,8 +41,8 @@ const Login = () => {
 
     function popup2() {
         return <>
-            <div id={styles.loginModel}>
-                <div className={styles.model}>
+            <div id={styles.loginModal}>
+                <div className={styles.modal}>
                     <div className={styles.topForm}>
                         <div onClick={showHidePopup2} className={styles.closeModal}>&#10006;</div>
                     </div>
@@ -50,10 +50,10 @@ const Login = () => {
                         <h2>Please enter the code sent to 123@gmail.com</h2>
                         <form action=''>
                             <div className={styles.numbers}>
-                                <input type='text' placeholder='0' required />
-                                <input type='text' placeholder='0' required />
-                                <input type='text' placeholder='0' required />
-                                <input type='text' placeholder='0' required />
+                                <input type='text' required maxLength={1} />
+                                <input type='text' required maxLength={1} />
+                                <input type='text' required maxLength={1} />
+                                <input type='text' required maxLength={1} />
                             </div>
                             <button onClick={showHidePopup3} type='button' className={styles.submitBtn}>Verify</button>
                         </form>
@@ -65,8 +65,8 @@ const Login = () => {
 
     function popup3() {
         return <>
-            <div id={styles.loginModel}>
-                <div className={styles.model}>
+            <div id={styles.loginModal}>
+                <div className={styles.modal}>
                     <div className={styles.topForm}>
                         <div onClick={showHidePopup3} className={styles.closeModal}>&#10006;</div>
                     </div>
@@ -87,12 +87,12 @@ const Login = () => {
         <div className={styles.body}>
             <img src={Logo} title="Logo Image" className={styles.logoimg} />
             <h1 className={styles.welcome}>Welcome to <span className={styles.jobber}>Jobber</span></h1>
-            <h3>Take the first step toward your new career</h3>
+            <h3 className={styles.para}>Take the first step toward your new career</h3>
             <button id={styles.joinus}>Join us</button>
             <button id={styles.learnmore}>Learn more</button>
             <form className={styles.form}>
 
-                <div className={styles.inputbox} id='email'>
+                <div className={styles.inputbox} id={styles.email}>
                     <input type="email" required="required" />
                     <span>Email</span>
                 </div>
@@ -106,13 +106,13 @@ const Login = () => {
                 </div>
                 <a onClick={showHidePopup} href="#forgetpass" title="Forgot Password ?" id={styles.forgot} >Forgot Password ?</a>
                 <button id={styles.signInButton}>Sign in</button>
-                <svg height="80" width="150" className={styles.leftsvg}>
+                <svg className={styles.leftsvg}>
                     <g fill="none">
                         <path stroke="black" d="M5 40 l215 0" />
                     </g>
                 </svg>
                 <h6 className={styles.continue}>or continue with</h6>
-                <svg height="80" width="150" className={styles.rightsvg}>
+                <svg className={styles.rightsvg}>
                     <g fill="none">
                         <path stroke="black" d="M5 40 l215 0" />
                     </g>

@@ -32,7 +32,7 @@ h3 {
     color: #5d5fef;
 }
 
-form {
+.form {
     background-color: #ffffff;
     border-radius: 20px;
     border: 1px solid grey;
@@ -48,12 +48,12 @@ form {
     padding: 20px;
 }
 
-.inputbox {
+.inputbox1 {
     position: relative;
     width: 250px;
 }
 
-.inputbox input {
+.inputbox1 input {
     width: 100%;
     padding: 10px;
     border: 1px solid #929292;
@@ -63,7 +63,7 @@ form {
     background: #fafafa;
 }
 
-.inputbox span {
+.inputbox1 span {
     position: absolute;
     left: 0;
     padding: 10px;
@@ -73,8 +73,8 @@ form {
     transition: 0.5s;
 }
 
-.inputbox input:valid~span,
-.inputbox input:focus~span {
+.inputbox1 input:valid~span,
+.inputbox1 input:focus~span {
     color: #5d5fef;
     transform: translateX(10px) translateY(-7px);
     font-size: 0.65em;
@@ -85,8 +85,8 @@ form {
     letter-spacing: 0.2em;
 }
 
-.inputbox input:valid,
-.inputbox input:focus {
+.inputbox1 input:valid,
+.inputbox1 input:focus {
     border: 1px solid #5d5fef;
 }
 
