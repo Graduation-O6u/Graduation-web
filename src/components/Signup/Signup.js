@@ -15,7 +15,6 @@ const Signup = () => {
         loadCities();
     }, [])
 
-
     return (
         <div className={styles.body}>
             <img src={Logo} title="Logo Image" className={styles.logoimg} />
@@ -23,26 +22,26 @@ const Signup = () => {
             <h3>Take the first step toward your new career</h3>
             <button id={styles.joinus}>Join us</button>
             <button id={styles.learnmore}>Learn more</button>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleFormSubmit}>
 
                 <div className={styles.inputbox1}>
-                    <input type="text" required="required" />
+                    <input type="text" required="required" name="name"/>
                     <span>Name</span>
                 </div>
                 <div className={styles.inputbox1} id='email'>
-                    <input type="email" required="required" />
+                    <input type="email" required="required" name="email"/>
                     <span>Email</span>
                 </div>
                 <div className={styles.inputbox1} id={styles.pass}>
-                    <input type="password" required="required" maxLength={12} />
+                    <input type="password" required="required" maxLength={12}  name="password" />
                     <span>Password</span>
                 </div>
                 <div className={styles.inputbox1} id={styles.pass2}>
-                    <input type="password" required="required" maxLength={12} />
+                    <input type="password" required="required" maxLength={12} name="passwordConfirmation" />
                     <span>Confirm Password</span>
                 </div>
                 <div className={styles.select}>
-                    <select name="format" id="format">
+                    <select name="cities" id="format">
                         <option selected >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;City</option>
                         {/* <option value="cairo">Cairo</option>
                         <option value="giza">Giza</option>
@@ -61,7 +60,7 @@ const Signup = () => {
                     </select>
                 </div>
                 <div className={styles.select2}>
-                    <select name="format" id="format">
+                    <select name="jobs" id="format">
                         <option selected >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Job Title</option>
                         {/* <option value="cairo">Computer Engineer</option>
                         <option value="giza">Dentist</option>
@@ -130,22 +129,36 @@ const Signup = () => {
         setCities(json.data);
     }
 
+    //===============================================================================================================================
+    function handleFormSubmit(e){
+        e.preventDefault();   // to prevent page from refreshing after click on submit button
+        let nameValue = e.target.name.value;
+        let emailValue = e.target.email.value;
+        let passwordValue = e.target.password.value;
+        let passwordConfirmationValue = e.target.passwordConfirmation.value;
+        let cityIdValue = e.target.cities.value;
+        let jobIdValue = e.target.jobs.value;
+        let cvValue = "https://graduation-backend-production.up.railway.app/api/v1/uploads/cvae7ac42b-0342-40e8-9aa4-d7880c51d7b0.pdf"
 
-    function getDataAndSignUp() {
+        const person = {name:nameValue, 
+                        email:emailValue,
+                        password:passwordValue,
+                        jobId:jobIdValue,
+                        cityId:cityIdValue,
+                        cv:cvValue
+                        };
 
-        const person = {
-            name: "",
-            email: "",
-            password: "",
-            jobId: "",
-            cityId: ""
-        };
+        let requestJson = JSON.stringify(person);
+        console.log("zzzzzz"+ requestJson);
+        registerUser(requestJson)
+        
+    }
 
-
+    function registerUser(requestJson) {
         const SIGN_UP_URL = "https://graduation-backend-production.up.railway.app/auth/signup";
         fetch(SIGN_UP_URL, {
             method: "POST",
-            body: JSON.stringify(person)
+            body: requestJson
         })
             .then((response) => response.json())
             .then((json) => onGetSignUpResponse(json));
@@ -160,7 +173,22 @@ const Signup = () => {
         }
     }
 
+    //===============================================================================================================================
+    function uploadCvFile(){
+        const myInput = document.getElementById('my-input');
 
+        // const uploadUrl = "https://graduation-backend-production.up.railway.app/upload/file";
+        // fetch(uploadUrl,{
+        //     method: "POST",
+        //     body: JSON.stringify(person)
+        // })
+        //     .then((response) => response.json())
+        //     .then((json) => onGetUploadCvResponse(json));
+    }
+
+    function onGetUploadCvResponse(json){
+
+    }
 
 
 
