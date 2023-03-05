@@ -1,14 +1,15 @@
 import React from "react";
-import Home from "./components/Home/Home";
-import Login from "./components/Login/Login";
-import Signup from "./components/Signup/Signup";
+import Login from "./screens/Authentication/login/login.screen";
+import Signup from "./screens/Authentication/signup/signup.screen";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Welcome from "./screens/Authentication/welcome/welcome";
+
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Welcome />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
       </Routes>

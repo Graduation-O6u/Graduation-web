@@ -1,0 +1,24 @@
+.photos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}
+.Img {
+  background-color: #ffffff;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.9s;
+  cursor: pointer;
+}
+.Img:hover {
+  box-shadow: 2px 4px #d3d0d0;
+}
+
+#pic {
+  cursor: pointer;
+}

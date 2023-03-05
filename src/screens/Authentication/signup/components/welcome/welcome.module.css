@@ -1,0 +1,69 @@
+.welcome {
+  font-weight: 900;
+  font-size: 55px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(4px 4px 2px #dcdcdc);
+}
+.jobber {
+  color: #5d5fef;
+}
+h3 {
+  color: #1b1b1b;
+  font-size: 21px;
+  font-weight: 500;
+}
+.buttonsJoin {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.joinus:hover {
+  box-shadow: 2px 4px #d3d0d0;
+}
+.learnmore:hover {
+  box-shadow: 2px 4px #d3d0d0;
+}
+.joinus {
+  width: 200px;
+  height: 60px;
+  background-color: #5d5fef;
+  border-radius: 10px;
+  border: 1px solid grey;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.learnmore {
+  transition: 0.5s;
+  width: 200px;
+  height: 60px;
+  color: #5d5fef;
+  border-radius: 10px;
+  border: 1px solid #5d5fef;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .form {
+    width: 90%;
+  }
+}
+@media (max-width: 900px) {
+  .form {
+    width: 90%;
+  }
+  .container {
+    display: block;
+  }
+
+  .welcomeBox {
+    margin-top: 50%;
+    margin-bottom: 20%;
+  }
+}
