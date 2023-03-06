@@ -22,6 +22,17 @@ h5 {
   padding: 20px;
   filter: drop-shadow(4px 4px 2px #f1f1f1);
 }
+.form2 {
+  background-color: #fafafa;
+  border-radius: 20px;
+  width: 60%;
+  height: fit-content;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+  padding: 50px;
+  filter: drop-shadow(4px 4px 2px #f1f1f1);
+}
 .nameAndEmail {
   display: flex;
   align-items: center;
@@ -66,6 +77,20 @@ h5 {
   transform: translate(-50%, -50%);
   background-color: red;
   padding: 10px;
+}
+.check {
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+}
+.name2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2%;
+  margin-bottom: 5%;
 }
 #terms {
   color: #5d5fef;
