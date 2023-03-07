@@ -1,10 +1,11 @@
 import React from "react";
 import Login from "./screens/Authentication/login/login.screen";
 import Signup from "./screens/Authentication/signup/signup.screen";
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Welcome from "./screens/Authentication/welcome/welcome";
-
+import Verify from "./screens/Authentication/signup/components/verification/verify";
+import Forget from "./screens/Authentication/login/components/forget";
+import Changepass from "./screens/Authentication/login/components/changepass";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 const App = () => {
   return (
     <BrowserRouter>
@@ -12,6 +13,9 @@ const App = () => {
         <Route path="/" element={<Welcome />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/verify" element={<Verify />}></Route>
+        <Route path="/forget" element={<Forget />}></Route>
+        <Route path="/changepass" element={<Changepass />}></Route>
       </Routes>
     </BrowserRouter>
   );
