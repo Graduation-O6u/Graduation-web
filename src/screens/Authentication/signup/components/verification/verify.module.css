@@ -17,12 +17,13 @@
   .middle2 {
     flex: 1;
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     }
 
   .vertext{
-    margin-top: 50%;
+    margin-top: 10%;
     font-weight: bold;
   }
 
@@ -60,3 +61,14 @@
  .getcode{
     text-align: center;
   }
+
+  @media (max-width: 900px) {
+    .body{
+      flex-direction: column;
+      background-color: white;
+    }
+    .middle2{
+      padding: 15% 0;
+    }
+  }
+  

@@ -60,8 +60,8 @@ const BoxField = () => {
         <Input label={"Password"} small={false} />
         <Input label={"Confirm Password"} small={false} />
         <div className={styles.nameAndEmail}>
-          <Drop label={"City"} />
-          <Drop label={"Job Title"} />
+          <Drop/>
+          
         </div>
         <input
           type="file"
