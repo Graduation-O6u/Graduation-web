@@ -9,6 +9,11 @@ import { Cons } from "../../../../../constants";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 const BoxField = () => {
+
+  //-----
+  var selectedCvUrl = "";
+
+  //------
   const [selectedFile, setSelectedFile] = useState();
   const [show, changeShow] = useState(false);
 
@@ -45,20 +50,21 @@ const BoxField = () => {
     e.preventDefault();
     changeShow(true);
   };
-  useEffect(() => {
-    loadJobs();
-    loadCities();
-  }, []);
+
+  // useEffect(() => {
+  //   loadJobs();
+  //   loadCities();
+  // }, []);
 
   return (
     <div className={styles.middle2}>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleFormSubmit}>
         <div className={styles.nameAndEmail}>
-          <Input label={"Name"} small={true} />
-          <Input label={"Email"} small={true} />
+          <Input label={"Name"} small={true} name={"name"}/>
+          <Input label={"Email"} small={true} name={"email"}/>
         </div>
-        <Input label={"Password"} small={false} />
-        <Input label={"Confirm Password"} small={false} />
+        <Input label={"Password"} small={false} name={"password"}/>
+        <Input label={"Confirm Password"} small={false} name={"passwordConfirmation"}/>
         <div className={styles.nameAndEmail}>
           <Drop/>
           
@@ -77,7 +83,8 @@ const BoxField = () => {
           </button>
         )}
 
-        <button className={styles.Button} onClick={handleLog}>
+        {/* <button className={styles.Button} onClick={handleLog}> */}
+        <button className={styles.Button} type="submit">
           Sign up
         </button>
         <h6 className={styles.terms}>
@@ -98,48 +105,87 @@ const BoxField = () => {
     </div>
   );
 
-  // ---------------------------------------------------------------------------------------------------//
+  
+  //===============================================================================================================================
+  function handleFormSubmit(e){
+      e.preventDefault();   // to prevent page from refreshing after click on submit button
+      let nameValue = e.target.name.value;
+      let emailValue = e.target.email.value;
+      let passwordValue = e.target.password.value;
+      let passwordConfirmationValue = e.target.passwordConfirmation.value;
+      let cityIdValue = e.target.cities.value;
+      let jobIdValue = e.target.jobs.value;
+      // let cvValue = selectedCvUrl;
+      let cvValue = "https://graduation-backend-production.up.railway.app/api/v1/uploads/cvab2bcba4-848f-496f-a7d5-0956c5a019e6.pdf";
 
+      const person = {name:nameValue, 
+                      email:emailValue,
+                      password:passwordValue,
+                      jobId:jobIdValue,
+                      cityId:cityIdValue,
+                      cv:cvValue
+                      };
+
+      let requestJson = JSON.stringify(person);
+      console.log("zzzzzz"+ requestJson);
+      registerUser(requestJson)
+      
+  }
+
+  function registerUser(requestJson) {
+      chageLoading(true);    
+      const SIGN_UP_URL = "https://graduation-backend-production.up.railway.app/auth/signup";
+      fetch(SIGN_UP_URL, {
+          method: "POST",
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: requestJson
+      })
+          .then((response) => response.json())
+          .then((json) => onGetSignUpResponse(json));
+      chageLoading(false);
+  }
+
+  function onGetSignUpResponse(json) {
+      let status = json.type;
+      if (status == "Success") {
+          window.alert("success signup");
+      } else {
+          window.alert("Error Happened");
+      }
+  }
+
+  //===============================================================================================================================
   function uplaodFile() {
     const formData = new FormData();
-
     formData.append("file", selectedFile);
+
     chageLoading(true);
     fetch(Cons.baseUrl + "/upload/file", {
       method: "POST",
+      headers: {
+        'content-type': 'multipart/form-data'
+      },
       body: formData,
     })
       .then((response) => response.json())
       .then((result) => {
-        chageLoading(false);
-        console.log("Success:", result);
+          chageLoading(false);
+          console.log("Success:", result.url);
+          selectedCvUrl = result.url;
       })
       .catch((error) => {
-        console.error("Error:", error);
+          console.error("Error:", error);
       });
   }
-  function loadJobs() {
-    const JOBS_URL =
-      "https://graduation-backend-production.up.railway.app/auth/jobs";
-    fetch(JOBS_URL)
-      .then((response) => response.json())
-      .then((json) => onGetJobsData(json));
-  }
+  
+  //===============================================================================================================================
 
-  function onGetJobsData(json) {
-    //   setJobs(json.data);
-  }
 
-  function loadCities() {
-    const CITIES_URL =
-      "https://graduation-backend-production.up.railway.app/auth/cities";
-    fetch(CITIES_URL)
-      .then((response) => response.json())
-      .then((json) => onGetCitiesData(json));
-  }
 
-  function onGetCitiesData(json) {
-    // setCities(json.data);
-  }
+
+
+
 };
 export default BoxField;

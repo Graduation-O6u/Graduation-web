@@ -18,35 +18,6 @@ const Signup = () => {
     </div>
   );
 
-  //===============================================================================================================================
-
-  function getDataAndSignUp() {
-    const person = {
-      name: "",
-      email: "",
-      password: "",
-      jobId: "",
-      cityId: "",
-    };
-
-    const SIGN_UP_URL =
-      "https://graduation-backend-production.up.railway.app/auth/signup";
-    fetch(SIGN_UP_URL, {
-      method: "POST",
-      body: JSON.stringify(person),
-    })
-      .then((response) => response.json())
-      .then((json) => onGetSignUpResponse(json));
-  }
-
-  function onGetSignUpResponse(json) {
-    let status = json.type;
-    if (status == "Success") {
-      window.alert("success signup");
-    } else {
-      window.alert("Error Happened");
-    }
-  }
 };
 
 export default Signup;
