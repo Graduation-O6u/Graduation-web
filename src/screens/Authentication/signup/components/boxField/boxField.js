@@ -116,7 +116,7 @@ const BoxField = () => {
       let cityIdValue = e.target.cities.value;
       let jobIdValue = e.target.jobs.value;
       // let cvValue = selectedCvUrl;
-      let cvValue = "https://graduation-backend-production.up.railway.app/api/v1/uploads/cvab2bcba4-848f-496f-a7d5-0956c5a019e6.pdf";
+      let cvValue = "https://graduation-backend-production.up.railway.app/api/v1/uploads/9-2-2023-4thyear406ad80c-b392-4e98-9fbd-d847fb0080f1.pdf";
 
       const person = {name:nameValue, 
                       email:emailValue,
