@@ -3,7 +3,7 @@ import Login from "./screens/Authentication/login/login.screen";
 import Signup from "./screens/Authentication/signup/signup.screen";
 import Welcome from "./screens/Authentication/welcome/welcome";
 import Verify from "./screens/Authentication/signup/components/verification/verify";
-import Forget from "./screens/Authentication/login/components/forget";
+import Forget from "./screens/Authentication/forgetPassword/forget";
 import Changepass from "./screens/Authentication/login/components/changepass";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 const App = () => {

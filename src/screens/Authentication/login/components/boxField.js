@@ -30,7 +30,7 @@ const BoxField = () => {
             />
             <label for="remeber me"> Remember me</label>
           </div>
-          <a href="#login" title="Sign up">
+          <a href="/forget" title="">
             Forget Password?
           </a>
         </div>
