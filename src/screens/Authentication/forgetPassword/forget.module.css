@@ -10,7 +10,7 @@
   background-color: #f7f7f7;
 }
 
-.middle1{
+.middle1 {
   flex: 1;
 }
 
@@ -20,9 +20,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  }
-
-.vertext{
+}
+.err {
+  color: red;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  font-size: 11px;
+}
+.vertext {
   margin-top: 10%;
   font-weight: bold;
 }
@@ -33,7 +38,7 @@
 }
 
 .H5 span {
-  color: #5D5FEF;
+  color: #5d5fef;
 }
 
 .fields {
@@ -45,29 +50,29 @@
   border-radius: 5px;
   border: none;
   height: 35px;
-  background-color: #EAEAEA;
+  background-color: #eaeaea;
 }
 
 .sub {
   font-weight: bold;
   border: none;
-  color:white;
+  color: white;
   border-radius: 5px;
   height: 35px;
-  background-color: #4C70FF;
+  background-color: #4c70ff;
   cursor: pointer;
 }
 
-.getcode{
+.getcode {
   text-align: center;
 }
 
 @media (max-width: 900px) {
-  .body{
+  .body {
     flex-direction: column;
     background-color: white;
   }
-  .middle2{
+  .middle2 {
     padding: 15% 0;
   }
 }

@@ -1,66 +1,85 @@
-import React from "react";
-import styles from "./forget.module.css"
+import React, { useState } from "react";
+import styles from "./forget.module.css";
 import verifygif from "../images #/forgot.gif";
+import { FORGET_PASSWORD_LINK } from "../../../constants";
+import { useNavigate } from "react-router-dom";
 
 const Forget = () => {
-    return (
-      <div className={styles.body} >
-         <img className={styles.middle1} src={verifygif} title={"Forgotten password ?"} id={styles.pic} />
-         <form className={styles.middle2} onSubmit={handleForgetPasswordFormSubmission}>
-            <div>
-            <h2 className={styles.vertext}>Forgotten Password ?</h2>
-            <br/>
-            <h5 className={styles.H5}>Enter your Email to send code to you</h5>
-            <br/>
-            <div className={styles.fields}>
-            <input className={styles.typecode} type="text" placeholder="Type code here" name="email" ></input>
-            <br/>
-            <button className={styles.sub} type="submit">Submit</button>
-            </div>
-            </div>
-         </form>
-         
-      </div>
-    );
+  const navigate = useNavigate();
+  const [Err, setError] = useState("");
 
-   //===============================================================================================================================
+  return (
+    <div className={styles.body}>
+      <img
+        className={styles.middle1}
+        src={verifygif}
+        title={"Forgotten password ?"}
+        id={styles.pic}
+      />
+      <form
+        className={styles.middle2}
+        onSubmit={handleForgetPasswordFormSubmission}
+      >
+        <div>
+          <h2 className={styles.vertext}>Forgotten Password ?</h2>
+          <br />
+          <h5 className={styles.H5}>Enter your Email to send code to you</h5>
+          <br />
+          <div className={styles.fields}>
+            <input
+              className={styles.typecode}
+              type="text"
+              placeholder="Type Your email here"
+              name="email"
+            ></input>
+            <p className={styles.err}>{Err}</p>
+            <br />
+            <button className={styles.sub} type="submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 
-   function handleForgetPasswordFormSubmission(e){
-      e.preventDefault();   // to prevent page from refreshing after click on submit button
-  
-      let emailValue = e.target.email.value;
+  //===============================================================================================================================
 
-      const forgetPasswordReq = {email : emailValue};  
-      let requestJson = JSON.stringify(forgetPasswordReq);
-      console.log("zzzzzz     "+ requestJson);
-      requestToResetPassword(requestJson)
-   }
+  function handleForgetPasswordFormSubmission(e) {
+    e.preventDefault(); // to prevent page from refreshing after click on submit button
 
-   function requestToResetPassword(requestJson){
-      const FORGET_PASSWORD_URL = "https://graduation-backend-production.up.railway.app/auth/forgetPassword";
-      fetch(FORGET_PASSWORD_URL, {
-        method: "POST",
-        headers: {
-          'content-type': 'application/json'
-        },
-        body: requestJson
-       })
-        .then((response) => response.json())
-        .then((json) => handleForgetPasswordResponse(json));
-   }
+    let emailValue = e.target.email.value;
 
-   function handleForgetPasswordResponse(json){
-      let type = json.type;
-      let responseMessage = json.message;
-  
+    const forgetPasswordReq = { email: emailValue };
+    let requestJson = JSON.stringify(forgetPasswordReq);
+    console.log("zzzzzz     " + requestJson);
+    requestToResetPassword(requestJson);
+  }
+
+  function requestToResetPassword(requestJson) {
+    fetch(FORGET_PASSWORD_LINK, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: requestJson,
+    })
+      .then((response) => response.json())
+      .then((json) => handleForgetPasswordResponse(json));
+  }
+
+  function handleForgetPasswordResponse(json) {
+    let type = json.type;
+    let responseMessage = json.message;
+    if (type === "Success") {
+      navigate("/changePassword");
+    } else if (type === "InternalServerError") {
       window.alert(responseMessage);
-   }
+    } else {
+      setError(responseMessage);
+    }
+  }
 
-
-
-
-
-   //===============================================================================================================================
-
-  };
-  export default Forget;
+  //===============================================================================================================================
+};
+export default Forget;

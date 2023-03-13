@@ -5,11 +5,10 @@ import Drop from "../../../components/drop/drop";
 import Or from "../../../components/or/or";
 import Media from "../../../components/media/media";
 import LoadingButton from "../../../../../components/loadingButton/loadingButton";
-import { Cons } from "../../../../../constants";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { SIGN_IN_LINK, UPLOAD_LINK } from "../../../../../constants";
 const BoxField = () => {
-
   //-----
   var selectedCvUrl = "";
 
@@ -60,14 +59,17 @@ const BoxField = () => {
     <div className={styles.middle2}>
       <form className={styles.form} onSubmit={handleFormSubmit}>
         <div className={styles.nameAndEmail}>
-          <Input label={"Name"} small={true} name={"name"}/>
-          <Input label={"Email"} small={true} name={"email"}/>
+          <Input label={"Name"} small={true} name={"name"} />
+          <Input label={"Email"} small={true} name={"email"} />
         </div>
-        <Input label={"Password"} small={false} name={"password"}/>
-        <Input label={"Confirm Password"} small={false} name={"passwordConfirmation"}/>
+        <Input label={"Password"} small={false} name={"password"} />
+        <Input
+          label={"Confirm Password"}
+          small={false}
+          name={"passwordConfirmation"}
+        />
         <div className={styles.nameAndEmail}>
-          <Drop/>
-          
+          <Drop />
         </div>
         <input
           type="file"
@@ -97,7 +99,7 @@ const BoxField = () => {
         <Media />
         <h5 id={styles.login}>
           Already have an account ?{" "}
-          <a href="#login" title="Login">
+          <a href="/login" title="Login">
             Login
           </a>
         </h5>
@@ -105,55 +107,54 @@ const BoxField = () => {
     </div>
   );
 
-  
   //===============================================================================================================================
-  function handleFormSubmit(e){
-      e.preventDefault();   // to prevent page from refreshing after click on submit button
-      let nameValue = e.target.name.value;
-      let emailValue = e.target.email.value;
-      let passwordValue = e.target.password.value;
-      let passwordConfirmationValue = e.target.passwordConfirmation.value;
-      let cityIdValue = e.target.cities.value;
-      let jobIdValue = e.target.jobs.value;
-      // let cvValue = selectedCvUrl;
-      let cvValue = "https://graduation-backend-production.up.railway.app/api/v1/uploads/9-2-2023-4thyear406ad80c-b392-4e98-9fbd-d847fb0080f1.pdf";
+  function handleFormSubmit(e) {
+    e.preventDefault(); // to prevent page from refreshing after click on submit button
+    let nameValue = e.target.name.value;
+    let emailValue = e.target.email.value;
+    let passwordValue = e.target.password.value;
+    let passwordConfirmationValue = e.target.passwordConfirmation.value;
+    let cityIdValue = e.target.cities.value;
+    let jobIdValue = e.target.jobs.value;
+    // let cvValue = selectedCvUrl;
+    let cvValue =
+      "https://graduation-backend-production.up.railway.app/api/v1/uploads/9-2-2023-4thyear406ad80c-b392-4e98-9fbd-d847fb0080f1.pdf";
 
-      const person = {name:nameValue, 
-                      email:emailValue,
-                      password:passwordValue,
-                      jobId:jobIdValue,
-                      cityId:cityIdValue,
-                      cv:cvValue
-                      };
+    const person = {
+      name: nameValue,
+      email: emailValue,
+      password: passwordValue,
+      jobId: jobIdValue,
+      cityId: cityIdValue,
+      cv: cvValue,
+    };
 
-      let requestJson = JSON.stringify(person);
-      console.log("zzzzzz"+ requestJson);
-      registerUser(requestJson)
-      
+    let requestJson = JSON.stringify(person);
+    console.log("zzzzzz" + requestJson);
+    registerUser(requestJson);
   }
 
   function registerUser(requestJson) {
-      chageLoading(true);    
-      const SIGN_UP_URL = "https://graduation-backend-production.up.railway.app/auth/signup";
-      fetch(SIGN_UP_URL, {
-          method: "POST",
-          headers: {
-            'content-type': 'application/json'
-          },
-          body: requestJson
-      })
-          .then((response) => response.json())
-          .then((json) => onGetSignUpResponse(json));
-      chageLoading(false);
+    chageLoading(true);
+    fetch(SIGN_IN_LINK, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: requestJson,
+    })
+      .then((response) => response.json())
+      .then((json) => onGetSignUpResponse(json));
+    chageLoading(false);
   }
 
   function onGetSignUpResponse(json) {
-      let status = json.type;
-      if (status == "Success") {
-          window.alert("success signup");
-      } else {
-          window.alert("Error Happened");
-      }
+    let status = json.type;
+    if (status == "Success") {
+      window.alert("success signup");
+    } else {
+      window.alert("Error Happened");
+    }
   }
 
   //===============================================================================================================================
@@ -162,30 +163,24 @@ const BoxField = () => {
     formData.append("file", selectedFile);
 
     chageLoading(true);
-    fetch(Cons.baseUrl + "/upload/file", {
+    fetch(UPLOAD_LINK, {
       method: "POST",
       headers: {
-        'content-type': 'multipart/form-data'
+        "content-type": "multipart/form-data",
       },
       body: formData,
     })
       .then((response) => response.json())
       .then((result) => {
-          chageLoading(false);
-          console.log("Success:", result.url);
-          selectedCvUrl = result.url;
+        chageLoading(false);
+        console.log("Success:", result.url);
+        selectedCvUrl = result.url;
       })
       .catch((error) => {
-          console.error("Error:", error);
+        console.error("Error:", error);
       });
   }
-  
+
   //===============================================================================================================================
-
-
-
-
-
-
 };
 export default BoxField;

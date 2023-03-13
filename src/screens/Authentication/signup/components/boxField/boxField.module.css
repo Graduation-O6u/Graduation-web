@@ -78,6 +78,10 @@ h5 {
   background-color: red;
   padding: 10px;
 }
+.err {
+  color: red;
+  margin-bottom: 5%;
+}
 .check {
   width: 35%;
   display: flex;
