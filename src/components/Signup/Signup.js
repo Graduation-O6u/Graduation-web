@@ -5,6 +5,7 @@ import Apple from '../../images #/Apple.png'
 import Facebook from '../../images #/facebook.png'
 import React, { useState, useEffect } from 'react';
 
+
 const Signup = () => {
 
     const [jobs, setJobs] = useState([""]);
@@ -172,6 +173,8 @@ const Signup = () => {
             window.alert("Error Happened");
         }
     }
+
+
 
     //===============================================================================================================================
     function uploadCvFile(){
