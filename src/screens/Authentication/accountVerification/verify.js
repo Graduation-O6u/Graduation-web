@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./verify.module.css";
-import verifygif from "../../../images #/verify.gif";
-import phone from "../../../images #/phone.png"
+import verifygif from "../images #/verify.gif";
+import phone from "../images #/phone.png"
 const Verify = () => {
     return (
       <div className={styles.body} >
