@@ -17,7 +17,7 @@ const Navbar = () => {
       <ul className={styles.navLink}>
         <div className={styles.nonBut}>
           <li>
-            <a href="#home" className={styles.home}>
+            <a href="/homepage" className={styles.home}>
               Home
             </a>
           </li>
