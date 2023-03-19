@@ -67,6 +67,11 @@ const BoxField = () => {
     let passwordValue = e.target.password.value;
     let isRemember = false;
 
+    const formDataIsValid = isValidData(emailValue, passwordValue)
+    if(!formDataIsValid){
+      return;
+    }
+
     const loginReq = {
       email: emailValue,
       password: passwordValue,
@@ -77,6 +82,26 @@ const BoxField = () => {
     console.log("zzzzzz     " + requestJson);
     signin(requestJson);
   }
+
+  function isValidData(email, password){
+    const emailRegex = /^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const isValidEmail = emailRegex.test(email);
+
+    const passwordRegex = /^(?=.\d)(?=.[a-z])(?=.[A-Z])(?=.[a-zA-Z]).{8,}$/;
+    const isValidPassword = passwordRegex.test(password);
+
+    if(isValidEmail == false){
+        window.alert("Email not valid");
+        return false;
+    }
+
+    // if(!isValidPassword){
+    //   window.alert("Password not valid");
+    //   return false;
+    // }
+
+    return true;
+}
 
   function signin(requestJson) {
     fetch(SIGN_IN_LINK, {
