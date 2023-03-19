@@ -1,0 +1,39 @@
+.luxury {
+    max-width: 1040px;
+    margin-left: 10%;
+    padding: 0%;
+}
+
+.luxury .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10rem;
+    padding-bottom: 5%;
+}
+
+.card {
+    width: 110%;
+    border-radius: 10px;
+    background: #F2EFEF;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.line {
+    margin-top: 1.4%;
+}
+@media screen and (max-width: 768px) {
+    .luxury .container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .heading h1 {
+        font-size: 3rem;
+        text-align: center;
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .luxury .container {
+        grid-template-columns: .8fr;
+    }
+}
