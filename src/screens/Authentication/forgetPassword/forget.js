@@ -46,14 +46,31 @@ const Forget = () => {
   //===============================================================================================================================
 
   function handleForgetPasswordFormSubmission(e) {
-    e.preventDefault(); // to prevent page from refreshing after click on submit button
+      e.preventDefault(); // to prevent page from refreshing after click on submit button
 
-    let emailValue = e.target.email.value;
+      let emailValue = e.target.email.value;
 
-    const forgetPasswordReq = { email: emailValue };
-    let requestJson = JSON.stringify(forgetPasswordReq);
-    console.log("zzzzzz     " + requestJson);
-    requestToResetPassword(requestJson);
+      const formDataIsValid = isValidData(emailValue)
+      if(!formDataIsValid){
+        return;
+      }
+
+      const forgetPasswordReq = { email: emailValue };
+      let requestJson = JSON.stringify(forgetPasswordReq);
+      console.log("zzzzzz     " + requestJson);
+      requestToResetPassword(requestJson);
+  }
+
+  function isValidData(email){
+      const emailRegex = /^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+      const isValidEmail = emailRegex.test(email);
+
+      if(isValidEmail == false){
+          window.alert("Email not valid");
+          return false;
+      }
+
+      return true;
   }
 
   function requestToResetPassword(requestJson) {
