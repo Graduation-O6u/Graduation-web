@@ -63,14 +63,17 @@ const BoxField = () => {
     <div className={styles.middle2}>
       <form className={styles.form} onSubmit={handleFormSubmit}>
         <div className={styles.nameAndEmail}>
-          <Input label={"Name"} small={true} name={"name"} />
-          <Input label={"Email"} small={true} name={"email"} />
+          <Input label={"Name"} small={true} name={"name"} type={"text"}/>
+          <Input label={"Email"} small={true} name={"email"} type={"email"} />
         </div>
-        <Input label={"Password"} small={false} name={"password"} />
+        <Input label={"Password"} small={false} name={"password"} type={"password"} maxlength = {12} minlength = {6} />
         <Input
           label={"Confirm Password"}
           small={false}
           name={"passwordConfirmation"}
+          type={"password"}
+          maxlength = {12}
+          minlength = {6}
         />
         <div className={styles.nameAndEmail}>
           <Drop />
@@ -85,7 +88,7 @@ const BoxField = () => {
           <LoadingButton />
         ) : (
           <button className={styles.OutButton} onClick={handleClick}>
-            Uplaod Your cv
+            Upload Your CV
           </button>
         )}
 

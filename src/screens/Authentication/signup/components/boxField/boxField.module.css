@@ -4,9 +4,14 @@
   justify-content: center;
   align-items: center;
 }
-h5 {
-  margin-top: 5%;
+#login {
+  margin-top: 5% !important;
+  font-size: medium !important;
   text-align: center;
+}
+
+#login a {
+  color : blue ;
 }
 .middle2 {
   background-color: #f7f7fc;
@@ -14,18 +19,18 @@ h5 {
 .form {
   background-color: #fafafa;
   border-radius: 20px;
-  width: 60%;
+  width: 65%;
   height: fit-content;
   justify-content: center;
   align-items: flex-start;
   gap: 5px;
-  padding: 20px;
+  padding: 15px;
   filter: drop-shadow(4px 4px 2px #f1f1f1);
 }
 .form2 {
   background-color: #fafafa;
   border-radius: 20px;
-  width: 60%;
+  width: 70%;
   height: fit-content;
   justify-content: center;
   align-items: flex-start;
@@ -102,6 +107,7 @@ h5 {
 .terms {
   text-align: center;
   color: #193185;
+  font-size: small !important;
 }
 
 @media (max-width: 1200px) {

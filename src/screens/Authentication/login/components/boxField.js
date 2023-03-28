@@ -18,9 +18,9 @@ const BoxField = () => {
     <div className={styles.middle2}>
       <form className={styles.form2} onSubmit={handleLoginFormSubmission}>
         <div className={styles.nameAndEmail}>
-          <Input label={"Email"} small={false} name="email" />
+          <Input label={"Email"} small={false} name="email" type={"email"}/>
         </div>
-        <Input label={"Password"} small={false} name="password" />
+        <Input label={"Password"} small={false} name="password" type={"password"} maxlength = {12} minlength = {6} />
         <p className={styles.err}>{Err}</p>
         <div className={styles.name2}>
           <div className={styles.check}>
