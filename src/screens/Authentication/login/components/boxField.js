@@ -46,7 +46,7 @@ const BoxField = () => {
           <span id={styles.terms}> Privacy Policy</span> and
           <span id={styles.terms}> Cookies Policy</span>{" "}
         </h6>
-        <Or />
+        <Or title={"or continue with"}/>
         <Media />
         <h5 id={styles.login}>
           Donot have an account ?{" "}

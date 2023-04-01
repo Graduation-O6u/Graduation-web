@@ -1,6 +1,5 @@
 .top-section {
     display: flex;
-    padding: 5%;
     font-weight: 600;
 }
 .top-section h2 {
@@ -10,88 +9,85 @@
 .top-section a {
     color: #4E2DAB;
     font-size: 22px;
-    padding-left: 64%;
 }
 .title-box {
     text-align: center;
-    margin: 10%;
     font-size: larger;
     font-weight: 600;
 }
 .butt-box {
     display: flex;
-    margin-top: 10%;
+    width: 100%;
+    margin: 5% 0%;
+    flex-direction: row;
+    align-items: center;
+    gap:10%;
+    justify-content: center;
 }
 .butt-box button {
-    margin-left: 10%;
-    width: 30%;
+    width: fit-content;
     border: none;
     background-color: #F6F6F6;
     border-radius: 25px;
-    padding: 2%;
-    margin-top: 5%;
+    padding: 4%;
 }
 
 .butt-box h4 {
-    margin-left: 12%;
     font-weight: 200;
 }
 
 .icon-mark {
+    z-index: 100;
     color: #193185;
-    font-size: 35px;
-    margin-left: 27%;
+    font-size: 25px;
+    position: absolute;
+    right: 0%;
+    top: 0%;
 }
 .line {
     width: 55%;
     height: 5%;
-    margin-top: 2.4%;
-    margin-left: 10%;
-    margin-bottom: 5%;
     position: relative;
     height: 3px;
     background-color: black;
     border: none;
 }
 .icon-arrow {
-
-    margin-left: -1.5%;
     font-size: 25px;
 } 
 
 .hour {
-    margin-top: 1%;
-    margin-left: 2%;
     font-size: small;
 }
 .company-box {
+    width: 100%;
+    margin: 0% 5%;
     display: flex;
-    padding: 5%;
-    margin-left: 10%;
+    flex-direction: row;
+    gap:5%;
+    align-items: center;
 }
 .mic {
     font-size: 40px;
 }
 .micro {
-    margin-left: 15%;
     font-weight: 600;
-    margin-top: 3%;
+    margin-bottom: 0%;
 }
 /* الاسهم */
 .arrow {
     display: flex;
     margin-left: 80%;
 }
-
 .arrow button {
-    background-color: white;
+    margin-right: 5%;
+    background-color: transparent;
     border: none;
-    width: 25%;
+    width: fit-content;
     height: 100%;
     margin-top: 10%;
     margin-bottom: 15%;
 }
-
 .ar {
     font-size: 50px;
     border-radius: 50%;
@@ -111,13 +107,11 @@
     }
     .top-section {
         display: flex;
-        margin-top: 30%;
     }
     .top-section a {
         padding-left : 10%;
     }
     .car {
-        width: 90%;
-        margin-top: 5%;
+        width: 100%;
     }
 }
