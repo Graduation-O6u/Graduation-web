@@ -24,7 +24,6 @@ const App = () => {
         <Route path="/featured" element={<Feature />}></Route>
         <Route path="/recomend" element={<Recomand />}></Route>
         <Route path="/saved" element={<Saved/>}></Route>
-
       </Routes>
     </BrowserRouter>
   );
