@@ -4,11 +4,11 @@ import NavbarHome from "./components/Navbar-home" ;
 import FindJob from "./components/FindJob/FindJob" ;
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SectionCards from "./components/cardsHome/sectionCards" ;
-import styless from "./homePage.module.css" ;
+import styles from "./homePage.module.css" ;
 const HomePage = () => {
     return (
         <>
-        <div className={ styless.containerhome}>
+        <div className={ styles.containerhome}>
             <div className="nav-find" >
             < NavbarHome />
             <div>
