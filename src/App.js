@@ -9,6 +9,7 @@ import HomePage from "./screens/Authentication/homePage/mainhome"
 import Feature from "./screens/Authentication/homePage/components/Feature/feature"
 import Recomand from "./screens/Authentication/homePage/components/Recommened/recommend" ;
 import Saved from "./screens/Authentication/homePage/components/Saved/saved";
+import Company from "./screens/profile company/company";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/featured" element={<Feature />}></Route>
         <Route path="/recomend" element={<Recomand />}></Route>
         <Route path="/saved" element={<Saved/>}></Route>
+        <Route path="/company" element={<Company/>}></Route>
       </Routes>
     </BrowserRouter>
   );
