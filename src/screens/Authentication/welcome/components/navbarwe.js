@@ -17,7 +17,7 @@ function Navbarr() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className='log'>
         <Nav className="mr-auto" style={{ width: "60%" , justifyContent: "end" , marginRight:"5%"}}>
-          <Nav.Link style={{ color:"#5d5fef" , fontSize:"25px" , fontWeight:"600" , marginRight:"4%" ,}} href="#welcome" >Welcom</Nav.Link>
+          <Nav.Link style={{ color:"#5d5fef" , fontSize:"25px" , fontWeight:"600" , marginRight:"4%" ,}} href="#welcome" >Welcome</Nav.Link>
           <Nav.Link style={{ fontSize:"25px" , fontWeight:"600" , marginRight:"4%" ,}} href="#about" >About Us</Nav.Link>
           <Nav.Link style={{ ontSize:"25px" , fontWeight:"600" }} href="#contact">Contact US</Nav.Link>
         </Nav>
