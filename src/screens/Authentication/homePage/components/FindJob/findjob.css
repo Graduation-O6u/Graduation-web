@@ -71,6 +71,7 @@
     border-radius: 25px;
     padding: 2% 0% ;
     box-shadow: 0px 2px 2px white;
+    outline: none;
 }
 ::placeholder {
     padding: 0px 30px;
@@ -81,8 +82,12 @@
     border: none;
     border-radius: 30px;
     background-color: #2c2c2c8a;
-    margin-left: -45px;
+    margin-left: -45px; 
 }
+/*
+.text-inp:focus {
+    outline: none;
+}*/
 .submit i {
     font-size: large;
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.466);

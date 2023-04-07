@@ -20,8 +20,6 @@ return (
                 <Nav.Link href="/homepage" style={{color: "#5D5FEF", fontSize: "25px" , padding:"1rem", fontWeight: "600",}} >Home</Nav.Link>
                 <Nav.Link href="#deets" style={{color: "#9F9F9F", fontSize: "25px" ,   padding:"1rem", fontWeight: "600",}}>Jobs</Nav.Link>
                 <Nav.Link href="#deets" style={{color: "#9F9F9F", fontSize: "25px" , fontWeight: "600",  padding:"1rem",}}>Notification</Nav.Link>
-                {/* <Nav.Link href="#deets" style={{ color: "#9F9F9F", fontSize: "25px" , fontWeight: "600",  padding:"1rem",}}><Icon style={{ fontSize: "35px", }}  icon="mdi:chat-outline" /></Nav.Link>
-                <Nav.Link href="#deets" style={{ color: "#9F9F9F", fontSize: "25px" , fontWeight: "600",  padding:"1rem",}}><Icon  style={{ fontSize: "35px", }} icon="ion:notifications-outline" /></Nav.Link> */}
             </Nav>
             </Navbar.Collapse>
         </Container>

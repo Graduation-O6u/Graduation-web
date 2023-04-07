@@ -1,17 +1,17 @@
 import React from "react";
-import styles from "../welcome.module.css";
+import "../welcome.css";
+import Image from "../../../../images/200w.webp" ;
 const Last = () => {
   return (
-    <div className={styles.lastPage}>
-      <div className={styles.topImgText2}>
-        <div className={styles.wellcom}>
-          <p>
-            <span>Get In Touch</span>
-            <br></br>We Love To Hear From You.
-          </p>
-        </div>
-        <img src="/images/photo_5.jpg" alt="" className={styles.photo5}></img>
+    <div className="topImgText">
+      <div className="wellcom">
+        <p>
+          <span >Get In Touch</span> 
+          <br></br>
+          <p class="love-text">We <span class="heart"></span> Love To Hear From You.</p>
+        </p>
       </div>
+      <img src={Image} alt='' />
     </div>
   );
 };
