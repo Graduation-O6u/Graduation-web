@@ -1,0 +1,169 @@
+.body{
+    height: 1350px;
+}
+
+.applyline {    
+    position: relative;
+    top:10%;
+}
+
+.H2{
+    position: relative;
+    left: 2%;
+    top:20%;
+    font-weight: bold;
+}
+
+.line{
+    position: absolute;
+    top: 25px;
+    left: 225px;
+    width: 150px;
+}
+
+.logo{
+    position: absolute;
+    top: 40%;
+    left: 5%;
+}
+
+.H4 {
+    position: absolute;
+    top: 45%;
+    left: 200px;
+}
+
+
+.pcontainer{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5,15%);
+    justify-content: center;
+    top: 400px;
+}
+
+ .plang {
+    display: flex;
+    border: 1px solid blueviolet;
+    box-shadow: 0 5px blueviolet;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-radius: 30px;
+    color: blueviolet;
+    padding: 20px;
+    margin: 10px;
+    position: relative;
+    width: auto;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.plang:hover {
+    color: white;
+    background-color: blueviolet;
+    box-shadow: 0 5px #8b8b8b;
+    cursor: pointer;
+}
+
+.para {
+    position: relative;
+    top:450px;
+    width: 50%;
+    height: fit-content;
+    left: 25%;
+    background-color: #F9F9F9;
+    border: 1px solid grey;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.para p {
+    font-weight:600;
+    font-size:x-large;
+}
+
+.submit {
+    position: absolute;
+    padding: 20px;
+    width: 33%;
+    left: 33%;
+    top:1200px;
+    background-color: #5D5FEF;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+}
+
+@media (max-width:950px){
+    .plang{
+        font-size: .9em;
+    }
+}
+
+@media (max-width:700px){
+    .plang{
+        font-size: .7em;
+    }
+}
+
+@media (max-width:550px){
+    .plang{
+        font-size: .5em;
+    }
+}
+
+@media (max-width:1050px){
+    .para p{
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width:800px){
+    .para p{
+        font-size: 1.1em;
+    }
+    
+    .submit {
+        top: 1150px;
+    }
+
+    .body{
+        height: 1300px;
+    }
+}
+
+@media (max-width:800px){
+    .para {
+        width: 70%;
+        left:15%;
+    }
+}
+
+@media (max-width:480px){
+    .para {
+        width: 80%;
+        left:10%;
+    }
+}
+
+@media (max-width:900px){
+    .line {
+        left:25%;
+    }
+}
+
+@media (max-width:650px){
+    .line {
+        left:30%;
+    }
+}
+
+@media (max-width:500px){
+    .line {
+        left:40%;
+    }
+}

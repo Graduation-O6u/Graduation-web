@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../Notifications/notfications.module.css"
-import line from "../../images/H-line.png"
+import line from "../../images/V-line.png"
 
 const Notifications = () => {
     return (
