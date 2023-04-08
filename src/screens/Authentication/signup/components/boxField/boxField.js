@@ -9,19 +9,17 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { SIGN_UP_LINK, UPLOAD_LINK } from "../../../../../constants";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 const BoxField = () => {
   const navigate = useNavigate();
 
   var emailValue = "";
-  var selectedCvUrl = "";
- 
 
   const [selectedFile, setSelectedFile] = useState();
   const [show, changeShow] = useState(false);
 
   const [isFilePicked, setIsFilePicked] = useState(false);
-
+  const [file, setFile] = useState("");
   const [loading, chageLoading] = useState(false);
 
   const hiddenFileInput = React.useRef(null);
@@ -63,17 +61,24 @@ const BoxField = () => {
     <div className={styles.middle2}>
       <form className={styles.form} onSubmit={handleFormSubmit}>
         <div className={styles.nameAndEmail}>
-          <Input label={"Name"} small={true} name={"name"} type={"text"}/>
+          <Input label={"Name"} small={true} name={"name"} type={"text"} />
           <Input label={"Email"} small={true} name={"email"} type={"email"} />
         </div>
-        <Input label={"Password"} small={false} name={"password"} type={"password"} maxlength = {12} minlength = {6} />
+        <Input
+          label={"Password"}
+          small={false}
+          name={"password"}
+          type={"password"}
+          maxlength={12}
+          minlength={6}
+        />
         <Input
           label={"Confirm Password"}
           small={false}
           name={"passwordConfirmation"}
           type={"password"}
-          maxlength = {12}
-          minlength = {6}
+          maxlength={12}
+          minlength={6}
         />
         <div className={styles.nameAndEmail}>
           <Drop />
@@ -116,82 +121,75 @@ const BoxField = () => {
 
   //===============================================================================================================================
   function handleFormSubmit(e) {
-      e.preventDefault(); // to prevent page from refreshing after click on submit button
-      let nameValue = e.target.name.value;
-      emailValue = e.target.email.value;
-      let passwordValue = e.target.password.value;
-      let passwordConfirmationValue = e.target.passwordConfirmation.value;
-      let cityIdValue = e.target.cities.value;
-      let jobIdValue = e.target.jobs.value;
-      // let cvValue = selectedCvUrl;
-      let cvValue =
-        "https://graduation-backend-production.up.railway.app/api/v1/uploads/9-2-2023-4thyear406ad80c-b392-4e98-9fbd-d847fb0080f1.pdf";
+    e.preventDefault(); // to prevent page from refreshing after click on submit button
+    let nameValue = e.target.name.value;
+    emailValue = e.target.email.value;
+    let passwordValue = e.target.password.value;
+    let passwordConfirmationValue = e.target.passwordConfirmation.value;
+    let cityIdValue = e.target.cities.value;
+    let jobIdValue = e.target.jobs.value;
+    // let cvValue = selectedCvUrl;
+    let cvValue = file;
 
-      const person = {
-        name: nameValue,
-        email: emailValue,
-        password: passwordValue,
-        jobId: jobIdValue,
-        cityId: cityIdValue,
-        cv: cvValue,
-      };
+    const person = {
+      name: nameValue,
+      email: emailValue,
+      password: passwordValue,
+      jobId: jobIdValue,
+      cityId: cityIdValue,
+      cv: cvValue,
+    };
 
-      let requestJson = JSON.stringify(person);
-      console.log("zzzzzz" + requestJson);
-      registerUser(requestJson);
+    let requestJson = JSON.stringify(person);
+    console.log("zzzzzz" + requestJson);
+    registerUser(requestJson);
   }
 
   function registerUser(requestJson) {
-      chageLoading(true);
-      fetch(SIGN_UP_LINK, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: requestJson,
-      })
-        .then((response) => response.json())
-        .then((json) => onGetSignUpResponse(json));
-      chageLoading(false);
+    chageLoading(true);
+    fetch(SIGN_UP_LINK, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: requestJson,
+    })
+      .then((response) => response.json())
+      .then((json) => onGetSignUpResponse(json));
+    chageLoading(false);
   }
 
   function onGetSignUpResponse(json) {
-      let status = json.type;
-      if (status == "Success") {
-        let secret = json.data.secret;
-        navigateToVerifyEmail(secret)
-      } else {
-        window.alert("Error Happened");
-      }
+    let status = json.type;
+    if (status === "Success") {
+      let secret = json.data.secret;
+      navigateToVerifyEmail(secret);
+    } else {
+      window.alert("Error Happened");
+    }
   }
 
   function navigateToVerifyEmail(secretId) {
     // console.log(secretId);
-    navigate("/verify", {state:{id:secretId, email:emailValue}});
+    navigate("/verify", { state: { id: secretId, email: emailValue } });
   }
 
   //===============================================================================================================================
-  function uplaodFile() {
-      const formData = new FormData();
-      formData.append("file", selectedFile);
+  async function uplaodFile(file) {
+    const formData = new FormData();
+    console.log(file);
+    formData.append("file", file);
 
-      chageLoading(true);
-      fetch(UPLOAD_LINK, {
-        method: "POST",
-        headers: {
-          "content-type": "multipart/form-data",
-        },
-        body: formData,
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          chageLoading(false);
-          console.log("Success:", result.url);
-          selectedCvUrl = result.url;
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
+    chageLoading(true);
+    const result = await axios.post(
+      `https://graduation-backend-production.up.railway.app/upload/file`,
+      formData,
+      {
+        crossDomain: true,
+      }
+    );
+    chageLoading(false);
+    setFile(result["data"]["url"]);
   }
 
   //===============================================================================================================================

@@ -5,9 +5,9 @@ import Welcome from "./screens/Authentication/welcome/welcome";
 import Verify from "./screens/Authentication/accountVerification/verify";
 import Forget from "./screens/Authentication/forgetPassword/forget";
 import Changepass from "./screens/Authentication/login/components/changepass";
-import HomePage from "./screens/Authentication/homePage/mainhome"
-import Feature from "./screens/Authentication/homePage/components/Feature/feature"
-import Recomand from "./screens/Authentication/homePage/components/Recommened/recommend" ;
+import HomePage from "./screens/Authentication/homePage/mainhome";
+import Feature from "./screens/Authentication/homePage/components/Feature/feature";
+import Recomand from "./screens/Authentication/homePage/components/Recommened/recommend";
 import Saved from "./screens/Authentication/homePage/components/Saved/saved";
 import Company from "./screens/profile company/company";
 import Notifications from "./screens/Notifications/notfiications";
@@ -26,10 +26,10 @@ const App = () => {
         <Route path="/homepage" element={<HomePage />}></Route>
         <Route path="/featured" element={<Feature />}></Route>
         <Route path="/recomend" element={<Recomand />}></Route>
-        <Route path="/saved" element={<Saved/>}></Route>
-        <Route path="/company" element={<Company/>}></Route>
-        <Route path="/notifications" element={<Notifications/>}></Route>
-        <Route path="/apply" element={<Apply/>}></Route>
+        <Route path="/saved" element={<Saved />}></Route>
+        <Route path="/company" element={<Company />}></Route>
+        <Route path="/notifications" element={<Notifications />}></Route>
+        <Route path="/apply" element={<Apply />}></Route>
       </Routes>
     </BrowserRouter>
   );

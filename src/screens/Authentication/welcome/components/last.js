@@ -1,17 +1,19 @@
 import React from "react";
 import "../welcome.css";
-import Image from "../../../../images/200w.webp" ;
+import Image from "../images/dlf10_Nqu3hLknTA.gif";
 const Last = () => {
   return (
     <div className="topImgText">
       <div className="wellcom">
         <p>
-          <span >Get In Touch</span> 
+          <span>Get In Touch</span>
           <br></br>
-          <p class="love-text">We <span class="heart"></span> Love To Hear From You.</p>
+          <p class="love-text">
+            We <span class="heart"></span> Love To Hear From You.
+          </p>
         </p>
       </div>
-      <img src={Image} alt='' />
+      <img src={Image} alt="" />
     </div>
   );
 };
