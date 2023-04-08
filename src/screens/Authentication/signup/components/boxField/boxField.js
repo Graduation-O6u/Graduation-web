@@ -92,7 +92,11 @@ const BoxField = () => {
         {loading ? (
           <LoadingButton />
         ) : (
-          <button className={styles.OutButton} onClick={handleClick}>
+          <button
+            type="button"
+            className={styles.OutButton}
+            onClick={handleClick}
+          >
             Upload Your CV
           </button>
         )}
@@ -171,7 +175,7 @@ const BoxField = () => {
 
   function navigateToVerifyEmail(secretId) {
     // console.log(secretId);
-    navigate("/verify", { state: { id: secretId, email: emailValue } });
+    navigate("/login");
   }
 
   //===============================================================================================================================

@@ -13,14 +13,16 @@ import Company from "./screens/profile company/company";
 import Notifications from "./screens/Notifications/notfiications";
 import Apply from "./screens/Apply job/apply";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./layout/home";
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Welcome />}></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/welcome" element={<Welcome />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/verify" element={<Verify />}></Route>
+        <Route path="/auth/verify-email/:id" element={<Verify />}></Route>
         <Route path="/forget" element={<Forget />}></Route>
         <Route path="/auth/reset-password/:id" element={<Changepass />}></Route>
         <Route path="/homepage" element={<HomePage />}></Route>

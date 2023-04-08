@@ -12,12 +12,15 @@ const Verify = () => {
   const [Err, setError] = useState("");
 
   const location = useLocation();
-  const secretId = location.state.id;
-  const email = location.state.email;
+  console.log(location);
+  const secretId = location.pathname.split("/").pop();
+  console.log(secretId);
+  const email = "You";
 
   return (
     <div className={styles.body}>
       <img
+        alt="verify"
         className={styles.middle1}
         src={verifygif}
         title={"Second Step Verification"}
@@ -29,7 +32,7 @@ const Verify = () => {
       >
         <div>
           <h3 className={styles.vertext}>Second Step Verification</h3>
-          <img className={styles.phone} src={phone} />
+          <img className={styles.phone} src={phone} alt="phione" />
           <h5 className={styles.H5}>Enter the verification code we sent to</h5>
           <h5 className={styles.H5}>
             <span> {email} </span>
@@ -45,12 +48,13 @@ const Verify = () => {
             <br />
             <button className={styles.sub}>Submit</button>
             <br />
-            <h6 className={styles.getcode}>
-              Didn't get the code ?{" "}
-              <a href="resend code">
-                <span>Resend</span>
-              </a>
-            </h6>
+            <p
+              style={{
+                color: "red",
+              }}
+            >
+              {Err}
+            </p>
           </div>
         </div>
       </form>
@@ -86,12 +90,10 @@ const Verify = () => {
     let type = json.type;
     let responseMessage = json.message;
     if (type === "Success") {
-      window.alert("Success");
-      //navigate("/changePassword");
+      navigate("/login");
     } else if (type === "InternalServerError") {
       window.alert(responseMessage);
     } else {
-      window.alert(responseMessage);
       setError(responseMessage);
     }
   }
