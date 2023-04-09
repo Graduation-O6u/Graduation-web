@@ -10,8 +10,8 @@ import Feature from "./screens/Authentication/homePage/components/Feature/featur
 import Recomand from "./screens/Authentication/homePage/components/Recommened/recommend" ;
 import Saved from "./screens/Authentication/homePage/components/Saved/saved";
 import Company from "./screens/profile company/company";
-import Notifications from "./screens/Notifications/notfiications";
 import Apply from "./screens/Apply job/apply";
+import Notifaction from "./screens/Notifications/mainnotif";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 const App = () => {
   return (
@@ -28,8 +28,8 @@ const App = () => {
         <Route path="/recomend" element={<Recomand />}></Route>
         <Route path="/saved" element={<Saved/>}></Route>
         <Route path="/company" element={<Company/>}></Route>
-        <Route path="/notifications" element={<Notifications/>}></Route>
         <Route path="/apply" element={<Apply/>}></Route>
+        <Route path="/notifaction" element={<Notifaction/>}></Route>
       </Routes>
     </BrowserRouter>
   );

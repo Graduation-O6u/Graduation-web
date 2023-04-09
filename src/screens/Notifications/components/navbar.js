@@ -1,8 +1,8 @@
 import { Icon } from '@iconify/react';
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import Logo from "../../../../images/Jobber.png";
-import '../../welcome/welcome.css';
+import Logo from "../../../images/Jobber.png";
+import '../../Authentication/welcome/welcome.css';
 function Navbarr() {
   return (
     <div style={{ margin:"1% 4%" }} >
@@ -18,9 +18,9 @@ function Navbarr() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className='log'>
         <Nav className="mr-auto" style={{ width: "60%" , justifyContent: "end" , marginRight:"7%"}}>
-          <Nav.Link style={{ color:"#5d5fef" , fontSize:"25px" , fontWeight:"600" , marginRight:"4%" ,}} href="/homepage" >Home</Nav.Link>
+          <Nav.Link style={{ fontSize:"25px" , fontWeight:"600" , marginRight:"4%" ,}} href="/homepage" >Home</Nav.Link>
           <Nav.Link style={{ fontSize:"25px" , fontWeight:"600" , marginRight:"4%" ,}} href=" " >jobs</Nav.Link>
-          <Nav.Link style={{ ontSize:"25px" , fontWeight:"600" }} href="/notifaction">Notification</Nav.Link>
+          <Nav.Link style={{ ontSize:"25px" , fontWeight:"600" , color:"#5d5fef"  }} href="/notifaction">Notification</Nav.Link>
         </Nav>
         <Nav>
         </Nav>

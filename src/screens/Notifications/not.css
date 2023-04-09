@@ -1,0 +1,11 @@
+.unread {
+    background-color: var(--Light-grayish-blue-1) !important;
+}
+.unread p:first-of-type::after {
+    content: " ";
+    background-color: var(--Red);
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-radius: 50%;
+}
