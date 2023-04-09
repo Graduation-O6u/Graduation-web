@@ -12,6 +12,7 @@ import Saved from "./screens/Authentication/homePage/components/Saved/saved";
 import Company from "./screens/profile company/company";
 import Apply from "./screens/Apply job/apply";
 import Notifaction from "./screens/Notifications/mainnotif";
+import Error from "./screens/Error/error";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/company" element={<Company/>}></Route>
         <Route path="/apply" element={<Apply/>}></Route>
         <Route path="/notifaction" element={<Notifaction/>}></Route>
+        <Route path="/error404" element={<Error/>}></Route>
       </Routes>
     </BrowserRouter>
   );
