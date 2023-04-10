@@ -4,7 +4,7 @@ import styles from "../notfications.module.css";
 import Image1 from "../../../images/avatar1.png";
 import Image2 from "../../../images/avatar2.png";
 import Image4 from "../../../images/avatar3.png" ;
-function App() {
+function Notfication() {
       const [unreadCount, setUnreadCount] = useState(2);
   const [messages, setMessages] = useState([
     {
@@ -80,4 +80,4 @@ function App() {
   );
 }
 
-export default App;
+export default Notfication;
