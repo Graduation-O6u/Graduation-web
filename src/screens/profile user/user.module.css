@@ -1,0 +1,443 @@
+.coverimg {
+    height: 200px;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+}
+
+.profileimg {
+    position: relative;
+    width: 150px;
+    left: 5%;
+    bottom: 110px;
+    border: 3px solid white;
+    border-radius: 50%;
+}
+
+.camera {
+    position: relative;
+    top: 60px;
+    left: 90%;
+    width: 40px;
+}
+
+.camera:hover {
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.H4 {
+    font-weight: bold;
+    position: relative;
+    left: 50px;
+    bottom: 100px;
+}
+
+.country {
+    position: relative;
+    width:30px;
+    bottom: 100px;
+    left:4%;
+}
+
+.h5{
+    position:relative;
+    bottom: 123px;
+    left: 70px;   
+}
+
+.H6 {
+    color: grey;
+    font-weight: 600;
+    position: relative;
+    left: 100px;
+    bottom: 25px;
+}
+
+.penimg{
+    position: relative;
+    bottom: 280px;
+    left: 90%;
+    width: 30px;
+    cursor: pointer;
+}
+
+.followers{
+    position: relative;
+    padding: 10px;
+    width: 100px;
+    left: 70%;
+    bottom: 260px;
+    border: 1px solid grey;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 1px 2px grey ;
+}
+
+.following{
+    position: relative;
+    padding: 10px;
+    width: 100px;
+    left: 85%;
+    bottom: 333px;
+    border: 1px solid grey;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 1px 2px grey ;
+}
+
+.worksite{
+    position: relative;
+    bottom:300px;
+    width: 40px;
+    left: 4%;
+}
+
+.o6utext {
+    position: relative;
+    bottom: 325px;
+    left: 10%;
+    font-weight: bold;
+    color: grey;
+}
+
+.worktext{
+    position: relative;
+    bottom:310px;
+    font-weight: bold;
+    left: 4%;
+}
+
+.time{
+    position: relative;
+    bottom:347px;
+    left: 30%;
+    font-weight: 600;
+    color: grey;
+}
+
+.share {
+    position: relative;
+    bottom: 350px; 
+    left: 60%; 
+    height: 40px;
+    cursor: pointer;  
+}
+
+.connections{
+    position: relative;
+}
+
+.connectionimg{
+    position: relative;
+    left: 8%;
+    width: 30px;
+    bottom: 110px;
+}
+
+
+.h6{
+    position: relative;
+    left: 20%;
+    bottom: 135px;
+    color: grey;
+    font-weight: bold;
+}
+
+.hi6{
+    position: relative;
+}
+
+.worksite3 {
+    position: relative;
+    width: 45px;
+    top:10px;
+}
+
+.worksite4 {
+    position: relative;
+    width: 45px;
+    bottom: 10px;
+}
+
+.o6utext2{
+    position: relative;
+    left: 60px;
+    bottom: 22px;
+    font-weight: bold;
+}
+
+.worktext2{
+    position: relative;
+    left: 60px;
+    bottom: 44px;
+    font-weight: bold;
+}
+
+.follow {
+    background-color: white;
+    color:blueviolet;
+    border: 1px solid blueviolet;
+    width: 150px;
+    padding: 10px;
+    border-radius: 20px; 
+    position: relative;
+    left: 8%;
+}
+
+.follow2{
+    background-color: white;
+    color:blueviolet;
+    border: 1px solid blueviolet;
+    width: 150px;
+    padding: 10px;
+    border-radius: 20px; 
+    position: relative;
+    left: 8%;
+    bottom:25px;
+}
+
+.follow:hover {
+    color: white;
+    background-color: blueviolet;
+}
+
+.allcontainer{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.container {
+    
+    height: 300px;   
+    box-shadow: 0px 0px 15px grey;
+    border-radius:  0 0 20px 20px;
+}
+
+.skill {
+    display: inline-block;
+    border: 1px solid blueviolet;
+    box-shadow: 0 5px blueviolet;
+    font-weight: bold;
+    font-size: .9em;
+    border-radius: 30px;
+    color: blueviolet;
+    padding: 20px;
+    margin: 10px;
+    position: relative;
+    width: auto;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.skill:hover {
+    color: white;
+    background-color: blueviolet;
+    box-shadow: 0 5px #8b8b8b;
+    cursor: pointer;
+}
+
+.container2{
+    border-radius: 20px;
+    padding: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 100%;
+    box-shadow: 0px 0px 15px grey;
+}
+
+.container3 {
+    border-radius: 20px;
+    padding: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 100%;
+    box-shadow: 0px 0px 15px grey;
+}
+
+.worksite2{
+    position: relative;
+    width: 45px;
+    top: 20px;
+}
+
+.firsthalf{
+    position: relative;
+    left: 5%;
+}
+
+.sechalf{
+    position: relative;
+    left: 55%;
+    bottom: 112px;
+}
+
+.details {
+    position: relative;
+    left: 70px;
+    bottom:30px
+}
+
+.Span {
+    color: grey;
+}
+
+.container4 {
+    position: relative;
+    box-shadow: 0px 0px 15px grey;
+    padding: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 175px;
+    border-radius: 20px;
+    
+}
+
+.container4 h5 {
+    font-weight: bold;
+}
+
+.viewmap{
+    position: absolute;
+    left: 90%;
+    bottom: 25px;
+}
+
+@media (max-width: 1200px){
+    .viewmap{
+        left: 80%;
+    }
+}
+
+@media (max-width: 750px){
+    .viewmap{
+        left: 70%;
+    }
+
+    .followers{
+        left: 65%;
+    }
+}
+
+@media (max-width: 950px){
+    .H5 {
+        left: 50%;
+    }
+    .time{
+        left:40%;
+    }
+}
+
+@media (max-width: 650px){
+    .H5 {
+        left: 45%;
+    }
+    .h5{
+        font-size: small;
+    }
+}
+
+@media (max-width: 600px){
+    .H4{
+        left: 10%;
+    }
+    .H6{
+        left: 10%;
+    }
+    .H5{
+        bottom:90px;
+        font-size:smaller;
+    }
+    .connectionimg{
+        width: 30px;
+        bottom: 70px;
+        left: 50px;
+    }
+    .follow {
+        top: -50px;
+    }
+}
+
+@media (max-width:500px){
+    .container4 h6 {
+        font-size: smaller;
+    }
+}
+
+@media (min-width:1000px){
+    .body {
+        width:75%;
+        margin: auto;
+    }
+
+    .viewmap{
+        left: 82.8%;
+    }
+
+    .H5 {
+        left: 35%;
+    }
+    .time{
+        left: 40%;
+    }
+
+}
+
+@media (max-width:700px) {
+    .share{
+        left:55%;
+    }
+    .o6utext2{
+        font-size: small;
+    }
+    .worktext2{
+        font-size: small;
+    }
+    .time{
+        left: 50%;
+    }
+    .followers{
+        width: 85px;
+        left: 75% ;
+    }
+    .following{
+        width: 85px;
+        left: 85%;
+    }
+}
+
+@media (max-width:900px) {
+    .followers{
+        left: 60%;
+    }
+    .following{
+        left:80%;
+    }
+    .h6{
+        left:25%;
+    }
+    .o6utext {
+        left: 20%;
+    }
+}
+@media (max-width:800px) {
+    .firsthalf{
+        left: 5%;
+    }
+    .sechalf{
+        left:45%;
+    }
+}
+@media (min-width:1200px) {
+    .time{
+        left: 30%;
+    }
+}
+
+@media (max-width:660px)
+{
+    .connectionimg{
+        width: 30px;
+    }
+}
