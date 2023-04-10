@@ -12,7 +12,7 @@ import Footer from "./components/footerwe";
 const Welcome = () => {
     return (
         <>
-        <div className={styles.Welcom}>
+        <div style={{ background:"#f7f7f7f7"}}>
             <div id="welcome">
                 <Navbar />
                 <div className="section1">
@@ -27,7 +27,7 @@ const Welcome = () => {
                 <Half />
                 <Last />
             </div>
-            <div id="contact">
+            <div id="contact ">
                 <Footer />
             </div>
         </div>

@@ -22,13 +22,6 @@ function Navbarr() {
           <Nav.Link style={{ ontSize:"25px" , fontWeight:"600" }} href="#contact">Contact US</Nav.Link>
         </Nav>
         <Nav>
-          <Nav.Link href="/login" >
-            <div class="button-container-1">
-              <span class="mas">Login</span>
-              <button id='work' type="button" name="Hover">Login</button>
-            </div>
-          </Nav.Link>
-          <Nav.Link href="/signup" ><button style={{ color:"#5d5fef" , border:"none" , background:"transparent" , fontSize:"20px", fontWeight:"600" }}>Signup</button></Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
