@@ -9,14 +9,13 @@ import styles from "../homePage.module.css";
 function CollapsibleExample() {
   return (
     <div className={styles.allnavbar}>
-      <img src={logoImgae} title="Logo Image" href="# " alt="logo" />
+      <img src={logoImgae} title="Logo Image" href="# " />
       <div
         style={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "end",
-          alignItems: "center",
-          width: "100%",
+          justifyContent: "center",
+          alignItems: "cemter",
         }}
       >
         <Navbar collapseOnSelect expand="lg" bg="left">
@@ -48,7 +47,7 @@ function CollapsibleExample() {
                   Jobs
                 </Nav.Link>
                 <Nav.Link
-                  href="#deets"
+                  href="/notifications"
                   style={{
                     color: "#9F9F9F",
                     fontSize: "25px",
@@ -62,15 +61,20 @@ function CollapsibleExample() {
             </Navbar.Collapse>
           </Container>
         </Navbar>
-        <img
-          src={localStorage.getItem("image")}
-          alt="profile"
+        <Nav.Link
+          href="#deets"
           style={{
-            width: "5%",
-            height: "2%",
-            borderRadius: "50%",
+            color: "#9F9F9F",
+            fontSize: "25px",
+            fontWeight: "600",
+            padding: "2rem",
           }}
-        />
+        >
+          <Icon
+            style={{ borderRadius: "50%", fontSize: "35px" }}
+            icon="healthicons:ui-user-profile-negative"
+          />
+        </Nav.Link>
       </div>
     </div>
   );

@@ -25,6 +25,9 @@
     border-bottom-color: #5D5FEF;
     border-bottom-width: 8px;
 }
+.cardds {
+    margin: 0% 5%;
+}
 /* small .dropdown */
 .tog {
     width: 160px;
