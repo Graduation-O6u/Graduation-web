@@ -23,7 +23,7 @@ return (
                         <Nav.Link herf="# " > &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; </Nav.Link>
                         <Nav.Link ><button onClick={() => setShow(!show)} 
                                     style={{
-                                        background : show ? "#FBFBFB" : "white" ,
+                                        background : show ? "#FBFBFB" : "#F7F7F7" ,
                                         boxShadow : show ? "5px 5px 5px 2px rgba(0, 0, 0, .1)" : "none" , 
                                         borderRadius : show ? " 50%" : "none" ,
                                         border :"none"
