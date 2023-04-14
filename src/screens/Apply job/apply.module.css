@@ -1,10 +1,11 @@
 .body{
-    height: 1350px;
+    height: 1400px;
 }
 
 .applyline {    
     position: relative;
-    top:10%;
+    top:5%;
+    left: 2%;
 }
 
 .H2{
@@ -23,13 +24,13 @@
 
 .logo{
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 5%;
 }
 
 .H4 {
     position: absolute;
-    top: 45%;
+    top: 55%;
     left: 200px;
 }
 
@@ -90,7 +91,7 @@
     padding: 20px;
     width: 33%;
     left: 33%;
-    top:1200px;
+    top:1300px;
     background-color: #5D5FEF;
     color: white;
     font-weight: bold;
@@ -167,3 +168,98 @@
         left:40%;
     }
 }
+
+@media (max-width:632px){
+    .submit{
+        top:1200px;
+    }  
+}
+
+@media (max-width:430px){
+    .submit{
+        top:1250px;
+    }  
+}
+
+/* pop up */
+
+#loginModal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal {
+    background: white;
+    padding: 10px 0px 20px 0px;
+    border-radius: 30px;
+    width: 450px;
+    text-align: center;
+  }
+  
+  .topForm {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .topForm .closeModal {
+    cursor: pointer;
+    padding: 0 20px;
+    font-size: 20px;
+  }
+  
+  .loginForm h2 {
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .loginForm form input {
+    width: 75%;
+    margin-bottom: 20px;
+    padding: 12px 12px;
+    box-sizing: border-box;
+    border: 1px solid #d0d5d8;
+    border-radius: 15px;
+  }
+  
+  .loginForm button {
+    padding: 12px 0;
+    width: 50%;
+    background: #5d5fef;
+    border: 0;
+    border-radius: 20px;
+    color: white;
+    margin: 10px auto;
+    cursor: pointer;
+  }
+
+  .H6{
+    color: grey;
+  }
+
+  .congrats{
+    width: 400px;
+  }
+
+  .submitBtn{
+    padding: 12px 0;
+    width: 50%;
+    background: #5d5fef;
+    border: 0;
+    border-radius: 20px;
+    color: white;
+    margin: 10px auto;
+    cursor: pointer;
+  }
+
+  .message{
+    position: relative;
+    top:50px;
+  }

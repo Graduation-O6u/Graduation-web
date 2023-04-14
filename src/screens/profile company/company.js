@@ -8,6 +8,7 @@ import styles from "../profile company/company.module.css";
 const Company = () => {
     return (
       <div className={styles.body}>
+        <div className={styles.allcontainer}>
         <img src={cover} title="Company Cover" className={styles.coverimg} />
         <div className={styles.container}>
         <img src={logo} title="Company logo" className={styles.logoimg} />
@@ -25,7 +26,7 @@ const Company = () => {
         <button className={styles.follow}>Follow</button>
         </div>
         </div>
-
+        </div>
         <br></br>
         <img src={arrows} title="Career arrows" className={styles.arrowsimg} />
         <br></br><br></br>

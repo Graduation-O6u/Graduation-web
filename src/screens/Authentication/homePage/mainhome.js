@@ -9,12 +9,8 @@ const HomePage = () => {
     return (
         <>
         <div className={ styles.containerhome}>
-            <div className="nav-find" >
             < NavbarHome />
-            <div>
             < FindJob />
-            </div>
-            </div>
             <div className="sectio-cards" style={{ margin:" 1% 5%" }} >
                 <div style={{hight:"40%"}}>
                     < SectionCards title="Feature jobs"/>

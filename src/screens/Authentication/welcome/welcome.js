@@ -16,6 +16,7 @@ const Welcome = () => {
         backgroundColor: "#f7f7f7",
       }}
     >
+      {" "}
       <div className={styles.Welcom}>
         <div id="welcome">
           <Navbar />

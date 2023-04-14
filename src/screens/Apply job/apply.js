@@ -1,9 +1,32 @@
-import React from "react";
+import { React , useState } from "react";
 import styles from "../Apply job/apply.module.css"
 import NavbarHome from ".././Authentication/homePage/components/Navbar-home" ;
 import line from "../../images/H-line.png";  
-import logo from "../../images/logo.png";  
+import logo from "../../images/logo.png";
+import congrats from "../../images/congrats.gif"  
+
 const Apply = () => {
+
+  const [isPopupShown, setIsPopupShown] = useState(false);
+  const showHidePopup = () => {
+      setIsPopupShown(!isPopupShown);
+  };
+
+    function popup() {
+        return <>
+            <div id={styles.loginModal}>
+                <div className={styles.modal}>
+                  <div className={styles.message}>
+                    <h3 className={styles.H3}>Congratulations</h3>
+                    <h6 className={styles.H6}>Job Applied Successfully</h6>
+                  </div>
+                    <img src={congrats} className={styles.congrats}></img>
+                    <button onClick={showHidePopup} type='button' className={styles.submitBtn}>Done</button>
+                </div>
+            </div>
+        </>
+    }
+
     return (
       <div className={styles.body}>
         < NavbarHome />
@@ -38,8 +61,10 @@ const Apply = () => {
                                         to begin looking. That is why we created I Need Dev,
                                         a one-stop shop for all software development requirements. And we are not limited to a specific location.</p></div>
       
-      <button className={styles.submit}>Submit Application</button>
+      <button onClick={showHidePopup} className={styles.submit}>Submit Application</button>
       
+      {isPopupShown && popup()}
+
       </div>
     );
   };
