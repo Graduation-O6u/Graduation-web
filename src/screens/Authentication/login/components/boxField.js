@@ -28,8 +28,6 @@ const BoxField = () => {
           small={false}
           name="password"
           type={"password"}
-          maxlength={12}
-          minlength={6}
         />
         <p className={styles.err}>{Err}</p>
         <div className={styles.name2}>
