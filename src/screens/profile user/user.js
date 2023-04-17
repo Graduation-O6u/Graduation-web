@@ -1,4 +1,4 @@
-import React , {useState} from "react";
+import React , {useState,useEffect} from "react";
 import cover from "../../images/user-cover.png";
 import profile from "../../images/profile-pic.png";  
 import camera from "../../images/camera.png";  
@@ -12,16 +12,32 @@ import styles from "../profile user/user.module.css";
 
 const User = () => {
 
+  const [user, setUser] = useState({
+    backgroundImage: cover,
+    image:profile,
+    name:"",
+    city:""
+  });
+  const [job, setJob] = useState({
+    title:""
+  });
+
+  useEffect(() => {
+    getProfileData();
+  }, [])
+
+
+
     return (
       <div className={styles.body}>
         <div className={styles.allcontainer}>
         <img src={camera} title="Change Cover" className={styles.camera} />
-        <img src={cover} title="Profile Cover" className={styles.coverimg} />
+        <img src={user.backgroundImage} title="Profile Cover" className={styles.coverimg} />
         <div className={styles.container}>
-        <img src={profile} title="Profile Picture" className={styles.profileimg} />
-        <h4 className={styles.H4}>Andro Smith</h4>
+        <img src={user.image} title="Profile Picture" className={styles.profileimg} />
+        <h4 className={styles.H4}> {user.name} </h4>
         <img src={egypt} title="From Egypt" className={styles.country} />
-        <h5 className={styles.h5}>6th of October, cairo, Egypt</h5>
+        <h5 className={styles.h5}> {user.city} </h5>
 
         <div className={styles.connections}>
         <img src={connection} title="Connections" className={styles.connectionimg} />
@@ -38,7 +54,7 @@ const User = () => {
 
         <img src={o6u} title="October 6 Universtiy" className={styles.worksite} />
         <h6 className={styles.o6utext} >October 6 University</h6>
-        <h5 className={styles.worktext} >Senior Product Designer</h5><span className={styles.time}>- Full-time</span>
+        <h5 className={styles.worktext} > {job.title} </h5><span className={styles.time}>- Full-time</span>
         <img src={share} title="Share profile" className={styles.share} />
         </div>
 
@@ -90,6 +106,42 @@ const User = () => {
         <br></br><br></br>
       </div>
     );
+  //===============================================================================================================================
+
+    function getProfileData(){
+        const PROFILE_DATA_URL = "https://graduation-backend-production.up.railway.app/user";
+        var token = localStorage.getItem("Access Token");
+
+        fetch(PROFILE_DATA_URL, {
+            method: "GET",
+            headers: {
+              "content-type": "application/json",
+              "Authorization": "Bearer " + token
+            },
+          })
+              .then((response) => response.json())
+              .then((json) => onGetProfileData(json));
+    }
+
+    function onGetProfileData(json){
+       // window.alert(json.data.user.email);
+       setUser(json.data.user);
+       setJob(json.data.user.job)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //===============================================================================================================================
 
   };
   
