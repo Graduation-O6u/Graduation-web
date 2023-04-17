@@ -53,6 +53,7 @@
     bottom:150px;
     padding: 2px;
     margin: 5px;
+    cursor: pointer;
 }
 
 .H6 {
@@ -379,3 +380,67 @@
         width: 30px;
     }
 }
+
+/* popup */
+
+#loginModal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .3);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 700px;
+    height: 600px;
+  }
+
+  .save{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+    width: 75px;
+    height: 50px;
+    background-color: #5D5FEF;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    left:550px;
+    margin-top: 20px;
+}
+
+.header{
+    display: flex;
+}
+
+.close{
+    font-weight: bold;
+    font-size: 30px;
+    position: relative;
+    left:550px;
+    bottom:20px;
+    cursor: pointer;
+}
+
+.edit{
+    padding: 10px;
+}
+
+.small {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
