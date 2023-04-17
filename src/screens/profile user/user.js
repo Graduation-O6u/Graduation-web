@@ -11,6 +11,7 @@ import git from "../../images/git.png"
 import be from "../../images/be.png"
 import cv from "../../images/cv.png"
 import styles from "../profile user/user.module.css";
+import { Link } from "react-router-dom";
 
 const User = () => {
 
@@ -18,11 +19,14 @@ const User = () => {
     backgroundImage: cover,
     image:profile,
     name:"",
-    city:""
+    city:"",
+    github:"",
+    behance:""
   });
   const [job, setJob] = useState({
     title:""
   });
+  
 
   useEffect(() => {
     getProfileData();
@@ -39,13 +43,18 @@ const User = () => {
         <img src={user.image} title="Profile Picture" className={styles.profileimg} />
         <h4 className={styles.H4}> {user.name} </h4>
         <img src={egypt} title="From Egypt" className={styles.country} />
-        <h5 className={styles.h5}>6th of October, cairo, Egypt</h5>
+        <h5 className={styles.h5}> {user.city} </h5>
         <div className={styles.icons}>
-        <img src={git} title="Change Cover" className={styles.icon} />
+        
+        <Link to={user.github}>
+          <img src={git} title="Change Cover" className={styles.icon} />
+        </Link>
+        <Link to={user.behance}>
         <img src={be} title="Change Cover" className={styles.icon} />
+        </Link>
         <img src={cv} title="Change Cover" className={styles.icon} />
         </div>
-        <h5 className={styles.h5}> {user.city} </h5>
+       
 
         <div className={styles.connections}>
         
