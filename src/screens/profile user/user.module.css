@@ -36,14 +36,23 @@
 .country {
     position: relative;
     width:30px;
-    bottom: 100px;
+    bottom: 87px;
     left:4%;
 }
 
 .h5{
     position:relative;
-    bottom: 123px;
-    left: 70px;   
+    bottom: 110px;
+    left: 80px;   
+}
+
+.icon{
+    position: relative;
+    width: 40px;
+    left: 60%;
+    bottom:150px;
+    padding: 2px;
+    margin: 5px;
 }
 
 .H6 {
@@ -56,61 +65,37 @@
 
 .penimg{
     position: relative;
-    bottom: 280px;
+    bottom: 270px;
     left: 90%;
     width: 30px;
     cursor: pointer;
 }
 
-.followers{
-    position: relative;
-    padding: 10px;
-    width: 100px;
-    left: 70%;
-    bottom: 260px;
-    border: 1px solid grey;
-    text-align: center;
-    border-radius: 20px;
-    box-shadow: 1px 2px grey ;
-}
-
-.following{
-    position: relative;
-    padding: 10px;
-    width: 100px;
-    left: 85%;
-    bottom: 333px;
-    border: 1px solid grey;
-    text-align: center;
-    border-radius: 20px;
-    box-shadow: 1px 2px grey ;
-}
-
 .worksite{
     position: relative;
-    bottom:300px;
+    bottom:130px;
     width: 40px;
     left: 4%;
 }
 
 .o6utext {
     position: relative;
-    bottom: 325px;
-    left: 10%;
+    bottom: 155px;
+    left: 15%;
     font-weight: bold;
     color: grey;
 }
 
 .worktext{
     position: relative;
-    bottom:310px;
+    bottom:120px;
     font-weight: bold;
     left: 4%;
 }
 
 .time{
     position: relative;
-    bottom:347px;
+    bottom:157px;
     left: 30%;
     font-weight: 600;
     color: grey;
@@ -118,33 +103,13 @@
 
 .share {
     position: relative;
-    bottom: 350px; 
-    left: 60%; 
+    bottom: 150px; 
+    left: 65%; 
     height: 40px;
     cursor: pointer;  
 }
 
 .connections{
-    position: relative;
-}
-
-.connectionimg{
-    position: relative;
-    left: 8%;
-    width: 30px;
-    bottom: 110px;
-}
-
-
-.h6{
-    position: relative;
-    left: 20%;
-    bottom: 135px;
-    color: grey;
-    font-weight: bold;
-}
-
-.hi6{
     position: relative;
 }
 
@@ -172,34 +137,6 @@
     left: 60px;
     bottom: 44px;
     font-weight: bold;
-}
-
-.follow {
-    background-color: white;
-    color:blueviolet;
-    border: 1px solid blueviolet;
-    width: 150px;
-    padding: 10px;
-    border-radius: 20px; 
-    position: relative;
-    left: 8%;
-}
-
-.follow2{
-    background-color: white;
-    color:blueviolet;
-    border: 1px solid blueviolet;
-    width: 150px;
-    padding: 10px;
-    border-radius: 20px; 
-    position: relative;
-    left: 8%;
-    bottom:25px;
-}
-
-.follow:hover {
-    color: white;
-    background-color: blueviolet;
 }
 
 .allcontainer{
@@ -265,12 +202,13 @@
 .firsthalf{
     position: relative;
     left: 5%;
+    top: 15px;
 }
 
 .sechalf{
     position: relative;
     left: 55%;
-    bottom: 112px;
+    bottom: 50px;
 }
 
 .details {
