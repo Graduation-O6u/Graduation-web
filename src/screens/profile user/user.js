@@ -1,6 +1,6 @@
 import React , {useState,useEffect} from "react";
 import cover from "../../images/user-cover.png";
-import profile from "../../images/profile-pic.png";  
+import profile from "../../images/default_profile_img.png";  
 import camera from "../../images/camera.png";  
 import egypt from "../../images/egypt.png";  
 import pen from "../../images/pen.png";  
@@ -12,6 +12,7 @@ import be from "../../images/be.png"
 import cv from "../../images/cv.png"
 import styles from "../profile user/user.module.css";
 import { Link } from "react-router-dom";
+import { PROFILE_DATA_URL } from "../../constants";
 
 const User = () => {
 
@@ -116,7 +117,6 @@ const User = () => {
   //===============================================================================================================================
 
     function getProfileData(){
-        const PROFILE_DATA_URL = "https://graduation-backend-production.up.railway.app/user";
         var token = localStorage.getItem("Access Token");
 
         fetch(PROFILE_DATA_URL, {

@@ -13,3 +13,7 @@ export const VERIFY_EMAIL_LINK = `${SERVER_LINK}/auth/verify-email`;
 
 /****************Default**************** */
 export const UPLOAD_LINK = `${SERVER_LINK}/upload/file`;
+
+
+/*************** User ********************/ 
+export const PROFILE_DATA_URL = `${SERVER_LINK}/user`;         
