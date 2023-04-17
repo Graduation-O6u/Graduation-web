@@ -1,6 +1,6 @@
-import React , {useState} from "react";
+import React , {useState,useEffect} from "react";
 import cover from "../../images/user-cover.png";
-import profile from "../../images/profile-pic.png";  
+import profile from "../../images/default_profile_img.png";  
 import camera from "../../images/camera.png";  
 import egypt from "../../images/egypt.png";  
 import pen from "../../images/pen.png";  
@@ -11,6 +11,7 @@ import git from "../../images/git.png"
 import be from "../../images/be.png"
 import cv from "../../images/cv.png"
 import styles from "../profile user/user.module.css";
+<<<<<<< HEAD
 import BoxField from "../Authentication/signup/components/boxField/boxField";
 import Input from "../Authentication/components/input/input";
 
@@ -98,29 +99,67 @@ const User = () => {
             </div>
         </>
     }
+=======
+import { Link } from "react-router-dom";
+import { PROFILE_DATA_URL } from "../../constants";
+
+const User = () => {
+
+  const [user, setUser] = useState({
+    backgroundImage: cover,
+    image:profile,
+    name:"",
+    city:"",
+    github:"",
+    behance:""
+  });
+  const [job, setJob] = useState({
+    title:""
+  });
+  
+
+  useEffect(() => {
+    getProfileData();
+  }, [])
+
+
+>>>>>>> 7a5682d1006e0400674f66c65ee862d9161c80b3
 
     return (
       <div className={styles.body}>
         <div className={styles.allcontainer}>
         <img src={camera} title="Change Cover" className={styles.camera} />
-        <img src={cover} title="Profile Cover" className={styles.coverimg} />
+        <img src={user.backgroundImage} title="Profile Cover" className={styles.coverimg} />
         <div className={styles.container}>
-        <img src={profile} title="Profile Picture" className={styles.profileimg} />
-        <h4 className={styles.H4}>Andro Smith</h4>
+        <img src={user.image} title="Profile Picture" className={styles.profileimg} />
+        <h4 className={styles.H4}> {user.name} </h4>
         <img src={egypt} title="From Egypt" className={styles.country} />
-        <h5 className={styles.h5}>6th of October, cairo, Egypt</h5>
+        <h5 className={styles.h5}> {user.city} </h5>
         <div className={styles.icons}>
+<<<<<<< HEAD
         <img src={git} title="Github profile" className={styles.icon} />
         <img src={be} title="Behance profile" className={styles.icon} />
         <img src={cv} title="CV" className={styles.icon} />
+=======
+        
+        <Link to={user.github}>
+          <img src={git} title="Change Cover" className={styles.icon} />
+        </Link>
+        <Link to={user.behance}>
+        <img src={be} title="Change Cover" className={styles.icon} />
+        </Link>
+        <img src={cv} title="Change Cover" className={styles.icon} />
+>>>>>>> 7a5682d1006e0400674f66c65ee862d9161c80b3
         </div>
+       
+
         <div className={styles.connections}>
         
         <img src={pen} title="edit" onClick={showHidePopup} className={styles.penimg} />
         
         <img src={o6u} title="October 6 Universtiy" className={styles.worksite} />
         <h6 className={styles.o6utext} >October 6 University</h6>
-        <h5 className={styles.worktext} >Senior Product Designer</h5><span className={styles.time}>- Full-time</span>
+        <h5 className={styles.worktext} > {job.title} </h5><span className={styles.time}>- Full-time</span>
         <img src={share} title="Share profile" className={styles.share} />
         </div>
 
@@ -172,6 +211,41 @@ const User = () => {
         {isPopupShown && popup()}
       </div>
     );
+  //===============================================================================================================================
+
+    function getProfileData(){
+        var token = localStorage.getItem("Access Token");
+
+        fetch(PROFILE_DATA_URL, {
+            method: "GET",
+            headers: {
+              "content-type": "application/json",
+              "Authorization": "Bearer " + token
+            },
+          })
+              .then((response) => response.json())
+              .then((json) => onGetProfileData(json));
+    }
+
+    function onGetProfileData(json){
+       // window.alert(json.data.user.email);
+       setUser(json.data.user);
+       setJob(json.data.user.job)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //===============================================================================================================================
 
   };
   

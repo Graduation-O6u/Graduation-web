@@ -35,6 +35,7 @@ function CollapsibleExample() {
                 >
                   Home
                 </Nav.Link>
+
                 <Nav.Link
                   href="#deets"
                   style={{
@@ -46,6 +47,7 @@ function CollapsibleExample() {
                 >
                   Jobs
                 </Nav.Link>
+
                 <Nav.Link
                   href="/notifications"
                   style={{
@@ -57,12 +59,13 @@ function CollapsibleExample() {
                 >
                   Notification
                 </Nav.Link>
+                
               </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
         <Nav.Link
-          href="#deets"
+          href="/user"
           style={{
             color: "#9F9F9F",
             fontSize: "25px",
