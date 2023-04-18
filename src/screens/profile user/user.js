@@ -11,11 +11,28 @@ import git from "../../images/git.png"
 import be from "../../images/be.png"
 import cv from "../../images/cv.png"
 import styles from "../profile user/user.module.css";
-<<<<<<< HEAD
-import BoxField from "../Authentication/signup/components/boxField/boxField";
+import { Link } from "react-router-dom";
+import { PROFILE_DATA_URL } from "../../constants";
 import Input from "../Authentication/components/input/input";
 
 const User = () => {
+
+  const [user, setUser] = useState({
+    backgroundImage: cover,
+    image:profile,
+    name:"",
+    city:"",
+    github:"",
+    behance:""
+  });
+  const [job, setJob] = useState({
+    title:""
+  });
+  
+
+  useEffect(() => {
+    getProfileData();
+  }, [])
 
   const [isPopupShown, setIsPopupShown] = useState(false);
   const showHidePopup = () => {
@@ -90,40 +107,17 @@ const User = () => {
                         type={"text"}
                       />
                       </div>
-                      
-                      
+
+
                     <button type='button' className={styles.save}>Save</button>
                     </form>
-                    
+
                 </div>
             </div>
         </>
     }
-=======
-import { Link } from "react-router-dom";
-import { PROFILE_DATA_URL } from "../../constants";
-
-const User = () => {
-
-  const [user, setUser] = useState({
-    backgroundImage: cover,
-    image:profile,
-    name:"",
-    city:"",
-    github:"",
-    behance:""
-  });
-  const [job, setJob] = useState({
-    title:""
-  });
-  
-
-  useEffect(() => {
-    getProfileData();
-  }, [])
 
 
->>>>>>> 7a5682d1006e0400674f66c65ee862d9161c80b3
 
     return (
       <div className={styles.body}>
@@ -136,11 +130,6 @@ const User = () => {
         <img src={egypt} title="From Egypt" className={styles.country} />
         <h5 className={styles.h5}> {user.city} </h5>
         <div className={styles.icons}>
-<<<<<<< HEAD
-        <img src={git} title="Github profile" className={styles.icon} />
-        <img src={be} title="Behance profile" className={styles.icon} />
-        <img src={cv} title="CV" className={styles.icon} />
-=======
         
         <Link to={user.github}>
           <img src={git} title="Change Cover" className={styles.icon} />
@@ -149,7 +138,6 @@ const User = () => {
         <img src={be} title="Change Cover" className={styles.icon} />
         </Link>
         <img src={cv} title="Change Cover" className={styles.icon} />
->>>>>>> 7a5682d1006e0400674f66c65ee862d9161c80b3
         </div>
        
 

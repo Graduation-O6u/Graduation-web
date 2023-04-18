@@ -10,6 +10,7 @@ import Feature from "./screens/Authentication/homePage/components/Feature/featur
 import Recomand from "./screens/Authentication/homePage/components/Recommened/recommend";
 import Saved from "./screens/Authentication/homePage/components/Saved/saved";
 import Company from "./screens/profile company/company";
+import CompanySignup from "./screens/profile company/Signup comapny/signupcompany";
 import User from "./screens/profile user/user";
 import Apply from "./screens/Apply job/apply";
 import Notifaction from "./screens/Notifications/mainnotif";
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/recomend" element={<Recomand />}></Route>
         <Route path="/saved" element={<Saved />}></Route>
         <Route path="/company" element={<Company />}></Route>
+        <Route path="/signupcomp" element={<CompanySignup/>}></Route>
         <Route path="/user" element={<User />}></Route>
         <Route path="/notifications" element={<Notifaction />}></Route>
         <Route path="/apply" element={<Apply />}></Route>
