@@ -3,7 +3,7 @@ body {
 }
 .containerhome{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     overflow-x: hidden;
 }
 .allnavbar {
@@ -22,8 +22,8 @@ body {
     width: 100%;
     height: 100vh;
 }
-.sectio-cards {
-    margin: 2% 5%;
+.sectio_cards {
+    margin: 5% 5%;
 }
 .megamenu {
     position: static;
@@ -50,3 +50,8 @@ code {
     background-size: cover;
 }
 
+@media screen and (max-width: 560px) {
+    .sectio_cards {
+        margin-top: 20%;
+    }
+}

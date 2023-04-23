@@ -2,7 +2,7 @@ import React from "react";
 // import "./homePage.module.css";
 import NavbarHome from "../Navbar-home" ;
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Card from  "../cardsHome/cards/cardschome";
+import Card from  "../cardsHome/cards/Cards";
 import Drop from "./drop"
 const Featured = () => {
     return (

@@ -1,85 +1,33 @@
-import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import { Icon } from "@iconify/react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import logoImgae from "../../../../images/Jobber.png";
-import styles from "../homePage.module.css";
-function CollapsibleExample() {
+import { Icon } from '@iconify/react';
+import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
+import Logo from "../../../../images/Jobber.png";
+import '../../welcome/welcome.css';
+function Navbarr( {titleHerf}) {
   return (
-    <div className={styles.allnavbar}>
-      <img src={logoImgae} title="Logo Image" href="# " />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "cemter",
-        }}
-      >
-        <Navbar collapseOnSelect expand="lg" bg="left">
-          <Container>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="me-auto"></Nav>
-              <Nav>
-                <Nav.Link
-                  href="/homepage"
-                  style={{
-                    color: "#5D5FEF",
-                    fontSize: "25px",
-                    padding: "1rem",
-                    fontWeight: "600",
-                  }}
-                >
-                  Home
-                </Nav.Link>
-
-                <Nav.Link
-                  href="#deets"
-                  style={{
-                    color: "#9F9F9F",
-                    fontSize: "25px",
-                    padding: "1rem",
-                    fontWeight: "600",
-                  }}
-                >
-                  Jobs
-                </Nav.Link>
-
-                <Nav.Link
-                  href="/notifications"
-                  style={{
-                    color: "#9F9F9F",
-                    fontSize: "25px",
-                    fontWeight: "600",
-                    padding: "1rem",
-                  }}
-                >
-                  Notification
-                </Nav.Link>
-                
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-        <Nav.Link
-          href="/user"
-          style={{
-            color: "#9F9F9F",
-            fontSize: "25px",
-            fontWeight: "600",
-            padding: "2rem",
-          }}
-        >
-          <Icon
-            style={{ borderRadius: "50%", fontSize: "35px" }}
-            icon="healthicons:ui-user-profile-negative"
-          />
-        </Nav.Link>
-      </div>
+    <div style={{ margin:"1% 4%" }} >
+      <Navbar  expand="lg" className='lo'>
+        <Navbar.Brand href="#home">
+        <img
+          src={Logo}
+          height="30"
+          className="d-inline-block align-top"
+          alt=''
+        />
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav" className='log'>
+        <Nav className="mr-auto" style={{ width: "60%" , justifyContent: "end" , marginRight:"7%"}}>
+          <Nav.Link style={{ fontSize:"25px" , fontWeight:"600" , marginRight:"4%" , color:"#5d5fef"}} href= {titleHerf} >Home</Nav.Link>
+          <Nav.Link style={{ fontSize:"25px" , fontWeight:"600" , marginRight:"4%" ,}} href=" " >jobs</Nav.Link>
+          <Nav.Link style={{ ontSize:"25px" , fontWeight:"600"  }} href="/notifications">Notifications</Nav.Link>
+        </Nav>
+        <Nav>
+        </Nav>
+      </Navbar.Collapse>
+      <Navbar.Brand  href="/user" style={{ color: "#9F9F9F", fontSize: "25px" , fontWeight: "600", }}><Icon  style={{borderRadius: "50%" , fontSize: "35px"}} icon="healthicons:ui-user-profile-negative" /></Navbar.Brand>
+    </Navbar>
     </div>
   );
 }
-export default CollapsibleExample;
+export default Navbarr;

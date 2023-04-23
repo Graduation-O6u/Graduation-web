@@ -9,6 +9,7 @@ import HomePage from "./screens/Authentication/homePage/mainhome";
 import Feature from "./screens/Authentication/homePage/components/Feature/feature";
 import Recomand from "./screens/Authentication/homePage/components/Recommened/recommend";
 import Saved from "./screens/Authentication/homePage/components/Saved/saved";
+import HomeCompany from "./screens/homeCompany/mainCompany";
 import Company from "./screens/profile company/company";
 import CompanySignup from "./screens/profile company/Signup comapny/signupcompany";
 import User from "./screens/profile user/user";
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/featured" element={<Feature />}></Route>
         <Route path="/recomend" element={<Recomand />}></Route>
         <Route path="/saved" element={<Saved />}></Route>
+        <Route path="/homecompany" element={<HomeCompany />}></Route>
         <Route path="/company" element={<Company />}></Route>
         <Route path="/signupcomp" element={<CompanySignup/>}></Route>
         <Route path="/user" element={<User />}></Route>
