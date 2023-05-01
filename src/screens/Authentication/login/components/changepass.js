@@ -95,6 +95,7 @@ const Changepass = () => {
         window.location.pathname.split("/").length - 1
       ];
     console.log(id);
+    console.log(RESET_PASSWORD_LINK);
     fetch(RESET_PASSWORD_LINK + `/${id}`, {
       method: "POST",
       headers: {

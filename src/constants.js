@@ -1,7 +1,7 @@
 /***************Server**************** */
 // export const SERVER_LINK = "http://127.0.0.1:4001";
-export const SERVER_LINK =
-    "https://graduation-backend-production.up.railway.app";
+export const SERVER_LINK = "https://jobb-45md.onrender.com";
+// "https://graduation-backend-production.up.railway.app";
 
 /****************Auth**************** */
 export const SIGN_IN_LINK = `${SERVER_LINK}/auth/signin`;
@@ -14,6 +14,11 @@ export const VERIFY_EMAIL_LINK = `${SERVER_LINK}/auth/verify-email`;
 /****************Default**************** */
 export const UPLOAD_LINK = `${SERVER_LINK}/upload/file`;
 
-
-/*************** User ********************/ 
-export const PROFILE_DATA_URL = `${SERVER_LINK}/user`;         
+/*************** User ********************/
+export const PROFILE_DATA_URL = `${SERVER_LINK}/user`;
+/***************  JObs ********************/
+export const Job_DATA_URL = `${SERVER_LINK}/job/all`;
+/***************  Market ********************/
+export const Market_DATA_URL = `${SERVER_LINK}/job`;
+/***************  FalterTitle ********************/
+export const Title_DATA_URL = `https://jobb-45md.onrender.com/auth/jobs`;

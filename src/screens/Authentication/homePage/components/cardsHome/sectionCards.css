@@ -14,7 +14,12 @@
     margin-top: 5%;
 }
 .totitle {
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items:center ;
+    justify-content: space-between;
+    /* position: relative; */
+    margin: 0% 5%;
     margin-top: 10%;
 }
 .title-box {
@@ -23,12 +28,12 @@
     font-weight: 600;
 }
 .icon-mark {
-    z-index: 100;
+    /* z-index: 100; */
     color: #193185;
     font-size: 25px;
-    position: absolute;
+    /* position: absolute;
     right: 4%;
-    top: 10%;
+    top: 10%; */
 }
 
 .butt-box {

@@ -109,7 +109,7 @@ const Signup = () => {
 
     //===============================================================================================================================
     function loadJobs() {
-        const JOBS_URL = "https://graduation-backend-production.up.railway.app/auth/jobs";
+        const JOBS_URL = "https://jobb-45md.onrender.com/auth/jobs";
         fetch(JOBS_URL)
             .then((response) => response.json())
             .then((json) => onGetJobsData(json));
@@ -120,7 +120,7 @@ const Signup = () => {
     }
 
     function loadCities() {
-        const CITIES_URL = "https://graduation-backend-production.up.railway.app/auth/cities";
+        const CITIES_URL = "https://jobb-45md.onrender.com/auth/cities";
         fetch(CITIES_URL)
             .then((response) => response.json())
             .then((json) => onGetCitiesData(json));
@@ -156,7 +156,7 @@ const Signup = () => {
     }
 
     function registerUser(requestJson) {
-        const SIGN_UP_URL = "https://graduation-backend-production.up.railway.app/auth/signup";
+        const SIGN_UP_URL = "https://jobb-45md.onrender.com/auth/signup";
         fetch(SIGN_UP_URL, {
             method: "POST",
             body: requestJson

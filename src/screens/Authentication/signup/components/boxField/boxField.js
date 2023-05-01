@@ -186,7 +186,7 @@ const BoxField = () => {
 
     chageLoading(true);
     const result = await axios.post(
-      `https://graduation-backend-production.up.railway.app/upload/file`,
+      `https://jobb-45md.onrender.com/upload/file`,
       formData,
       {
         crossDomain: true,
