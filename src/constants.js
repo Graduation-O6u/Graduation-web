@@ -22,3 +22,6 @@ export const Job_DATA_URL = `${SERVER_LINK}/job/all`;
 export const Market_DATA_URL = `${SERVER_LINK}/job`;
 /***************  FalterTitle ********************/
 export const Title_DATA_URL = `https://jobb-45md.onrender.com/auth/jobs`;
+
+/***************  Company ********************/
+export const COMPANY_PROFILE_URL = `${SERVER_LINK}/user/`;

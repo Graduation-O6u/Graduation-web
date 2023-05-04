@@ -10,7 +10,7 @@ import Feature from "./screens/Authentication/homePage/components/Feature/featur
 import Recomand from "./screens/Authentication/homePage/components/Recommened/recommend";
 import Saved from "./screens/Authentication/homePage/components/Saved/saved";
 import HomeCompany from "./screens/homeCompany/mainCompany";
-import Company from "./screens/profile company/company";
+import Company from "./screens/company/companyProfile/company";
 import CompanySignup from "./screens/profile company/Signup comapny/signupcompany";
 import User from "./screens/profile user/user";
 import Apply from "./screens/Apply job/apply";
