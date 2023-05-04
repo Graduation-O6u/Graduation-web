@@ -28,7 +28,8 @@ function Navbarr() {
               <button id='work' type="button" name="Hover">Login</button>
             </div>
           </Nav.Link>
-          <Nav.Link href="/signup" ><button style={{ color:"#5d5fef" , border:"none" , background:"transparent" , fontSize:"20px", fontWeight:"600" }}>Signup</button></Nav.Link>
+          <Nav.Link href="/signupcomp" ><button style={{ color:"#5d5fef" , border:"none" , background:"transparent" , fontSize:"20px", fontWeight:"600" }}>Signup as Company</button></Nav.Link>
+          <Nav.Link href="/signup" ><button style={{ color:"#5d5fef" , border:"none" , background:"transparent" , fontSize:"20px", fontWeight:"600" }}>Signup as User</button></Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

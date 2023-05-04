@@ -1,0 +1,25 @@
+.select {
+  width: 49%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  border-color: #929292;
+}
+select {
+  background-color: #fafafa;
+  color: #929292;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  border-color: #d3d0d0;
+  padding-left: 10px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.select option {
+  color: #5d5fef;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+}

@@ -39,7 +39,7 @@ function Navbarr({ titleHerf }) {
               jobs
             </Nav.Link>
             <Nav.Link style={{ fontSize: "25px", fontWeight: "600" }} href="# ">
-              Meating
+              Meeting
             </Nav.Link>
             <Nav.Link href="/notifications">
               <Icon

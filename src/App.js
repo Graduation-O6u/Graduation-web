@@ -18,6 +18,7 @@ import Notifaction from "./screens/Notifications/mainnotif";
 import Error from "./screens/Error/error";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./layout/home";
+import Meetings from "./screens/Apply job/meetings/meetings";
 const App = () => {
   return (
     <BrowserRouter>
@@ -40,6 +41,7 @@ const App = () => {
         <Route path="/notifications" element={<Notifaction />}></Route>
         <Route path="/apply" element={<Apply />}></Route>
         <Route path="/error404" element={<Error />}></Route>
+        <Route path="/meetings" element={<Meetings />}></Route>
       </Routes>
     </BrowserRouter>
   );
