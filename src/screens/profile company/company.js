@@ -6,8 +6,43 @@ import styles from "../profile company/company.module.css";
 import Input from "../Authentication/components/input/input";
 import pen from "../../images/pen.png"; 
 import Drop from "./Signup comapny/components/drop edit/drop";
+import { COMPANY_PROFILE_URL } from "../../constants";
 
 const Company = () => {
+
+  
+//*****************************************************************************
+const [companyData, setCompanyData] = useState({
+  backgroundImage: cover,
+  image:logo,
+  name:"",
+  // industry:"",
+  // followersNumber:"",
+  // employeesNumber:"",
+  // employeesPhotos:"",
+  about:"",                      // rename to about
+});
+
+const [companyDetails, setCompanyDetails] = useState({
+  marketingValue:"",
+  history:"",
+  websiteUrl:"",
+});
+
+const [companyLocations, setCompanyLocations] = useState([{
+  // id:"",
+  // history:"",
+  // websiteUrl:"",
+}]);
+
+
+useEffect(() => {
+  getCompanyData("937b884a-b9f5-11ed-87cc-448a5b2c2d83");      // should be changed later 
+}, [])
+
+
+//*****************************************************************************
+
 
   const [isPopupShown, setIsPopupShown] = useState(false);
   const showHidePopup = () => {
@@ -129,6 +164,36 @@ const Company = () => {
         {isPopupShown && popup()}
       </div>
     );
-  };
+   //===============================================================================================================================
+   function getCompanyData(companyId){
+    var token = localStorage.getItem("Access Token");
+    var url = COMPANY_PROFILE_URL + companyId;
+
+    fetch(url, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          "Authorization": "Bearer " + token
+        },
+    })
+      .then((response) => response.json())
+      .then((json) => onGetCompanyData(json));
+}
+
+function onGetCompanyData(json){
+    // window.alert(json.data.user.name);
+    setCompanyData(json.data.user);
+    // setJob(json.data.user.job)
+}
+
+
+
+
+
+
+//===============================================================================================================================
+
+
+};
   
   export default Company;
