@@ -14,7 +14,7 @@ import Company from "./screens/company/companyProfile/company";
 import CompanySignup from "./screens/profile company/Signup comapny/signupcompany";
 import User from "./screens/profile user/user";
 import Apply from "./screens/Apply job/apply";
-import Notifaction from "./screens/Notifications/mainnotif";
+import Notifaction from "./screens/Notifications/notifications";
 import Error from "./screens/Error/error";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./layout/home";

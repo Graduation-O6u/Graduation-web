@@ -25,3 +25,8 @@ export const Title_DATA_URL = `https://jobb-45md.onrender.com/auth/jobs`;
 
 /***************  Company ********************/
 export const COMPANY_PROFILE_URL = `${SERVER_LINK}/user/`;
+
+
+/***************  Notifications ********************/
+export const NOTIFICATIONS_URL = `${SERVER_LINK}/notification/all`;
+
