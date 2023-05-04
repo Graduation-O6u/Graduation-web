@@ -1,15 +1,9 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import styles from "./smalldrop.module.css";
-import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Title_DATA_URL } from "../../../../../../constants";
 function ButtonDarkExample() {
-  const navigate = useNavigate();
   const [joblist, setjoblist] = useState([]);
-  const myHeaders = new Headers({
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem("Access Token")}`,
-  });
   useEffect(() => {
     Card();
   }, []);
@@ -24,11 +18,23 @@ function ButtonDarkExample() {
           {" "}
           Job Title
         </Dropdown.Toggle>
-        <Dropdown.Menu style={{ background: "#F2EFEF " }}>
+        <Dropdown.Menu
+          style={{
+            background: "#F2EFEF ",
+            width: "fit-content",
+            height: "320px",
+            overflowY: "scroll",
+            overflowX: "hidden",
+          }}
+        >
           {joblist.map((x) => {
-            console.log(x);
             return (
-              <Dropdown.Item href="#/action-2" style={{ fontWeight: "bold" }}>
+              <Dropdown.Item
+                href="#/action-2"
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
                 {x["title"]}
               </Dropdown.Item>
             );
@@ -42,17 +48,13 @@ function ButtonDarkExample() {
         </Dropdown.Toggle>
         <Dropdown.Menu style={{ background: "#F2EFEF " }}>
           <Dropdown.Item href="#/action-2" style={{ fontWeight: "bold" }}>
-            IT
+            Part_Time
           </Dropdown.Item>
           <Dropdown.Item href="#/action-3" style={{ fontWeight: "bold" }}>
-            IT{" "}
+            Full_Time{" "}
           </Dropdown.Item>
           <Dropdown.Item href="#/action-3" style={{ fontWeight: "bold" }}>
-            business{" "}
-          </Dropdown.Item>
-          <Dropdown.Item href="#/action-3" style={{ fontWeight: "bold" }}>
-            {" "}
-            Manager
+            Internship{" "}
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>

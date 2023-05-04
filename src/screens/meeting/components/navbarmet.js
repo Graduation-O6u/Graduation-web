@@ -38,7 +38,7 @@ function Navbarr({ titleHerf }) {
               jobs
             </Nav.Link>
             <Nav.Link
-              style={{ fontSize: "25px", fontWeight: "600" }}
+              style={{ fontSize: "25px", fontWeight: "600", color: "#5d5fef" }}
               href="/meeting"
             >
               Meating
@@ -47,7 +47,7 @@ function Navbarr({ titleHerf }) {
               <Icon
                 icon="ic:outline-notifications"
                 style={{
-                  color: "#5d5fef",
+                  color: "#9F9F9F",
                   fontSize: "35px",
                   marginLeft: "35px",
                 }}

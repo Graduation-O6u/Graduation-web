@@ -60,7 +60,11 @@ const Luxury = () => {
                   </div>
                   <OR title="1 hour ago" job="true" />
                   <div className="company-box">
-                    <Icon icon="logos:microsoft-icon" className="mic" />
+                    <img
+                      src={x["company"]["image"]}
+                      alt=""
+                      className="iconeCompany"
+                    ></img>
                     <p className="micro">{x["company"]["name"]}</p>
                   </div>
                 </div>
@@ -71,7 +75,7 @@ const Luxury = () => {
       </div>
     </div>
   );
-
+  async function SearchCard() {}
   async function Market(p) {
     await fetch(`${Market_DATA_URL}/${p}/bookmark`, {
       method: "GET",

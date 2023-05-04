@@ -1,7 +1,5 @@
 /***************Server**************** */
-// export const SERVER_LINK = "http://127.0.0.1:4001";
 export const SERVER_LINK = "https://jobb-45md.onrender.com";
-// "https://graduation-backend-production.up.railway.app";
 
 /****************Auth**************** */
 export const SIGN_IN_LINK = `${SERVER_LINK}/auth/signin`;
@@ -22,6 +20,7 @@ export const Job_DATA_URL = `${SERVER_LINK}/job/all`;
 export const Market_DATA_URL = `${SERVER_LINK}/job`;
 /***************  FalterTitle ********************/
 export const Title_DATA_URL = `https://jobb-45md.onrender.com/auth/jobs`;
+export const Cite_DATA_URL = `/https://jobb-45md.onrender.com/auth/cities`;
 
 /***************  Company ********************/
 export const COMPANY_PROFILE_URL = `${SERVER_LINK}/user/`;
