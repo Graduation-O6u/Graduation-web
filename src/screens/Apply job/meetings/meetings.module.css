@@ -1,5 +1,5 @@
 .body{
-    height: 1550px;
+    height: 1600px;
 }
 
 .applyline {    
@@ -311,4 +311,70 @@
   .deleter , .cancel {
     padding: 10px;
     cursor: pointer;
+  }
+
+  .boxes{
+    position: relative;
+    top: 400px;
+    left: 100px;
+  }
+
+  .greybox {
+    background-color: grey;
+    height: 300px;
+    width: 250px;
+    display: inline-block;
+    margin: 20px;
+  }
+
+  .delete2 , .meet {
+    position: relative;
+    width: 200px;
+    padding: 20px;
+    left: 25px;
+    top: 60px;
+    cursor: pointer;
+  }
+
+  .modal3{
+    background: white;
+    padding: 10px 0px 20px 0px;
+    border-radius: 30px;
+    width: 550px;
+    height: 300px;
+    text-align: center;
+  }
+
+  .meetlbl{
+    position: relative;
+    left: 50px;
+    font-weight: bold;
+    font-size: xx-large;
+  }
+
+  .calendar{
+    position: relative;
+    top: 70px;
+    right: 160px;
+  }
+
+  .close {
+    position: relative;
+    left: 250px;
+    font-weight: bold;
+    font-size: x-large;
+    cursor: pointer;
+  }
+
+  .time{
+    position: relative;
+    top: 120px;
+    right: 0px;
+    padding: 20px;
+    width: 25%;
+    background-color: #5D5FEF;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
   }

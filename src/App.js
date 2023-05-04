@@ -10,7 +10,7 @@ import Feature from "./screens/Authentication/homePage/components/Feature/featur
 import Recomand from "./screens/Authentication/homePage/components/Recommened/recommend";
 import Saved from "./screens/Authentication/homePage/components/Saved/saved";
 import HomeCompany from "./screens/homeCompany/mainCompany";
-import Company from "./screens/company/companyProfile/company";
+import Company from "./screens/profile company/company";
 import CompanySignup from "./screens/profile company/Signup comapny/signupcompany";
 import User from "./screens/profile user/user";
 import Apply from "./screens/Apply job/apply";
@@ -19,6 +19,7 @@ import Meeting from "./screens/meeting/meeting";
 import Error from "./screens/Error/error";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./layout/home";
+import Meetings from "./screens/Apply job/meetings/meetings";
 const App = () => {
   return (
     <BrowserRouter>
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/meeting" element={<Meeting />}></Route>
         <Route path="/apply" element={<Apply />}></Route>
         <Route path="/error404" element={<Error />}></Route>
+        <Route path="/meetings" element={<Meetings />}></Route>
       </Routes>
     </BrowserRouter>
   );

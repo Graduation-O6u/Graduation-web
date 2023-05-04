@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./boxField.module.css";
 import Input from "../input/input";
-import Drop from "../drop/drop";
+import Drop from "../drop signup/drop";
 import Or from "../or/or"
 import url from "../../../../../images/url.png"
 import LoadingButton from "../../../../../components/loadingButton/loadingButton";

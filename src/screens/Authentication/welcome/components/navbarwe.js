@@ -7,6 +7,7 @@ function Navbarr() {
     <div style={{ margin: "1% 4%", background: "#f7f7f7f7" }}>
       <Navbar expand="lg" className="lo">
         <Navbar.Brand href="#home">
+<<<<<<< HEAD
           <img
             src={Logo}
             height="30"
@@ -82,6 +83,34 @@ function Navbarr() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+=======
+        <img
+          src={Logo}
+          height="30"
+          className="d-inline-block align-top"
+          alt=''
+        />
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav" className='log'>
+        <Nav className="mr-auto" style={{ width: "60%" , justifyContent: "end" , marginRight:"5%"}}>
+          <Nav.Link style={{ color:"#5d5fef" , fontSize:"25px" , fontWeight:"600" , marginRight:"4%" ,}} href="#welcome" >Welcome</Nav.Link>
+          <Nav.Link style={{ fontSize:"25px" , fontWeight:"600" , marginRight:"4%" ,}} href="#about" >About Us</Nav.Link>
+          <Nav.Link style={{ ontSize:"25px" , fontWeight:"600" }} href="#contact">Contact US</Nav.Link>
+        </Nav>
+        <Nav>
+          <Nav.Link href="/login" >
+            <div class="button-container-1">
+              <span class="mas">Login</span>
+              <button id='work' type="button" name="Hover">Login</button>
+            </div>
+          </Nav.Link>
+          <Nav.Link href="/signupcomp" ><button style={{ color:"#5d5fef" , border:"none" , background:"transparent" , fontSize:"20px", fontWeight:"600" }}>Signup as Company</button></Nav.Link>
+          <Nav.Link href="/signup" ><button style={{ color:"#5d5fef" , border:"none" , background:"transparent" , fontSize:"20px", fontWeight:"600" }}>Signup as User</button></Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+>>>>>>> 82c951ca753c82ff4c7c33527cfa98da20efd0f8
     </div>
   );
 }

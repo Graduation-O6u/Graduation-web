@@ -3,6 +3,10 @@ import styles from "../Apply job/apply.module.css"
 import NavbarHome from ".././Authentication/homePage/components/Navbar-home" ;
 import line from "../../images/H-line.png";  
 import logo from "../../images/logo.png";
+import egypt2 from "../../images/egypt2.png";
+import deleter from "../../images/delete.png";
+import deletere from "../../images/deleter.png";
+import cancel from "../../images/Cancel.png";
 import congrats from "../../images/congrats.gif"  
 
 const Apply = () => {
@@ -11,6 +15,11 @@ const Apply = () => {
   const showHidePopup = () => {
       setIsPopupShown(!isPopupShown);
   };
+
+  const [isPopupShown2, setIsPopupShown2] = useState(false);
+  const showHidePopup2 = () => {
+        setIsPopupShown2(!isPopupShown2);
+    };
 
     function popup() {
         return <>
@@ -27,6 +36,23 @@ const Apply = () => {
         </>
     }
 
+    function popupdel() {
+      return <>
+          <div id={styles.loginModal}>
+              <div className={styles.modal2}>
+                <div className={styles.message}>
+                  <h2 className={styles.H3}>Are You Sure ?</h2>
+                  <h3 className={styles.H6}>Do You Want to delete this job ?</h3>
+                </div>
+                <div className={styles.buttons}>
+                <img src={deletere} onClick={showHidePopup2} className={styles.deleter}></img>
+                <img src={cancel} onClick={showHidePopup2} className={styles.cancel}></img>
+                </div>
+              </div>
+          </div>
+      </>
+  }
+
     return (
       <div className={styles.body}>
         < NavbarHome />
@@ -36,6 +62,10 @@ const Apply = () => {
         </div>
         <img src={logo} className={styles.logo} />
         <h4 className={styles.H4}>Microsoft</h4>
+        <img src={deleter} onClick={showHidePopup2} className={styles.delete} />
+        <h4 className={styles.h4}>Egypt</h4>
+        <img src={egypt2} className={styles.egypt2} />
+        <div className={styles.applicants}>150 Applicants</div>
 
       <div className={styles.pcontainer}>
         <div className={styles.plang}>Reactjs</div>
@@ -64,6 +94,7 @@ const Apply = () => {
       <button onClick={showHidePopup} className={styles.submit}>Submit Application</button>
       
       {isPopupShown && popup()}
+      {isPopupShown2 && popupdel()}
 
       </div>
     );
