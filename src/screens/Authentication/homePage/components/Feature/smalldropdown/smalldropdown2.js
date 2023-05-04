@@ -17,7 +17,13 @@ function ButtonDarkExample() {
         >
           Job Location
         </Dropdown.Toggle>
-        <Dropdown.Menu style={{ background: "#F2EFEF " }}>
+        <Dropdown.Menu
+          style={{
+            background: "#F2EFEF ",
+            overflowY: "scroll",
+            height: "320px",
+          }}
+        >
           {joblist.map((x) => {
             console.log(x["name"]);
             return (

@@ -1,8 +1,8 @@
 import { Icon } from "@iconify/react";
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
-import Logo from "../../../../images/Jobber.png";
-import "../../welcome/welcome.css";
+import Logo from "../../../images/Jobber.png";
+import "../../Authentication/welcome/welcome.css";
 function Navbarr({ titleHerf }) {
   return (
     <div style={{ margin: "1% 4%" }}>
@@ -26,9 +26,8 @@ function Navbarr({ titleHerf }) {
                 fontSize: "25px",
                 fontWeight: "600",
                 marginRight: "4%",
-                color: "#5d5fef",
               }}
-              href={titleHerf}
+              href="/"
             >
               Home
             </Nav.Link>
@@ -39,7 +38,7 @@ function Navbarr({ titleHerf }) {
               jobs
             </Nav.Link>
             <Nav.Link
-              style={{ fontSize: "25px", fontWeight: "600" }}
+              style={{ fontSize: "25px", fontWeight: "600", color: "#5d5fef" }}
               href="/meeting"
             >
               Meating

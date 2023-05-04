@@ -1,15 +1,9 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import styles from "./smalldrop.module.css";
-// import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Title_DATA_URL } from "../../../../../../constants";
 function ButtonDarkExample() {
-  // const navigate = useNavigate();
   const [joblist, setjoblist] = useState([]);
-  // const myHeaders = new Headers({
-  //   "Content-Type": "application/json",
-  //   Authorization: `Bearer ${localStorage.getItem("Access Token")}`,
-  // });
   useEffect(() => {
     Card();
   }, []);
