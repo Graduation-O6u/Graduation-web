@@ -9,16 +9,13 @@ function ButtonDarkExample() {
         </Dropdown.Toggle>
         <Dropdown.Menu style={{ background: "#F2EFEF " }}>
           <Dropdown.Item href="#/action-2" style={{ fontWeight: "bold" }}>
-            online
+            On_Site
           </Dropdown.Item>
           <Dropdown.Item href="#/action-3" style={{ fontWeight: "bold" }}>
-            online{" "}
+            Hybird{" "}
           </Dropdown.Item>
           <Dropdown.Item href="#/action-3" style={{ fontWeight: "bold" }}>
-            offline{" "}
-          </Dropdown.Item>
-          <Dropdown.Item href="#/action-3" style={{ fontWeight: "bold" }}>
-            offline
+            Remote{" "}
           </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
@@ -28,10 +25,10 @@ function ButtonDarkExample() {
         </Dropdown.Toggle>
         <Dropdown.Menu style={{ background: "#F2EFEF " }}>
           <Dropdown.Item href="#/action-2" style={{ fontWeight: "bold" }}>
-            microsoft
+            Microsoft
           </Dropdown.Item>
           <Dropdown.Item href="#/action-3" style={{ fontWeight: "bold" }}>
-            google{" "}
+            Meta{" "}
           </Dropdown.Item>
           <Dropdown.Item href="#/action-3" style={{ fontWeight: "bold" }}>
             LMU{" "}
