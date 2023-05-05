@@ -1,64 +1,128 @@
 import React , {useState,useEffect} from "react";
-import cover from "../../../images/default_cover.jpg";
-import logo from "../../../images/default_company_logo.png";  
+import cover from "../../../images/microsoft-cover.png";
+import logo from "../../../images/microsoft-logo.png";  
 import arrows from "../../../images/arrows.png";  
-import connection from "../../../images/connection.png";
 import styles from "../companyProfile/company.module.css";
+import Input from "../../Authentication/components/input/input";
+import pen from "../../../images/pen.png"; 
+import Drop from "../comapnySignup/components/drop edit/drop";
 import { COMPANY_PROFILE_URL } from "../../../constants";
 
 const Company = () => {
 
+  
 //*****************************************************************************
-  const [companyData, setCompanyData] = useState({
-    backgroundImage: cover,
-    image:logo,
-    name:"",
-    // industry:"",
-    // followersNumber:"",
-    // employeesNumber:"",
-    // employeesPhotos:"",
-    about:"",                      // rename to about
-  });
+const [companyData, setCompanyData] = useState({
+  backgroundImage: cover,
+  image:logo,
+  name:"",
+  // industry:"",
+  // followersNumber:"",
+  // employeesNumber:"",
+  // employeesPhotos:"",
+  about:"",                      // rename to about
+});
 
-  const [companyDetails, setCompanyDetails] = useState({
-    marketingValue:"",
-    history:"",
-    websiteUrl:"",
-  });
+const [companyDetails, setCompanyDetails] = useState({
+  marketingValue:"",
+  history:"",
+  websiteUrl:"",
+});
 
-  const [companyLocations, setCompanyLocations] = useState([{
-    // id:"",
-    // history:"",
-    // websiteUrl:"",
-  }]);
+const [companyLocations, setCompanyLocations] = useState([{
+  // id:"",
+  // history:"",
+  // websiteUrl:"",
+}]);
 
 
-  useEffect(() => {
-    getCompanyData("937b884a-b9f5-11ed-87cc-448a5b2c2d83");      // should be changed later 
-  }, [])
+useEffect(() => {
+  getCompanyData("937b884a-b9f5-11ed-87cc-448a5b2c2d83");      // should be changed later 
+}, [])
 
 
 //*****************************************************************************
+
+
+  const [isPopupShown, setIsPopupShown] = useState(false);
+  const showHidePopup = () => {
+      setIsPopupShown(!isPopupShown);
+  };
+
+  function popup() {
+    return <>
+        <div id={styles.loginModal}>
+            <div className={styles.modal}>
+                <div className={styles.header}>
+                <h5>Edit profile</h5>
+                <div onClick={showHidePopup} className={styles.close}>x</div>
+                </div>
+                <form className={styles.edit}>
+                <div className={styles.small}>
+                  <Input
+                    label={"Country"}
+                    small={true}
+                    name={"country"}
+                    type={"text"}
+                  />
+                  <br></br>
+                  <Drop/>
+                  </div>
+                  <br></br>
+                  <div className={styles.small}>
+                  <Input
+                    label={"Website Url"}
+                    small={true}
+                    name={"Url"}
+                    type={"text"}
+                  />
+                  <br></br>
+                  <Input
+                    label={"Marketing Value"}
+                    small={true}
+                    name={"value"}
+                    type={"text"}
+                  />
+                  </div>
+                  <br></br>
+                    <Input
+                    label={"History"}
+                    small={false}
+                    name={"history"}
+                    type={"text"}
+                  />
+                  <br></br>
+                  <Input
+                    label={"About"}
+                    small={false}
+                    name={"about"}
+                    type={"text"}
+                  />
+                  <br></br>
+                  
+
+
+                <button type='button' className={styles.save}>Save</button>
+                </form>
+
+            </div>
+        </div>
+    </>
+}
 
     return (
       <div className={styles.body}>
         <div className={styles.allcontainer}>
-        <img src={companyData.backgroundImage} title="Company Cover" className={styles.coverimg} />
+        <img src={cover} title="Company Cover" className={styles.coverimg} />
         <div className={styles.container}>
-        <img src={companyData.image} title="Company logo" className={styles.logoimg} />
-        <h4 className={styles.H4}> {companyData.name} </h4>
+        <img src={logo} title="Company logo" className={styles.logoimg} />
+        <h4 className={styles.H4}>Microsoft</h4>
         <h6 className={styles.H6}>Software Development</h6>
+        <img src={pen} title="edit" onClick={showHidePopup} className={styles.penimg} />
         <div className={styles.followers}>
-            100<br></br> <h6 className={styles.h6}>Followers</h6>
+            100<br></br> <h6 className={styles.h6}>Views</h6>
         </div>
 
-        <div className={styles.connections}>
-        <img src={connection} title="Connections" className={styles.connectionimg} />
-        <img src={connection} title="Connections" className={styles.connectionimg} />
-        <img src={connection} title="Connections" className={styles.connectionimg} />
-        <h5 className={styles.H5} >10 Connections work here</h5>
-        <button className={styles.follow}>Follow</button>
-        </div>
         </div>
         </div>
         <br></br>
@@ -97,41 +161,39 @@ const Company = () => {
         </div>
 
         <br></br><br></br><br></br>
-
+        {isPopupShown && popup()}
       </div>
     );
+   //===============================================================================================================================
+   function getCompanyData(companyId){
+    var token = localStorage.getItem("Access Token");
+    var url = COMPANY_PROFILE_URL + companyId;
 
+    fetch(url, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          "Authorization": "Bearer " + token
+        },
+    })
+      .then((response) => response.json())
+      .then((json) => onGetCompanyData(json));
+}
 
-  //===============================================================================================================================
-  function getCompanyData(companyId){
-      var token = localStorage.getItem("Access Token");
-      var url = COMPANY_PROFILE_URL + companyId;
-
-      fetch(url, {
-          method: "GET",
-          headers: {
-            "content-type": "application/json",
-            "Authorization": "Bearer " + token
-          },
-      })
-        .then((response) => response.json())
-        .then((json) => onGetCompanyData(json));
-  }
-
-  function onGetCompanyData(json){
-      // window.alert(json.data.user.name);
-      setCompanyData(json.data.user);
-      // setJob(json.data.user.job)
-  }
+function onGetCompanyData(json){
+    // window.alert(json.data.user.name);
+    setCompanyData(json.data.user);
+    // setJob(json.data.user.job)
+}
 
 
 
 
 
 
-  //===============================================================================================================================
+//===============================================================================================================================
 
 
-  };
+};
   
   export default Company;
