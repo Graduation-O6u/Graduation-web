@@ -53,15 +53,11 @@ const BoxField = () => {
           maxlength={12}
           minlength={6}
         />
-        <Input 
-          className={styles.about}
-          label={"About"}
-          small={false}
-          name={"about"}
-          type={"text"}
-        />
         <div className={styles.nameAndEmail}>
-          <Input label={"Location"} small={true} name={"location"} type={"text"} />
+          <Drop label={"Industry"}/>
+        </div>
+        <div className={styles.nameAndEmail}>
+          <Drop id={styles.location} label={"Location"} multiple={false}/>
           <Input label={"History"} small={true} name={"history"} type={"email"} />
         </div>
         <Input

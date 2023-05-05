@@ -2,7 +2,7 @@ import styles from "./drop.module.css";
 
 import React, { useState, useEffect, Fragment } from "react";
 
-const Drop = ({label}) => {
+const Drop = ({label , id , multiple}) => {
   const [jobs, setJobs] = useState([""]);
   const [cities, setCities] = useState([""]);
 
@@ -15,8 +15,8 @@ const Drop = ({label}) => {
   return (
     <Fragment>
     <div className={styles.select}>
-      <select name="cities" id="format">
-        <option selected>Location</option>
+      <select name="cities" id={id} className={styles.droper} label={label} multiple={multiple}>
+        <option selected>{label}</option>
         {}
 
         {cities.map((city) => {
@@ -25,17 +25,6 @@ const Drop = ({label}) => {
       </select>
     </div>
 
-    
-    <div className={styles.select}>
-      <select name="jobs" id="format">
-        <option selected>History</option>
-        {}
-
-        {jobs.map((job) => {
-          return <option value={job.id}> {job.title} </option>;
-        })}
-      </select>
-    </div>
     </Fragment>
   );
 
