@@ -1,8 +1,8 @@
-import styles from "../Signup comapny/signupcompany.module.css";
+import styles from "../comapnySignup/signupcompany.module.css";
 import Logo from "../../../components/logo/logo";
 import React from "react";
-import Welcome from "../../profile company/Signup comapny/components/welcome/welcome";
-import BoxField from "../../profile company/Signup comapny/components/boxField/boxField";
+import Welcome from "../../company/comapnySignup/components/welcome/welcome";
+import BoxField from "../../company/comapnySignup/components/boxField/boxField";
 const CompanySignup = () => {
   return (
     <div className={styles.body}>
