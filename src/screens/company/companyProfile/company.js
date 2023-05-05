@@ -90,6 +90,7 @@ useEffect(() => {
                     small={false}
                     name={"about"}
                     type={"text"}
+                    id={styles.about}
                   />
                   <br></br>
                   
