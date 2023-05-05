@@ -3,7 +3,7 @@ import cover from "../../images/microsoft-cover.png";
 import logo from "../../images/microsoft-logo.png";  
 import arrows from "../../images/arrows.png";  
 import styles from "../profile company/company.module.css";
-import Input from "../Authentication/components/input/input";
+import Input from "../profile company/Signup comapny/components/input edit/input";
 import pen from "../../images/pen.png"; 
 import Drop from "./Signup comapny/components/drop edit/drop";
 import { COMPANY_PROFILE_URL } from "../../constants";
@@ -97,6 +97,7 @@ useEffect(() => {
                     small={false}
                     name={"about"}
                     type={"text"}
+                    id={styles.about}
                   />
                   <br></br>
                   

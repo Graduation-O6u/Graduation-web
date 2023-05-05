@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./boxField.module.css";
-import Input from "../input/input";
+import Input from "../input signup/input";
 import Drop from "../drop signup/drop";
 import Or from "../or/or"
 import url from "../../../../../images/url.png"
@@ -88,7 +88,8 @@ const BoxField = () => {
           type={"text"}
         />
         <div className={styles.nameAndEmail}>
-          <Drop />
+          <Input label={"Location"} small={true} name={"location"} type={"text"} />
+          <Input label={"History"} small={true} name={"history"} type={"email"} />
         </div>
         <input
           type="file"
@@ -96,30 +97,19 @@ const BoxField = () => {
           style={{ display: "none" }}
           onChange={changeHandler}
         />
-        {loading ? (
-          <LoadingButton />
-        ) : (
-          <button
-            type="button"
-            className={styles.OutButton}
-            onClick={handleClick}
-          >
-            <img src={url} className={styles.url}></img>
-            &#160; Your website URL
-          </button>
-        )}
+        <Input
+          label={"Your Website Url"}
+          small={false}
+          name={"url"}
+          type={"text"}
+        />
         
-        {loading ? (
-          <LoadingButton />
-        ) : (
-          <button
-            type="button"
-            className={styles.OutButton}
-            onClick={handleClick}
-          >
-           $ &#160; Marketing Value
-          </button>
-        )}
+        <Input
+          label={"Marketing Value"}
+          small={false}
+          name={"value"}
+          type={"text"}
+        />
 
         {/* <button className={styles.Button} onClick={handleLog}> */}
         <button className={styles.Button} type="submit">
