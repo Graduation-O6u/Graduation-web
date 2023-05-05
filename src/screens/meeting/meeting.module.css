@@ -37,18 +37,24 @@
   flex-direction: row;
 }
 .container {
-  margin-left: 15%;
+  margin-left: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: bold;
-  line-height: 18px;
+  line-height: 20px;
 }
-.text {
+.countdown-text {
   color: #666;
 }
 .text.red {
   color: red;
+}
+.text a {
+  font-weight: 600;
+  text-decoration: underline;
+  margin-left: 140px;
+  color: #193185;
 }
