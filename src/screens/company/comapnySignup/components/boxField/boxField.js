@@ -58,7 +58,7 @@ const BoxField = () => {
         </div>
         <div className={styles.nameAndEmail}>
           <Drop id={styles.location} label={"Location"} multiple={false}/>
-          <Input label={"History"} small={true} name={"history"} type={"email"} />
+          <Input label={"History"} small={true} name={"history"} type={"text"} />
         </div>
         <Input
           label={"Your Website Url"}
@@ -102,8 +102,7 @@ const BoxField = () => {
     emailValue = e.target.email.value;
     let passwordValue = e.target.password.value;
     let passwordConfirmationValue = e.target.passwordConfirmation.value;
-    let aboutValue =  e.target.about.value;
-    let locationValue = e.target.location.value;
+    // let locationValue = e.target.location.value;
     let historyValue = e.target.history.value;
     let websiteUrlValue = e.target.url.value;
     let marketingValue = e.target.marketing_value.value;
@@ -116,8 +115,8 @@ const BoxField = () => {
       websiteUrl: websiteUrlValue,
       marketingValue: marketingValue,
 
-      // jobId:"",
-      // locationCode:"[]",
+      jobId:"029052aa-9e9a-438b-9ff1-858f5a4130af",
+      locationCode:["AD"],
     };
 
 
@@ -143,6 +142,7 @@ const BoxField = () => {
   function onGetSignUpResponse(json) {
     let status = json.type;
     if (status === "Success") {
+      // window.alert("success");
       let secret = json.data.secret;
       navigateToVerifyEmail(secret);
     } else {
