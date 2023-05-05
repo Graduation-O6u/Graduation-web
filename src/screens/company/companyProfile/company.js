@@ -9,29 +9,28 @@ import Drop from "../comapnySignup/components/drop edit/drop";
 import { COMPANY_PROFILE_URL } from "../../../constants";
 
 const Company = () => {
-
   
 //*****************************************************************************
-const [viewsCount, setViewsCount] = useState();
-const [industry, setIndustry] = useState("");
-const [companyData, setCompanyData] = useState({
-  backgroundImage: cover,
-  image:logo,
-  name:"",
-  aboutme:"",
-});
-
-const [companyDetails, setCompanyDetails] = useState({
-  marketingValue: "",
-  history:"",
-  websiteUrl:""
-});
-
-const [locations, setCompanyLocations] = useState([]);
-
 useEffect(() => {
   getCompanyData("937b884a-b9f5-11ed-87cc-448a5b2c2d83");      // should be changed later 
 }, [])
+
+//-----------
+const [marketingValue, setMarketingValue] = useState("");
+const [history, setHistory] = useState("");
+const [websiteUrl, setWebsiteUrl] = useState("");
+
+const [name, setName] = useState("");
+const [about, setAbout] = useState("");
+const [companyData, setCompanyData] = useState({
+  backgroundImage: cover,
+  image:logo,
+});
+//-----------
+
+const [viewsCount, setViewsCount] = useState();
+const [industry, setIndustry] = useState("");
+const [locations, setCompanyLocations] = useState([]);
 
 
 //*****************************************************************************
@@ -53,10 +52,11 @@ useEffect(() => {
                 <form className={styles.edit}>
                 <div className={styles.small}>
                   <Input
-                    label={"Country"}
+                    label={"Name"}
                     small={true}
-                    name={"country"}
+                    name={"name"}
                     type={"text"}
+                    value={name}
                   />
                   <br></br>
                   <Drop/>
@@ -68,6 +68,7 @@ useEffect(() => {
                     small={true}
                     name={"Url"}
                     type={"text"}
+                    value={websiteUrl}
                   />
                   <br></br>
                   <Input
@@ -75,6 +76,7 @@ useEffect(() => {
                     small={true}
                     name={"value"}
                     type={"text"}
+                    value={marketingValue}
                   />
                   </div>
                   <br></br>
@@ -83,6 +85,7 @@ useEffect(() => {
                     small={false}
                     name={"history"}
                     type={"text"}
+                    value={history}
                   />
                   <br></br>
                   <Input
@@ -91,6 +94,7 @@ useEffect(() => {
                     name={"about"}
                     type={"text"}
                     id={styles.about}
+                    value={about}
                   />
                   <br></br>
                   
@@ -110,7 +114,7 @@ useEffect(() => {
         <img src={companyData.backgroundImage} title="Company Cover" className={styles.coverimg} />
         <div className={styles.container}>
         <img src={companyData.image} title="Company logo" className={styles.logoimg} />
-        <h4 className={styles.H4}> {companyData.name} </h4>
+        <h4 className={styles.H4}> {name} </h4>
         <h6 className={styles.H6}> {industry} </h6>
         <img src={pen} title="edit" onClick={showHidePopup} className={styles.penimg} />
         <div className={styles.followers}>
@@ -125,17 +129,17 @@ useEffect(() => {
         
         <div className={styles.container2}>
           <h5>About</h5>
-          <p> {companyData.aboutme} </p>
+          <p> {about} </p>
         </div>
 
         <br></br>
 
         <div className={styles.container3}>
           <div>
-            <p>Marketing value <br></br> <span className={styles.Span}>$ {companyDetails.marketingValue}  </span></p>
+            <p>Marketing value <br></br> <span className={styles.Span}>$ {marketingValue}  </span></p>
             </div>
-          <div><p>History<br></br> <span className={styles.Span}> {companyDetails.history} </span></p></div>
-          <div><p>Website<br></br><a href={companyDetails.websiteUrl} >URL</a></p></div>
+          <div><p>History<br></br> <span className={styles.Span}> {history} </span></p></div>
+          <div><p>Website<br></br><a href={websiteUrl} >URL</a></p></div>
         </div>
 
         <br></br><br></br>
@@ -181,9 +185,19 @@ function onGetCompanyData(json){
     // window.alert(json.data.user.name);
     setViewsCount(json.data.view);
     setIndustry(json.data.user.job.title)
-    setCompanyData(json.data.user);
-    setCompanyDetails(json.data.user.companyDetails);
     setCompanyLocations(json.data.user.companyLocation);
+
+
+    let companyData = json.data.user;
+    setCompanyData(companyData);
+    setName(companyData.name);
+    setAbout(companyData.aboutme);
+
+
+    let companyDetails = json.data.user.companyDetails;
+    setMarketingValue(companyDetails.marketingValue);
+    setHistory(companyDetails.history);
+    setWebsiteUrl(companyDetails.websiteUrl);
 }
 
 
