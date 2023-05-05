@@ -24,7 +24,7 @@ export const Cite_DATA_URL = `/https://jobb-45md.onrender.com/auth/cities`;
 
 /***************  Company ********************/
 export const COMPANY_PROFILE_URL = `${SERVER_LINK}/user/`;
-
+export const COMPANY_SIGNUP_URL = `${SERVER_LINK}/auth/signup/company`;
 
 /***************  Notifications ********************/
 export const NOTIFICATIONS_URL = `${SERVER_LINK}/notification/all`;

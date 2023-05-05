@@ -7,43 +7,16 @@ import url from "../../../../../images/url.png"
 import LoadingButton from "../../../../../components/loadingButton/loadingButton";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { SIGN_UP_LINK, UPLOAD_LINK } from "../../../../../constants";
+import { COMPANY_SIGNUP_URL } from "../../../../../constants";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const BoxField = () => {
   const navigate = useNavigate();
 
   var emailValue = "";
-
-  const [selectedFile, setSelectedFile] = useState();
   const [show, changeShow] = useState(false);
-
-  const [isFilePicked, setIsFilePicked] = useState(false);
-  const [file, setFile] = useState("");
   const [loading, chageLoading] = useState(false);
 
-  const hiddenFileInput = React.useRef(null);
-  const handleClick = (event) => {
-    hiddenFileInput.current.click();
-  };
-  const changeHandler = (event) => {
-    setSelectedFile(event.target.files[0]);
-    console.log(event.target.files);
-    setIsFilePicked(true);
-
-    console.log("file", event.target.files[0]);
-    console.log("file", event.target.files[0].type.split("/"));
-    console.log("file", event.target.files[0].type.split("/")[1]);
-
-    if (event.target.files[0].type.split("/")[1] != "pdf") {
-      console.log("file type not allowed");
-    } else if (event.target.files[0].size > 1000000) {
-      console.log("file type not j");
-    } else {
-      console.log("sucess");
-      uplaodFile(event.target.files[0]);
-    }
-  };
   const handleClose = () => {
     changeShow(false);
   };
@@ -80,23 +53,13 @@ const BoxField = () => {
           maxlength={12}
           minlength={6}
         />
-        <Input 
-          className={styles.about}
-          label={"About"}
-          small={false}
-          name={"About"}
-          type={"text"}
-        />
         <div className={styles.nameAndEmail}>
-          <Input label={"Location"} small={true} name={"location"} type={"text"} />
-          <Input label={"History"} small={true} name={"history"} type={"email"} />
+          <Drop label={"Industry"}/>
         </div>
-        <input
-          type="file"
-          ref={hiddenFileInput}
-          style={{ display: "none" }}
-          onChange={changeHandler}
-        />
+        <div className={styles.nameAndEmail}>
+          <Drop id={styles.location} label={"Location"} multiple={false}/>
+          <Input label={"History"} small={true} name={"history"} type={"text"} />
+        </div>
         <Input
           label={"Your Website Url"}
           small={false}
@@ -107,7 +70,7 @@ const BoxField = () => {
         <Input
           label={"Marketing Value"}
           small={false}
-          name={"value"}
+          name={"marketing_value"}
           type={"text"}
         />
 
@@ -139,28 +102,32 @@ const BoxField = () => {
     emailValue = e.target.email.value;
     let passwordValue = e.target.password.value;
     let passwordConfirmationValue = e.target.passwordConfirmation.value;
-    let cityIdValue = e.target.cities.value;
-    let jobIdValue = e.target.jobs.value;
-    // let cvValue = selectedCvUrl;
-    let cvValue = file;
+    // let locationValue = e.target.location.value;
+    let historyValue = e.target.history.value;
+    let websiteUrlValue = e.target.url.value;
+    let marketingValue = e.target.marketing_value.value;
 
-    const person = {
+    const company = {
       name: nameValue,
       email: emailValue,
       password: passwordValue,
-      jobId: jobIdValue,
-      cityId: cityIdValue,
-      cv: cvValue,
+      history: historyValue,
+      websiteUrl: websiteUrlValue,
+      marketingValue: marketingValue,
+
+      jobId:"029052aa-9e9a-438b-9ff1-858f5a4130af",
+      locationCode:["AD"],
     };
 
-    let requestJson = JSON.stringify(person);
+
+    let requestJson = JSON.stringify(company);
     console.log("zzzzzz" + requestJson);
-    registerUser(requestJson);
+    signupCompany(requestJson);
   }
 
-  function registerUser(requestJson) {
+  function signupCompany(requestJson) {
     chageLoading(true);
-    fetch(SIGN_UP_LINK, {
+    fetch(COMPANY_SIGNUP_URL, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -175,6 +142,7 @@ const BoxField = () => {
   function onGetSignUpResponse(json) {
     let status = json.type;
     if (status === "Success") {
+      // window.alert("success");
       let secret = json.data.secret;
       navigateToVerifyEmail(secret);
     } else {
@@ -185,24 +153,6 @@ const BoxField = () => {
   function navigateToVerifyEmail(secretId) {
     // console.log(secretId);
     navigate("/login");
-  }
-
-  //===============================================================================================================================
-  async function uplaodFile(file) {
-    const formData = new FormData();
-    console.log(file);
-    formData.append("file", file);
-
-    chageLoading(true);
-    const result = await axios.post(
-      `https://graduation-backend-production.up.railway.app/upload/file`,
-      formData,
-      {
-        crossDomain: true,
-      }
-    );
-    chageLoading(false);
-    setFile(result["data"]["url"]);
   }
 
   //===============================================================================================================================
