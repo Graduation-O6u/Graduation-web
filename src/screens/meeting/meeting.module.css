@@ -1,0 +1,54 @@
+.body {
+  margin: 5%;
+}
+.top {
+  display: flex;
+  flex-direction: row;
+}
+.h2 {
+  font-weight: 700;
+}
+.hr {
+  margin-left: 25px;
+  width: 150px;
+  height: "25px";
+  margin-top: 25px;
+  border-top: 3px solid #5d5fef;
+}
+.usermeet {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+}
+.name {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+  line-height: 1px;
+  margin-top: auto;
+}
+.image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.line {
+  display: flex;
+  flex-direction: row;
+}
+.container {
+  margin-left: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 18px;
+}
+.text {
+  color: #666;
+}
+.text.red {
+  color: red;
+}
