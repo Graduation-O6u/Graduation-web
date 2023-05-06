@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import {Multiselect} from 'multiselect-react-dropdown';
 import styles from "./boxField.module.css";
 import Input from "../input/input";
-import Drop from "../drop signup/drop";
+import DropIndustry from "../drop signup industry/drop";
+import Drop from "../drop signup location/drop";
 import Or from "../or/or"
 import url from "../../../../../images/url.png"
 import LoadingButton from "../../../../../components/loadingButton/loadingButton";
@@ -54,7 +56,7 @@ const BoxField = () => {
           minlength={6}
         />
         <div className={styles.nameAndEmail}>
-          <Drop label={"Industry"}/>
+          <DropIndustry label={"Industry"}/>
         </div>
         <div className={styles.nameAndEmail}>
           <Drop id={styles.location} label={"Location"} multiple={false}/>
