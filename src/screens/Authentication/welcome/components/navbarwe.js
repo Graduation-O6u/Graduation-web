@@ -66,7 +66,7 @@ function Navbarr() {
                 Signup
               </button>
             </Nav.Link>
-            <Nav.Link href="/signup">
+            <Nav.Link href="/signupcomp">
               <button
                 style={{
                   color: "#5d5fef",

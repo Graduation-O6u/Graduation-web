@@ -15,20 +15,8 @@ const Drop = ({label}) => {
   return (
     <Fragment>
     <div className={styles.select}>
-      <select name="cities" id="format">
-        <option selected>Location</option>
-        {}
-
-        {cities.map((city) => {
-          return <option value={city.code}> {city.name} </option>;
-        })}
-      </select>
-    </div>
-
-    
-    <div className={styles.select}>
       <select name="jobs" id="format">
-        <option selected>History</option>
+        <option selected>Job Title</option>
         {}
 
         {jobs.map((job) => {
@@ -36,6 +24,7 @@ const Drop = ({label}) => {
         })}
       </select>
     </div>
+
     </Fragment>
   );
 
