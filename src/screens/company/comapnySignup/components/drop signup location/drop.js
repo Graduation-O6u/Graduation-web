@@ -1,3 +1,4 @@
+import Multiselect from "multiselect-react-dropdown";
 import styles from "./drop.module.css";
 
 import React, { useState, useEffect, Fragment } from "react";
@@ -11,18 +12,22 @@ const Drop = ({label , id , multiple}) => {
       loadCities();
   }, [])
 
+  const data = [
+    {Country: 'India' , id: 1},
+    {Country: 'America' , id: 2},
+    {Country: 'France' , id: 1},
+    {Country: 'Germany' , id: 1}
+  ]
+
+  const [options] = useState (data);
+
 
   return (
     <Fragment>
     <div className={styles.select}>
-      <select name="cities" id={id} className={styles.droper} label={label} multiple={multiple}>
-        <option selected>{label}</option>
-        {}
-
-        {cities.map((city) => {
-          return <option value={city.code}> {city.name} </option>;
-        })}
-      </select>
+      
+    <Multiselect options={options} displayValue="Country" placeholder="Location" />
+      
     </div>
 
     </Fragment>

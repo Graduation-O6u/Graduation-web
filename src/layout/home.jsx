@@ -8,5 +8,4 @@ const Home = () => {
     return <Navigate to="/welcome" />;
   }
 };
-
 export default Home;

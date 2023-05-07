@@ -2,7 +2,7 @@ import styles from "./drop.module.css";
 
 import React, { useState, useEffect, Fragment } from "react";
 
-const Drop = ({label}) => {
+const DropIndustry = ({label , id , multiple}) => {
   const [jobs, setJobs] = useState([""]);
   const [cities, setCities] = useState([""]);
 
@@ -16,7 +16,7 @@ const Drop = ({label}) => {
     <Fragment>
     <div className={styles.select}>
       <select name="jobs" id="format">
-        <option selected>Job Title</option>
+        <option selected>Industry</option>
         {}
 
         {jobs.map((job) => {
@@ -57,4 +57,4 @@ const Drop = ({label}) => {
 
 
 };
-export default Drop;
+export default DropIndustry;
