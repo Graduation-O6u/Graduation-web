@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "../../signup/components/boxField/boxField.module.css";
 import Input from "../../components/input/input";
-import Drop from "../../components/drop/drop";
 import Or from "../../components/or/or";
 import Media from "../../components/media/media";
-import LoadingButton from "../../../../components/loadingButton/loadingButton";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import { SIGN_IN_LINK } from "../../../../constants";
-import Shared from "../../../../components/default.model.css";
 import { useNavigate } from "react-router-dom";
 
 const BoxField = () => {
@@ -55,7 +50,7 @@ const BoxField = () => {
           <span id={styles.terms}> Cookies Policy</span>{" "}
         </h6>
         <Or title={"or continue with"} />
-        <Media />
+        <Media login={true} />
         <h5 id={styles.login}>
           Donot have an account ?{" "}
           <a href="/signup" title="Sign up">

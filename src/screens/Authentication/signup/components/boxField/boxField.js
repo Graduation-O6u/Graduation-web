@@ -112,7 +112,7 @@ const BoxField = () => {
           <span id={styles.terms}> Cookies Policy</span>{" "}
         </h6>
         <Or />
-        <Media />
+        <Media login={false} />
         <h5 id={styles.login}>
           Already have an account ?{" "}
           <a href="/login" title="Login">
