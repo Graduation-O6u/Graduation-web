@@ -49,57 +49,6 @@ const [locations, setCompanyLocations] = useState([]);
                 <h5>Edit profile</h5>
                 <div onClick={showHidePopup} className={styles.close}>x</div>
                 </div>
-<<<<<<< HEAD
-                <form className={styles.edit}>
-                <div className={styles.small}>
-                  <Input
-                    label={"Name"}
-                    small={true}
-                    name={"name"}
-                    type={"text"}
-                    defaultValue={name}
-                  />
-                  <br></br>
-                  <Drop/>
-                  </div>
-                  <br></br>
-                  <div className={styles.small}>
-                  <Input
-                    label={"Website Url"}
-                    small={true}
-                    name={"Url"}
-                    type={"text"}
-                    defaultValue={websiteUrl}
-                  />
-                  <br></br>
-                  <Input
-                    label={"Marketing Value"}
-                    small={true}
-                    name={"value"}
-                    type={"text"}
-                    defaultValue={marketingValue}
-                  />
-                  </div>
-                  <br></br>
-                    <Input
-                    label={"History"}
-                    small={false}
-                    name={"history"}
-                    type={"text"}
-                    defaultValue={history}
-                  />
-                  <br></br>
-                  <Input
-                    label={"About"}
-                    small={false}
-                    name={"about"}
-                    type={"text"}
-                    id={styles.about}
-                    defaultValue={about}
-                  />
-                  <br></br>
-                  
-=======
                 <form className={styles.edit} onSubmit={handleUpdateFormSubmit}>
                   <div className={styles.small}>
                     <Input
@@ -149,7 +98,6 @@ const [locations, setCompanyLocations] = useState([]);
                     />
                     <br></br>
                     
->>>>>>> a999485c3b875a910c9ab2dbffe9c0ad5caf497b
 
 
                   <button type='submit' className={styles.save}>Save</button>
