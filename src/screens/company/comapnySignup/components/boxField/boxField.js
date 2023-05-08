@@ -108,6 +108,7 @@ const BoxField = () => {
     let historyValue = e.target.history.value;
     let websiteUrlValue = e.target.url.value;
     let marketingValue = e.target.marketing_value.value;
+    let jobId = e.target.jobs.value;
 
     const company = {
       name: nameValue,
@@ -116,8 +117,8 @@ const BoxField = () => {
       history: historyValue,
       websiteUrl: websiteUrlValue,
       marketingValue: marketingValue,
-
-      jobId:"029052aa-9e9a-438b-9ff1-858f5a4130af",
+      jobId:jobId,
+      
       locationCode:["AD"],
     };
 

@@ -6,7 +6,7 @@ import styles from "../companyProfile/company.module.css";
 import Input from "../../Authentication/components/input/input";
 import pen from "../../../images/pen.png"; 
 import Drop from "../comapnySignup/components/drop edit/drop";
-import { COMPANY_PROFILE_URL } from "../../../constants";
+import { COMPANY_PROFILE_URL, UPDATE_COMPANY_PROFILE_URL } from "../../../constants";
 
 const Company = () => {
   
@@ -49,6 +49,7 @@ const [locations, setCompanyLocations] = useState([]);
                 <h5>Edit profile</h5>
                 <div onClick={showHidePopup} className={styles.close}>x</div>
                 </div>
+<<<<<<< HEAD
                 <form className={styles.edit}>
                 <div className={styles.small}>
                   <Input
@@ -98,9 +99,60 @@ const [locations, setCompanyLocations] = useState([]);
                   />
                   <br></br>
                   
+=======
+                <form className={styles.edit} onSubmit={handleUpdateFormSubmit}>
+                  <div className={styles.small}>
+                    <Input
+                      label={"Name"}
+                      small={true}
+                      name={"name"}
+                      type={"text"}
+                      value={name}
+                    />
+                    <br></br>
+                    <Drop/>
+                    </div>
+                    <br></br>
+                    <div className={styles.small}>
+                    <Input
+                      label={"Website Url"}
+                      small={true}
+                      name={"url"}
+                      type={"text"}
+                      value={websiteUrl}
+                    />
+                    <br></br>
+                    <Input
+                      label={"Marketing Value"}
+                      small={true}
+                      name={"marketing_value"}
+                      type={"text"}
+                      value={marketingValue}
+                    />
+                    </div>
+                    <br></br>
+                      <Input
+                      label={"History"}
+                      small={false}
+                      name={"history"}
+                      type={"text"}
+                      value={history}
+                    />
+                    <br></br>
+                    <Input
+                      label={"About"}
+                      small={false}
+                      name={"about"}
+                      type={"text"}
+                      id={styles.about}
+                      value={about}
+                    />
+                    <br></br>
+                    
+>>>>>>> a999485c3b875a910c9ab2dbffe9c0ad5caf497b
 
 
-                <button type='button' className={styles.save}>Save</button>
+                  <button type='submit' className={styles.save}>Save</button>
                 </form>
 
             </div>
@@ -199,6 +251,63 @@ function onGetCompanyData(json){
     setHistory(companyDetails.history);
     setWebsiteUrl(companyDetails.websiteUrl);
 }
+
+//=============================================
+
+function handleUpdateFormSubmit(e) {
+  e.preventDefault(); 
+  let nameValue = e.target.name.value;
+  let websiteUrlValue = e.target.url.value;
+  let marketingValue = e.target.marketing_value.value;
+  let historyValue = e.target.history.value;
+  let aboutValue = e.target.about.value;
+  let jobId = e.target.jobs.value;;
+ 
+  const companyData = {
+    name: nameValue,
+    about: aboutValue,
+    Url: websiteUrlValue,
+    history: historyValue,
+    marketingValue: marketingValue,
+    jobId: jobId
+  };
+
+  let requestJson = JSON.stringify(companyData);
+  console.log("zzzzzz" + requestJson);
+  // updateCompanyProfileData(requestJson);
+}
+
+function updateCompanyProfileData(requestJson) {
+    var token = localStorage.getItem("Access Token");
+
+    fetch(UPDATE_COMPANY_PROFILE_URL, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          "Authorization": "Bearer " + token
+        },
+    })
+      .then((response) => response.json())
+      .then((json) => onGetUpdateResponse(json));
+}
+
+function onGetUpdateResponse(json) {
+  // let status = json.type;
+  // if (status === "Success") {
+  //   // window.alert("success");
+  //   let secret = json.data.secret;
+  //   navigateToVerifyEmail(secret);
+  // } else {
+  //   window.alert("Error Happened");
+  // }
+}
+
+function navigateToVerifyEmail(secretId) {
+  // // console.log(secretId);
+  // navigate("/login");
+}
+
+
 
 
 

@@ -8,6 +8,7 @@ export const FORGET_PASSWORD_LINK = `${SERVER_LINK}/auth/forgetPassword`;
 export const RESET_PASSWORD_LINK = `${SERVER_LINK}/auth/reset-password`;
 export const CHANGE_PASSWORD_LINK = `${SERVER_LINK}/auth/change-password`;
 export const VERIFY_EMAIL_LINK = `${SERVER_LINK}/auth/verify-email`;
+export const GOOGLE_LINK = `${SERVER_LINK}/auth/google`;
 
 /****************Default**************** */
 export const UPLOAD_LINK = `${SERVER_LINK}/upload/file`;
@@ -24,8 +25,9 @@ export const Cite_DATA_URL = `/https://jobb-45md.onrender.com/auth/cities`;
 
 /***************  Company ********************/
 export const COMPANY_PROFILE_URL = `${SERVER_LINK}/user/`;
+export const UPDATE_COMPANY_PROFILE_URL = `${SERVER_LINK}/user/company`;
+
 export const COMPANY_SIGNUP_URL = `${SERVER_LINK}/auth/signup/company`;
 
 /***************  Notifications ********************/
 export const NOTIFICATIONS_URL = `${SERVER_LINK}/notification/all`;
-
