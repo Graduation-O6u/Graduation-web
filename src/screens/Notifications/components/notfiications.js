@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import '../not.css';
+import React, { useState, useEffect } from "react";
+import "../not.css";
 import styles from "../notfications.module.css";
-import Image1 from "../../../images/avatar1.png";
-import Image2 from "../../../images/avatar2.png";
-import Image4 from "../../../images/avatar3.png" ;
 import { NOTIFICATIONS_URL } from "../../../constants";
-
 function Notfication() {
-
   //*****************************************************************************
   useEffect(() => {
-     getNotifications();     
-  }, [])
+    getNotifications();
+  }, []);
 
   const [unreadCount, setUnreadCount] = useState(0);
   const [messages, setMessages] = useState([]);
@@ -48,7 +43,9 @@ function Notfication() {
       message.id === id ? { ...message, isUnread: false } : message
     );
     setMessages(updatedMessages);
-    setUnreadCount(updatedMessages.filter(message => message.isUnread).length);
+    setUnreadCount(
+      updatedMessages.filter((message) => message.isUnread).length
+    );
   };
 
   const handleMarkAllRead = () => {
@@ -63,11 +60,13 @@ function Notfication() {
   return (
     <div className={styles.container}>
       <header>
-        <div className={styles.notif_box} >
+        <div className={styles.notif_box}>
           <h2 className={styles.title}>Notifications</h2>
           <span className={styles.notifes}>{unreadCount}</span>
         </div>
-        <p id="mark_all" onClick={handleMarkAllRead}>Mark all as read</p>
+        <p id="mark_all" onClick={handleMarkAllRead}>
+          Mark all as read
+        </p>
       </header>
       <main>
         {messages.map((message) => (
@@ -84,77 +83,72 @@ function Notfication() {
               <p className={styles.time}>{message.time}</p>
             </div>
             <div className={styles.message}>
-                <p>{message.message}</p>
-              </div>
+              <p className={styles.p}>{message.message}</p>
+            </div>
           </div>
         ))}
       </main>
     </div>
   );
 
-//===============================================================================================================================
+  //===============================================================================================================================
 
-function getNotifications(){
-  var token = localStorage.getItem("Access Token");
+  function getNotifications() {
+    var token = localStorage.getItem("Access Token");
 
-  fetch(NOTIFICATIONS_URL, {
+    fetch(NOTIFICATIONS_URL, {
       method: "GET",
       headers: {
         "content-type": "application/json",
-        "Authorization": "Bearer " + token
+        Authorization: "Bearer " + token,
       },
-  })
-    .then((response) => response.json())
-    .then((json) => onGetNotificationsData(json));
-}
+    })
+      .then((response) => response.json())
+      .then((json) => onGetNotificationsData(json));
+  }
 
-function onGetNotificationsData(json){
+  function onGetNotificationsData(json) {
     // window.alert(json.data.size);
-    var notificationsArray = json.data.notification
+    var notificationsArray = json.data.notification;
 
     var unreadNotificationsCount = 0;
     var messagesArray = [];
 
-    notificationsArray.forEach(function (notficationObj, index){ 
-      var messageObj = convertNotificationObjToMessageObj(index+1, notficationObj);
+    notificationsArray.forEach(function (notficationObj, index) {
+      var messageObj = convertNotificationObjToMessageObj(
+        index + 1,
+        notficationObj
+      );
       messagesArray.push(messageObj);
 
-      if(notficationObj.read == false){
+      if (notficationObj.read == false) {
         unreadNotificationsCount++;
       }
     });
 
     setUnreadCount(unreadNotificationsCount);
     setMessages(messagesArray);
-}
+  }
 
-
-function convertNotificationObjToMessageObj(id, notificationObj){
+  function convertNotificationObjToMessageObj(id, notificationObj) {
     var messageObj = {
       id: id,
-      avatar: notificationObj.user.image ,
-      user: notificationObj.user.name ,
+      avatar: notificationObj.user.image,
+      user: notificationObj.user.name,
       time: getNotificationTime(notificationObj.createdAt),
       message: notificationObj.description,
-      isUnread: !notificationObj.read
-    }
+      isUnread: !notificationObj.read,
+    };
 
     return messageObj;
-}
+  }
 
+  function getNotificationTime(creationStringData) {
+    // const creationDate = new Date(creationStringData);
+    return "1m ago";
+  }
 
-function getNotificationTime(creationStringData){
-  // const creationDate = new Date(creationStringData);
-  return "1m ago";
-}
-
-
-
-
-
-
-//===============================================================================================================================
-
+  //===============================================================================================================================
 }
 
 export default Notfication;
