@@ -76,7 +76,7 @@ function Navbarr() {
                   fontWeight: "600",
                 }}
               >
-                Signup AS company
+                Signup as Company
               </button>
             </Nav.Link>
           </Nav>
