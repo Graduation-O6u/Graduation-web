@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import styles from "../meeting.module.css";
-// import Popup from "./popup";
 function AppointmentCountdown({ setpop }) {
-  const [appointmentTime] = useState("2023-05-07T15:00:00");
+  const [appointmentTime] = useState("2023-05-12T15:00:00");
   const [countdown, setCountdown] = useState("");
   useEffect(() => {
     const interval = setInterval(() => {

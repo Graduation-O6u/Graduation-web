@@ -13,7 +13,7 @@ function Popup() {
     setIsOpen(false);
   };
   return (
-    <div>
+    <div className={styles.po}>
       <button onClick={() => setIsOpen(true)} className={styles.send}>
         Send Meeting Link
       </button>
