@@ -27,9 +27,10 @@ const [companyData, setCompanyData] = useState({
   image:logo,
 });
 //-----------
+const [industry, setIndustry] = useState("");      
+const [industryId, setIndustryId] = useState("");     
 
 const [viewsCount, setViewsCount] = useState();
-const [industry, setIndustry] = useState("");
 const [locations, setCompanyLocations] = useState([]);
 
 
@@ -59,7 +60,7 @@ const [locations, setCompanyLocations] = useState([]);
                       defaultValue={name}
                     />
                     <br></br>
-                    <Drop/>
+                    <Drop selectedId={industryId} />
                     </div>
                     <br></br>
                     <div className={styles.small}>
@@ -184,7 +185,9 @@ function getCompanyData(companyId){
 function onGetCompanyData(json){
     // window.alert(json.data.user.name);
     setViewsCount(json.data.view);
-    setIndustry(json.data.user.job.title)
+
+    setIndustry(json.data.user.job.title);
+    setIndustryId(json.data.user.job.id);
     setCompanyLocations(json.data.user.companyLocation);
 
 
@@ -209,7 +212,7 @@ function handleUpdateFormSubmit(e) {
   let marketingValue = e.target.marketing_value.value;
   let historyValue = e.target.history.value;
   let aboutValue = e.target.about.value;
-  let jobId = e.target.jobs.value;;
+  let jobId = e.target.jobs.value;
  
   const companyData = {
     name: nameValue,
@@ -220,10 +223,25 @@ function handleUpdateFormSubmit(e) {
     jobId: jobId
   };
 
+  let isValid = isValidData(companyData);
+  if(isValid == false){
+    return;
+  }
+
   let requestJson = JSON.stringify(companyData);
   console.log("zzzzzz" + requestJson);
-  // updateCompanyProfileData(requestJson);
+  updateCompanyProfileData(requestJson);
 }
+
+function isValidData(companyData){
+    if(companyData.jobId == ""){
+      window.alert("Kindly choose Job Title");
+       return false;
+    }
+
+    return true;
+}
+
 
 function updateCompanyProfileData(requestJson) {
     var token = localStorage.getItem("Access Token");
@@ -240,14 +258,14 @@ function updateCompanyProfileData(requestJson) {
 }
 
 function onGetUpdateResponse(json) {
-  // let status = json.type;
-  // if (status === "Success") {
-  //   // window.alert("success");
+  let status = json.type;
+  if (status === "Success") {
+    // window.alert("success");
   //   let secret = json.data.secret;
   //   navigateToVerifyEmail(secret);
-  // } else {
-  //   window.alert("Error Happened");
-  // }
+  } else {
+    window.alert("Error Happened");
+  }
 }
 
 function navigateToVerifyEmail(secretId) {
