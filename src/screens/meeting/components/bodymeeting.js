@@ -3,6 +3,7 @@ import styles from "../meeting.module.css";
 import image from "../../../images/avatar1.png";
 import Cutdown from "./cutdown";
 import Popup from "./popup";
+import Drop from "./drop";
 function BodyMeeting() {
   const [pop, setpop] = useState(false);
   return (
@@ -12,25 +13,17 @@ function BodyMeeting() {
         <div className={styles.hr}></div>
       </div>
       <div className={styles.usermeet}>
-        <img src={image} alt="" className={styles.image}></img>
-        <div className={styles.name}>
-          <h3> Amany Mohamed </h3>
-          <p>Front-Emd</p>
+        <div className={styles.define}>
+          <img src={image} alt="" className={styles.image}></img>
+          <div className={styles.name}>
+            <h3> Amany Mohamed </h3>
+            <p>Front-Emd</p>
+          </div>
         </div>
-        <Cutdown setpop={setpop} />
-        {pop ? <Popup /> : ""}
-        <div className={styles.selall}>
-          <select id="" className={styles.select}>
-            <option value="Pending" className={styles.pen}>
-              Pending
-            </option>
-            <option value="Accpted" className={styles.acc}>
-              Accpted
-            </option>
-            <option value="Rejected" className={styles.rej}>
-              Rejected
-            </option>
-          </select>
+        <div className={styles.cutdrop}>
+          <Cutdown setpop={setpop} />
+          {pop ? <Popup /> : ""}
+          <Drop />
         </div>
       </div>
     </div>

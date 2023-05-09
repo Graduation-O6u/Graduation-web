@@ -10,7 +10,7 @@ function Navbarr({ titleHerf }) {
         <Navbar.Brand href="#home">
           <img
             src={Logo}
-            height="30"
+            height="45"
             className="d-inline-block align-top"
             alt=""
           />
