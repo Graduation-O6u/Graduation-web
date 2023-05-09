@@ -21,16 +21,20 @@ function Popup() {
         <div className={styles.popup}>
           <div className={styles.content}>
             <button className={styles.button} onClick={() => setIsOpen(false)}>
-              <Icon icon="ic:baseline-close" />
+              <Icon icon="ic:baseline-close" className={styles.ico} />
             </button>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={styles.for}>
               <input
                 id="input"
                 type="text"
                 value={inputValue}
                 onChange={handleInputChange}
+                placeholder="Meeting Link"
+                className={styles.inp}
               />
-              <button type="submit">Submit</button>
+              <button type="submit" className={styles.butt}>
+                Saved
+              </button>
             </form>
           </div>
         </div>
