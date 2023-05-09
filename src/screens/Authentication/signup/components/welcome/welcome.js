@@ -4,7 +4,7 @@ const Welcome = () => {
   return (
     <div className={styles.welcomeBox}>
       <h1 className={styles.welcome}>
-        Welcome to <span className={styles.jobber}>Jobber</span>
+        Welcome to <span className={styles.jobber}>Job Seeker</span>
         <br />
         <h3>Take the first step toward your new career</h3>
       </h1>
