@@ -56,7 +56,7 @@ const [locations, setCompanyLocations] = useState([]);
                       small={true}
                       name={"name"}
                       type={"text"}
-                      value={name}
+                      defaultValue={name}
                     />
                     <br></br>
                     <Drop/>
@@ -68,7 +68,7 @@ const [locations, setCompanyLocations] = useState([]);
                       small={true}
                       name={"url"}
                       type={"text"}
-                      value={websiteUrl}
+                      defaultValue={websiteUrl}
                     />
                     <br></br>
                     <Input
@@ -76,7 +76,7 @@ const [locations, setCompanyLocations] = useState([]);
                       small={true}
                       name={"marketing_value"}
                       type={"text"}
-                      value={marketingValue}
+                      defaultValue={marketingValue}
                     />
                     </div>
                     <br></br>
@@ -85,7 +85,7 @@ const [locations, setCompanyLocations] = useState([]);
                       small={false}
                       name={"history"}
                       type={"text"}
-                      value={history}
+                      defaultValue={history}
                     />
                     <br></br>
                     <Input
@@ -94,7 +94,7 @@ const [locations, setCompanyLocations] = useState([]);
                       name={"about"}
                       type={"text"}
                       id={styles.about}
-                      value={about}
+                      defaultValue={about}
                     />
                     <br></br>
                     

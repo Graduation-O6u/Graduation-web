@@ -2,11 +2,11 @@ import styles from "./input.module.css";
 
 import React, { useState, useEffect } from "react";
 
-const Input = ({ label, small, name ,type ,maxlength , minlength ,height ,id, value}) => {
+const Input = ({ label, small, name ,type ,maxlength , minlength ,height ,id, defaultValue}) => {
   return (
     <div className={small ? styles.inputbox2 : styles.inputbox1}>
       <input type={type} required="required" name={name} maxLength = {maxlength}
-             minLength = {minlength} height={height} id={id} value = {value} />
+             minLength = {minlength} height={height} id={id} defaultValue = {defaultValue} />
       <span>{label}</span>
     </div>
   );

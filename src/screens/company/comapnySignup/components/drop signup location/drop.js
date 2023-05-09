@@ -26,7 +26,7 @@ const Drop = ({label , id , multiple}) => {
     <Fragment>
     <div className={styles.select}>
       
-    <Multiselect options={options} displayValue="Country" placeholder="Location" />
+    <Multiselect options={options} displayValue="Country" placeholder="Location"/>
       
     </div>
 
