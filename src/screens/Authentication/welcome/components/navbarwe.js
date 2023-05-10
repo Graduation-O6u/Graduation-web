@@ -23,7 +23,7 @@ function Navbarr() {
             <Nav.Link
               style={{
                 color: "#0074D9",
-                fontSize: "25px",
+                fontSize: "20px",
                 fontWeight: "600",
                 marginRight: "4%",
               }}
@@ -32,13 +32,13 @@ function Navbarr() {
               Welcome
             </Nav.Link>
             <Nav.Link
-              style={{ fontSize: "25px", fontWeight: "600", marginRight: "4%" }}
+              style={{ fontSize: "20px", fontWeight: "600", marginRight: "4%" }}
               href="#about"
             >
               About Us
             </Nav.Link>
             <Nav.Link
-              style={{ ontSize: "25px", fontWeight: "600" }}
+              style={{ fontSize: "20px", fontWeight: "600" }}
               href="#contact"
             >
               Contact US
@@ -56,7 +56,7 @@ function Navbarr() {
             <Nav.Link href="/signup">
               <button
                 style={{
-                  color: "#5d5fef",
+                  color: "#0074D9",
                   border: "none",
                   background: "transparent",
                   fontSize: "20px",

@@ -47,7 +47,7 @@ function Navbarr({ titleHerf }) {
               <Icon
                 icon="ic:outline-notifications"
                 style={{
-                  color: "#5d5fef",
+                  color: "#0074D9",
                   fontSize: "35px",
                   marginLeft: "35px",
                 }}

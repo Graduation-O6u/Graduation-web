@@ -23,7 +23,13 @@ const Luxury = () => {
           {joblist.map((x, i) => {
             const idd = x["id"];
             return (
-              <div className={styles.cardWrapper}>
+              <div
+                className={styles.cardWrapper}
+                onClick={() => {
+                  console.log("enter");
+                  navigate(`/apply/${idd}`);
+                }}
+              >
                 <div className={styles.card}>
                   <div className="totitle" id={idd}>
                     <div className="title-box">{x["jobTitle"]["title"]}</div>

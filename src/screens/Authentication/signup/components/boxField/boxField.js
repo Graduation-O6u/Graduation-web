@@ -21,6 +21,7 @@ const BoxField = () => {
   const [isFilePicked, setIsFilePicked] = useState(false);
   const [file, setFile] = useState("");
   const [loading, chageLoading] = useState(false);
+  const [loading2, chageLoading2] = useState(false);
 
   const hiddenFileInput = React.useRef(null);
   const handleClick = (event) => {
@@ -100,18 +101,23 @@ const BoxField = () => {
             Upload Your CV
           </button>
         )}
+        {loading2 ? (
+          <LoadingButton />
+        ) : (
+          <button className={styles.Button} type="submit">
+            Sign up
+          </button>
+        )}
 
         {/* <button className={styles.Button} onClick={handleLog}> */}
-        <button className={styles.Button} type="submit">
-          Sign up
-        </button>
+
         <h6 className={styles.terms}>
           By clicking Sign Up , you agree to our{" "}
           <span id={styles.terms}> Terms</span> ,
           <span id={styles.terms}> Privacy Policy</span> and
           <span id={styles.terms}> Cookies Policy</span>{" "}
         </h6>
-        <Or />
+        <Or title={"Or"} />
         <Media login={false} />
         <h5 id={styles.login}>
           Already have an account ?{" "}
@@ -150,7 +156,7 @@ const BoxField = () => {
   }
 
   function registerUser(requestJson) {
-    chageLoading(true);
+    chageLoading2(true);
     fetch(SIGN_UP_LINK, {
       method: "POST",
       headers: {
@@ -160,7 +166,7 @@ const BoxField = () => {
     })
       .then((response) => response.json())
       .then((json) => onGetSignUpResponse(json));
-    chageLoading(false);
+    chageLoading2(false);
   }
 
   function onGetSignUpResponse(json) {

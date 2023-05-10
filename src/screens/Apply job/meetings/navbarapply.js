@@ -37,7 +37,7 @@ function Navbarr({ titleHerf }) {
                 fontSize: "25px",
                 fontWeight: "600",
                 marginRight: "4%",
-                color: "#5d5fef",
+                color: "#0074D9",
               }}
               href="/apply"
             >

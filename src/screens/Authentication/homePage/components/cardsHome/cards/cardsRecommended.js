@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../sectionCards.css";
 import { Job_DATA_URL, Market_DATA_URL } from "../../../../../../constants";
 import { Icon } from "@iconify/react";
+import LoadingPage from "../../../../../../components/loadingPage/loadingPage";
 const Luxury = () => {
   const navigate = useNavigate();
   const [joblist, setjoblist] = useState([]);
@@ -33,7 +34,14 @@ const Luxury = () => {
           {joblist.map((x, i) => {
             const idd = x["id"];
             return (
-              <div class="item2">
+              <div
+                class="item2"
+                id={idd}
+                onClick={() => {
+                  console.log("enter");
+                  navigate(`/apply/${idd}`);
+                }}
+              >
                 <div className="totitle" id={idd}>
                   <div className="title-box">{x["jobTitle"]["title"]}</div>
                   <Icon
@@ -123,6 +131,7 @@ const Luxury = () => {
       takee = Math.min(sizeall - joblist.length, 6);
     }
     if (joblist.length < sizeall || sizeall === 0) {
+      console.log("****************************************************");
       await fetch(
         `${Job_DATA_URL}?type=RecommendedJobs&take=${takee}&skip=${joblist.length}`,
         {

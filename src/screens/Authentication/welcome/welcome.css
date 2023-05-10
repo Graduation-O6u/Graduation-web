@@ -29,7 +29,7 @@
   height: 100%;
   font-weight: 400;
   font-size: 20px;
-  background: #5d5fef;
+  background: #0074d9;
   -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
   mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
   -webkit-mask-size: 2300% 100%;
@@ -82,7 +82,7 @@
 .leftsection {
   height: 100%;
   width: 45%;
-  margin: 4%;
+  margin: 10%;
 }
 .textBox {
   letter-spacing: 2px;
@@ -93,7 +93,7 @@
   margin-bottom: 10%;
 }
 .title span {
-  color: #5d5fef;
+  color: #0074d9;
 }
 .desc {
   color: gray;
@@ -158,16 +158,8 @@
 
 @media (max-width: 990px) {
   .leftsection {
-    display: flex;
     width: 100%;
-    align-content: center;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .boxImage {
-    display: none;
+    margin: 20% 10%;
   }
 }
 /* cards */
@@ -201,11 +193,16 @@
   background-color: #0069d9;
 }
 @media only screen and (max-width: 768px) {
+  .leftsection {
+    margin-top: 40%;
+  }
   .card-container {
     flex-direction: column;
     align-items: center;
   }
-
+  .boxImage {
+    display: none;
+  }
   .card {
     width: 80%;
   }
@@ -222,7 +219,7 @@
   margin-top: 5%;
 }
 .text-box2 {
-  background: linear-gradient(0deg, #5d5fef, #5d5fef) no-repeat right bottom / 0
+  background: linear-gradient(0deg, #0074d9, #0074d9) no-repeat right bottom / 0
     var(--bg-h);
   transition: background-size 350ms;
   --bg-h: 100%;
@@ -237,7 +234,7 @@
   margin-right: 50%;
 }
 .box2:hover {
-  background-color: #5d5fef;
+  background-color: #0074d9;
   color: white;
 }
 .box2 p {

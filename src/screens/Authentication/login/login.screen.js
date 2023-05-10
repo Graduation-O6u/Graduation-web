@@ -14,7 +14,7 @@ const Login = () => {
 
       <div className={styles.container}>
         <div className={styles.middle1}>
-          <Welcome />
+          <Welcome login={false} />
         </div>
         <BoxField />
       </div>

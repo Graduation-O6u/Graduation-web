@@ -68,11 +68,11 @@
 
 .inputbox1 input:valid,
 .inputbox1 input:focus {
-  border: 1px solid #5d5fef;
+  border: 1px solid #0074d9;
 }
 .inputbox2 input:valid ~ span,
 .inputbox2 input:focus ~ span {
-  color: #5d5fef;
+  color: #0074d9;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
@@ -82,7 +82,7 @@
 
 .inputbox2 input:valid,
 .inputbox2 input:focus {
-  border: 1px solid #5d5fef;
+  border: 1px solid #0074d9;
 }
 
 #pass {

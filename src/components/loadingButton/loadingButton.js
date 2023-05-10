@@ -5,7 +5,7 @@ const LoadingButton = () => {
   return (
     <button className={styles.OutButton} onClick={(e) => e.preventDefault()}>
       Loading...
-      <img src={Loader} className={styles.pic} />
+      <img src={Loader} className={styles.pic} alt="loading" />
     </button>
   );
 };

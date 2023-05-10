@@ -4,11 +4,11 @@
   color: black;
 }
 .saved2 {
-  /* color: #5D5FEF; */
+  /* color: #0074D9; */
   padding-left: 0%;
   padding-right: 0%;
   border-bottom-style: solid;
-  border-bottom-color: #5d5fef;
+  border-bottom-color: #0074d9;
   border-bottom-width: 8px;
 }
 .me {
@@ -27,7 +27,7 @@
 .recommend2:hover::after {
   width: 100%;
   border-bottom-style: solid;
-  border-bottom-color: #5d5fef;
+  border-bottom-color: #0074d9;
   border-bottom-width: 8px;
 }
 /* small .dropdown */
@@ -67,7 +67,7 @@
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
   padding: 12%;
-  background-color: #5d5fef;
+  background-color: #0074d9;
 }
 
 /* Handle on hover */

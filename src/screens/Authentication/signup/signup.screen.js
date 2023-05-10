@@ -11,13 +11,12 @@ const Signup = () => {
 
       <div className={styles.container}>
         <div className={styles.middle1}>
-          <Welcome />
+          <Welcome login={true} />
         </div>
         <BoxField />
       </div>
     </div>
   );
-
 };
 
 export default Signup;

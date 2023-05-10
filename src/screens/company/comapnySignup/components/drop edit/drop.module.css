@@ -18,7 +18,7 @@ select {
 }
 
 .select option {
-  color: #5d5fef;
+  color: #0074d9;
   background-color: #fafafa;
   display: flex;
   justify-content: center;

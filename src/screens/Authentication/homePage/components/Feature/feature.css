@@ -4,11 +4,11 @@
   color: black;
 }
 .feature {
-  /* color: #5D5FEF; */
+  /* color: #0074D9; */
   padding-left: 0%;
   padding-right: 0%;
   border-bottom-style: solid;
-  border-bottom-color: #5d5fef;
+  border-bottom-color: #0074d9;
   border-bottom-width: 8px;
 }
 
@@ -23,7 +23,7 @@
 .recommend:hover::after {
   width: 100%;
   border-bottom-style: solid;
-  border-bottom-color: #5d5fef;
+  border-bottom-color: #0074d9;
   border-bottom-width: 8px;
 }
 .cardds {

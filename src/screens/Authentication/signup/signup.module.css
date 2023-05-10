@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
 }
 
 .body {
@@ -35,7 +34,7 @@
 }
 
 .label {
-  color: #5d5fef;
+  color: #0074d9;
   height: 60px;
   width: 250px;
   left: -130px;

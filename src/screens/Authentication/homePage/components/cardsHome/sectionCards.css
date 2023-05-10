@@ -104,15 +104,15 @@
 .ar {
   font-size: 50px;
   border-radius: 50%;
-  background-color: #5d5fef;
-  border: 0px solid #5d5fef;
+  background-color: #0074d9;
+  border: 0px solid #0074d9;
   color: #f6f6f6;
 }
 .ar:hover {
   font-size: 55px;
   background-color: #f6f6f6;
   border: 0px solid #f6f6f6;
-  color: #5d5fef;
+  color: #0074d9;
 }
 @media (max-width: 910px) {
   .top-section {

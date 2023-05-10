@@ -5,6 +5,7 @@ import Or from "../../components/or/or";
 import Media from "../../components/media/media";
 import { SIGN_IN_LINK } from "../../../../constants";
 import { useNavigate } from "react-router-dom";
+import LoadingButton from "../../../../components/loadingButton/loadingButton";
 
 const BoxField = () => {
   const [show, changeShow] = useState(false);
@@ -31,7 +32,7 @@ const BoxField = () => {
               type="checkbox"
               name="remeber me"
               value="remeber me"
-              color="#5d5fef"
+              color="#0074D9"
             />
             <label for="remeber me"> Remember me</label>
           </div>
@@ -39,10 +40,13 @@ const BoxField = () => {
             Forget Password?
           </a>
         </div>
-
-        <button className={styles.Button} type="submit">
-          Log in
-        </button>
+        {loading ? (
+          <LoadingButton />
+        ) : (
+          <button className={styles.Button} type="submit">
+            Log in
+          </button>
+        )}
         <h6 className={styles.terms}>
           By clicking Sign Up , you agree to our{" "}
           <span id={styles.terms}> Terms</span> ,
@@ -107,6 +111,7 @@ const BoxField = () => {
   }
 
   function signin(requestJson) {
+    chageLoading(true);
     fetch(SIGN_IN_LINK, {
       method: "POST",
       headers: {
@@ -122,6 +127,7 @@ const BoxField = () => {
     let type = json.type;
     let responseMessage = json.message;
     if (type === "Success") {
+      console.log("sssss");
       localStorage.setItem("name", json.data.user.name);
       localStorage.setItem("image", json.data.user.image);
       localStorage.setItem("role", json.data.user.role);
@@ -132,6 +138,7 @@ const BoxField = () => {
     } else {
       setError(responseMessage);
     }
+    chageLoading(false);
   }
 
   // ---------------------------------------------------------------------------------------------------//

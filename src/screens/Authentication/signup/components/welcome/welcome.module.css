@@ -7,7 +7,7 @@
   filter: drop-shadow(4px 4px 2px #dcdcdc);
 }
 .jobber {
-  color: #5d5fef;
+  color: #0074d9;
 }
 h3 {
   color: #1b1b1b;
@@ -29,7 +29,7 @@ h3 {
 .joinus {
   width: 200px;
   height: 60px;
-  background-color: #5d5fef;
+  background-color: #0074d9;
   border-radius: 10px;
   border: 1px solid grey;
   color: white;
@@ -42,9 +42,9 @@ h3 {
   transition: 0.5s;
   width: 200px;
   height: 60px;
-  color: #5d5fef;
+  color: #0074d9;
   border-radius: 10px;
-  border: 1px solid #5d5fef;
+  border: 1px solid #0074d9;
   font-weight: bold;
   cursor: pointer;
 }

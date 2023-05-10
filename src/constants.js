@@ -31,3 +31,4 @@ export const COMPANY_SIGNUP_URL = `${SERVER_LINK}/auth/signup/company`;
 
 /***************  Notifications ********************/
 export const NOTIFICATIONS_URL = `${SERVER_LINK}/notification/all`;
+export const UNREADNUMBER_URL = `${SERVER_LINK}/notification/unReadNumber`;

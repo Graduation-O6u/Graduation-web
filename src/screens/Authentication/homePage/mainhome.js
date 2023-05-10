@@ -5,12 +5,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SectionCards from "./components/cardsHome/sectionCards";
 import SectionRecomind from "./components/cardsHome/sectionrecom";
 import styles from "./homePage.module.css";
+import { useNavigate } from "react-router-dom";
 import HomeCompany from "../../homeCompany/mainCompany";
 const HomePage = () => {
+  const navigate = useNavigate();
+
   const role = localStorage.getItem("role");
+  if (!role) {
+    navigate("/login");
+  }
   return (
     <div>
-      {role === "USER" ? (
+      {role && role === "USER" ? (
         <div className={styles.containerhome}>
           <NavbarHome titleHerf={"/"} />
           <FindJob title={"Job"} />
