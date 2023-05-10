@@ -16,6 +16,9 @@ export const UPLOAD_LINK = `${SERVER_LINK}/upload/file`;
 /*************** User ********************/
 export const PROFILE_DATA_URL = `${SERVER_LINK}/user`;
 /***************  JObs ********************/
+export const GET_JOB_URL = `${SERVER_LINK}/job`;
+
+export const APPLAY_JOB_URL = `${SERVER_LINK}/job`;
 export const Job_DATA_URL = `${SERVER_LINK}/job/all`;
 /***************  Market ********************/
 export const Market_DATA_URL = `${SERVER_LINK}/job`;
