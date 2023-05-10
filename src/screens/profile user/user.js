@@ -14,6 +14,8 @@ import styles from "../profile user/user.module.css";
 import { Link } from "react-router-dom";
 import { PROFILE_DATA_URL } from "../../constants";
 import Input from "../Authentication/components/input/input";
+import Drop from "../company/comapnySignup/components/drop edit/drop";
+import DropLoc from "../company/comapnySignup/components/drop signup location/droploc"
 
 const User = () => {
 
@@ -49,65 +51,47 @@ const User = () => {
                     </div>
                     <form className={styles.edit}>
                       <Input
-                        label={"First Name"}
+                        label={"Name"}
                         small={false}
-                        name={"first name"}
+                        name={"name"}
                         type={"text"}
                       />
                       <br></br>
                       <Input
-                        label={"Last Name"}
+                        label={"About"}
                         small={false}
-                        name={"last name"}
+                        name={"about"}
                         type={"text"}
                       />
                       <br></br>
-                      <Input
-                        label={"Education"}
-                        small={false}
-                        name={"education"}
-                        type={"text"}
-                      />
+                      <div className={styles.small}> 
+                      <Drop/>
+                      <DropLoc label={"Location"} id = {styles.small} />
+                      </div>
                       <br></br>
                       <Input
-                        label={"Skills"}
+                        label={" Your CV URL"}
                         small={false}
-                        name={"skills"}
+                        name={"cv"}
                         type={"text"}
                       />
                       <br></br>
                       <div className={styles.small}>
                         <Input
-                        label={"Job Title"}
+                        label={"Your Behance URL"}
                         small={true}
-                        name={"job title"}
+                        name={"behance"}
                         type={"text"}
                       />
                       <br></br>
                       <Input
-                        label={"Job Type"}
+                        label={"Your GitHub URL"}
                         small={true}
-                        name={"job type"}
+                        name={"github"}
                         type={"text"}
                       />
                       </div>
                       <br></br>
-                      <div className={styles.small}>
-                      <Input
-                        label={"Country"}
-                        small={true}
-                        name={"country"}
-                        type={"text"}
-                      />
-                      <br></br>
-                      <Input
-                        label={"City"}
-                        small={true}
-                        name={"city"}
-                        type={"text"}
-                      />
-                      </div>
-
 
                     <button type='button' className={styles.save}>Save</button>
                     </form>

@@ -3,7 +3,7 @@ import {Multiselect} from 'multiselect-react-dropdown';
 import styles from "./boxField.module.css";
 import Input from "../input/input";
 import DropIndustry from "../drop signup industry/drop";
-import Drop from "../drop signup location/drop";
+import Drop from "../drop signup location/droploc";
 import Or from "../or/or"
 import url from "../../../../../images/url.png"
 import LoadingButton from "../../../../../components/loadingButton/loadingButton";
