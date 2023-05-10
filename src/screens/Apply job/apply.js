@@ -22,24 +22,24 @@ const Apply = () => {
 
   function popup() {
     return (
-      <>
-        <div id={styles.loginModal}>
-          <div className={styles.modal}>
-            <div className={styles.message}>
-              <h3 className={styles.H3}>Congratulations</h3>
-              <h6 className={styles.H6}>Job Applied Successfully</h6>
-            </div>
-            <img src={congrats} className={styles.congrats}></img>
-            <button
-              onClick={showHidePopup}
-              type="button"
-              className={styles.submitBtn}
-            >
-              Done
-            </button>
-          </div>
+      <div>
+      <div id={styles.loginModal}>
+      <div className={styles.modal}>
+        <div className={styles.message}>
+          <h3 className={styles.H3}>Congratulations</h3>
+          <h6 className={styles.H6}>Job Applied Successfully</h6>
         </div>
-      </>
+        <img src={congrats} className={styles.congrats}></img>
+        <button
+          onClick={showHidePopup}
+          type="button"
+          className={styles.submitBtn}
+        >
+          Done
+        </button>
+      </div>
+    </div>
+      </div>
     );
   }
 

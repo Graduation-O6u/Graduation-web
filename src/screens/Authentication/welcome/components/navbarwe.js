@@ -9,7 +9,7 @@ function Navbarr() {
         <Navbar.Brand href="#home">
           <img
             src={Logo}
-            height="30"
+            height="45"
             className="d-inline-block align-top"
             alt=""
           />
@@ -64,19 +64,6 @@ function Navbarr() {
                 }}
               >
                 Signup
-              </button>
-            </Nav.Link>
-            <Nav.Link href="/signupcomp">
-              <button
-                style={{
-                  color: "#5d5fef",
-                  border: "none",
-                  background: "transparent",
-                  fontSize: "20px",
-                  fontWeight: "600",
-                }}
-              >
-                Signup as Company
               </button>
             </Nav.Link>
           </Nav>
