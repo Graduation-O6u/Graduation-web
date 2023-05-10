@@ -124,7 +124,7 @@ const BoxField = () => {
     if (type === "Success") {
       localStorage.setItem("name", json.data.user.name);
       localStorage.setItem("image", json.data.user.image);
-
+      localStorage.setItem("role", json.data.user.role);
       localStorage.setItem("Access Token", json.data.accessToken);
       navigate("/homepage");
     } else if (type === "InternalServerError") {
