@@ -77,11 +77,11 @@
   flex-direction: row;
 }
 .hrr {
-  height: 300px;
+  height: 100vh;
   border: none;
   border-left: 1px solid #969696; /* Adjust the color and thickness as needed */
   transform: rotate(180deg);
-  margin: 2% 0%;
+  margin: 20% 20%;
 }
 .para {
   position: relative;

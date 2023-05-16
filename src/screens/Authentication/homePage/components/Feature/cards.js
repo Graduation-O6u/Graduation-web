@@ -16,6 +16,9 @@ const Luxury = () => {
   useEffect(() => {
     Card();
   }, []);
+  function hand() {
+    console.log("hhh");
+  }
   return (
     <div>
       <div className={styles.luxury}>
@@ -25,6 +28,7 @@ const Luxury = () => {
             console.log(idd);
             return (
               <div
+                key={idd}
                 className={styles.cardWrapper}
                 onClick={() => {
                   console.log("enter");
@@ -39,7 +43,9 @@ const Luxury = () => {
                   }}
                 >
                   <div className="totitle" id={idd}>
-                    <div className="title-box">{x["jobTitle"]["title"]}</div>
+                    <div className="title-box" onClick={hand}>
+                      {x["jobTitle"]["title"]}
+                    </div>
                     <Icon
                       icon={
                         idmar[i] && idmar[i]["userJobs"].length > 0
@@ -77,8 +83,14 @@ const Luxury = () => {
                       src={x["company"]["image"]}
                       alt=""
                       className="iconeCompany"
+                      onClick={() => navigate(`/user/${x["company"]["id"]}`)}
                     ></img>
-                    <p className="micro">{x["company"]["name"]}</p>
+                    <p
+                      className="micro"
+                      onClick={() => navigate(`/user/${x["company"]["id"]}`)}
+                    >
+                      {x["company"]["name"]}
+                    </p>
                   </div>
                 </div>
               </div>

@@ -34,7 +34,12 @@ const Luxury = () => {
             return (
               <div class="item">
                 <div className="totitle" id={idd}>
-                  <div className="title-box">{x["jobTitle"]["title"]}</div>
+                  <div
+                    className="title-box"
+                    onClick={() => navigate(`/apply/${idd}`)}
+                  >
+                    {x["jobTitle"]["title"]}
+                  </div>
                   <Icon
                     icon={
                       idmar[i] && idmar[i]["userJobs"].length > 0
@@ -72,8 +77,14 @@ const Luxury = () => {
                     src={x["company"]["image"]}
                     alt=""
                     className="iconeCompany"
+                    onClick={() => navigate(`/user/${x["company"]["id"]}`)}
                   ></img>
-                  <p className="micro">{x["company"]["name"]}</p>
+                  <p
+                    className="micro"
+                    onClick={() => navigate(`/user/${x["company"]["id"]}`)}
+                  >
+                    {x["company"]["name"]}
+                  </p>
                 </div>
               </div>
             );

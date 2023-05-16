@@ -129,6 +129,8 @@ const BoxField = () => {
     if (type === "Success") {
       console.log("sssss");
       localStorage.setItem("name", json.data.user.name);
+      localStorage.setItem("id", json.data.user.id);
+
       localStorage.setItem("image", json.data.user.image);
       localStorage.setItem("role", json.data.user.role);
       localStorage.setItem("Access Token", json.data.accessToken);

@@ -48,7 +48,7 @@ function Navbarr({ titleHerf }) {
             </Nav.Link>
             <Nav.Link
               style={{ fontSize: "25px", fontWeight: "600", marginRight: "4%" }}
-              href="/apply"
+              href="/jobs"
             >
               jobs
             </Nav.Link>

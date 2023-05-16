@@ -34,13 +34,14 @@ const App = () => {
         <Route path="/forget" element={<Forget />}></Route>
         <Route path="/auth/reset-password/:id" element={<Changepass />}></Route>
         <Route path="/homepage" element={<HomePage />}></Route>
-        <Route path="/featured" element={<Feature />}></Route>
-        <Route path="/recomend" element={<Recomand />}></Route>
-        <Route path="/saved" element={<Saved />}></Route>
+        <Route path="/jobs" element={<Feature />}></Route>
+
         <Route path="/homecompany" element={<HomeCompany />}></Route>
         <Route path="/company" element={<Company />}></Route>
         <Route path="/signupcomp" element={<CompanySignup />}></Route>
+        <Route path="/user/:id" element={<User />}></Route>
         <Route path="/user" element={<User />}></Route>
+
         <Route path="/notifications" element={<Notifaction />}></Route>
         <Route path="/meeting" element={<Meeting />}></Route>
         <Route path="/apply/:id" element={<Apply />}></Route>

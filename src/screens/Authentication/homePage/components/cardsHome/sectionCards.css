@@ -12,6 +12,7 @@
 }
 .iconeCompany {
   height: 45px;
+  cursor: pointer;
 }
 .contientcard {
   margin-top: 5%;
@@ -24,6 +25,10 @@
   /* position: relative; */
   margin: 0% 5%;
   margin-top: 10%;
+  cursor: pointer;
+}
+.totitle:hover {
+  text-decoration: underline;
 }
 .title-box {
   text-align: center;
@@ -88,6 +93,10 @@
   color: black;
   font-weight: 600;
   margin-bottom: 0%;
+  cursor: pointer;
+}
+.micro:hover {
+  text-decoration: underline;
 }
 /* الاسهم */
 .arrow {
