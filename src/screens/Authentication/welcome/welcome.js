@@ -1,27 +1,29 @@
 import React from "react";
-import Navbar from "./components/navbar";
-import Text from "./components/text";
-import Search from "./components/search";
-import Boximage from "./components/box-image";
-import Social from "./components/social/social";
+import Navbar from "./components/navbarwe";
+import LeftSection from "./components/boxsection";
+import styles from "./welcome.css";
+import RightSection from "./components/box-image";
+import Social from "./components/social";
 import Text2 from "./components/text2";
-import Steps from "./components/social/steps";
+import Steps from "./components/steps";
 import Half from "./components/half";
 import Last from "./components/last";
-import Footer from "./components/footer";
-import Download from "./components/download";
-import styles from "./welcome.module.css";
+import Footer from "./components/footerwe";
 const Welcome = () => {
   return (
-    <>
-      <div className={styles.App}>
-        <div id="home">
+    <div
+      style={{
+        backgroundColor: "#f7f7f7",
+      }}
+    >
+      {" "}
+      <div className={styles.Welcom}>
+        <div id="welcome">
           <Navbar />
-          <div className={styles.bb}>
-            <Text />
-            <Boximage />
+          <div className="section1">
+            <LeftSection />
+            <RightSection />
           </div>
-          <Search />
         </div>
         <div id="about">
           <Social />
@@ -32,10 +34,9 @@ const Welcome = () => {
         </div>
         <div id="contact">
           <Footer />
-          <Download />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default Welcome;

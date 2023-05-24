@@ -1,68 +1,69 @@
 .nav-link {
-    font-size: 1.7rem;
-    font-weight: bold;
-    color: black;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: black;
 }
 .recommend1 {
-    /* color: #5D5FEF; */
-    padding-left: 0%;
-    padding-right: 0%;
-    border-bottom-style: solid;
-    border-bottom-color:#5D5FEF;
-    border-bottom-width: 8px;
+  /* color: #0074D9; */
+  padding-left: 0%;
+  padding-right: 0%;
+  border-bottom-style: solid;
+  border-bottom-color: #0074d9;
+  border-bottom-width: 8px;
 }
 .me {
-    margin-left: -7%;
-    left: 0%;
+  margin-left: -7%;
+  left: 0%;
 }
-.saved1::after , .feature1::after {
-    content: "";
-    display: block;
-    width: 0;
-    transition: all 0.5s;
-} 
+.saved1::after,
+.feature1::after {
+  content: "";
+  display: block;
+  width: 0;
+  transition: all 0.5s;
+}
 .saved1:hover::after,
 .feature1:hover::after {
-    width: 100%;
-    border-bottom-style: solid;
-    border-bottom-color: #5D5FEF;
-    border-bottom-width: 8px;
+  width: 100%;
+  border-bottom-style: solid;
+  border-bottom-color: #0074d9;
+  border-bottom-width: 8px;
 }
 /* small .dropdown */
 .tog {
-    width: 160px;
-    color: black;
-    background-color: #F2EFEF;
-    border: none;
-    font-weight: bold;
+  width: 160px;
+  color: black;
+  background-color: #f2efef;
+  border: none;
+  font-weight: bold;
 }
 /*  drop list */
 .list-round {
-    font-size: 40px;
+  font-size: 40px;
 }
 .list-round:hover {
-    background-color: #FBFBFB;
-    box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, .1);
-    border-radius: 50%;
+  background-color: #fbfbfb;
+  box-shadow: 5px 5px 5px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
 }
 .drop {
-    margin-top: -5%;
-    margin-bottom: 2%;
+  margin-top: -5%;
+  margin-bottom: 2%;
 }
 @media only screen and (min-width: 600px) {
-    .eventsNav {
-        width: 100%;
-        padding-bottom: 1em;
-    }
+  .eventsNav {
+    width: 100%;
+    padding-bottom: 1em;
+  }
 }
 .nav-item.dropdown {
-    position: inherit;
+  position: inherit;
 }
 .dropdown-menu {
-    width: 100%;
-    border: none;
-    transform: translate(0%, 5%);
+  width: 100%;
+  border: none;
+  transform: translate(0%, 5%);
 }
 .navbar-expand-lg .navbar-collapse {
-    margin-left: 2%;
+  margin-left: 2%;
 }

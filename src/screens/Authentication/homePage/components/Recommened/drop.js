@@ -1,57 +1,40 @@
 import React from "react";
-import { Nav,Navbar,NavDropdown,Col,Row,Container,} from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 // import { Icon } from '@iconify/react';
-import Drop1 from "./smalldropdown/smalldropdown"
-import Drop2 from "./smalldropdown/smalldropdown2"
-import Drop3 from "./smalldropdown/smalldropdown3"
-import { Icon } from '@iconify/react';
+import Drop1 from "../Feature/smalldropdown/smalldropdown";
+import Drop2 from "../Feature/smalldropdown/smalldropdown2";
+import Drop3 from "../Feature/smalldropdown/smalldropdown3";
 import "./recommend.css";
 const Drop = () => {
-    const [show, setShow] = React.useState(false);
-return (
-    <div>
-        <Navbar collapseOnSelect expand="lg">
-            <Container className="cont">
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav" className="me">
-                    <Nav className="me-auto">
-                        <Nav.Link href="/featured" className="feature1">Featured Jobs</Nav.Link>
-                        <Nav.Link herf="# " > &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;</Nav.Link>
-                        <Nav.Link href="/recomend" className="recommend1">Recommended</Nav.Link>
-                        <Nav.Link herf="# " > &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; </Nav.Link>
-                        <Nav.Link href="/saved" className="saved1">Saved</Nav.Link>
-                        <Nav.Link herf="# " > &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; </Nav.Link>
-                        <Nav.Link ><button onClick={() => setShow(!show)} 
-                                    style={{
-                                        background : show ? "#FBFBFB" : "white" ,
-                                        boxShadow : show ? "5px 5px 5px 2px rgba(0, 0, 0, .1)" : "none" , 
-                                        borderRadius : show ? " 50%" : "none" ,
-                                        border :"none"
-                                    }}>
-                                        <Icon icon="material-symbols:filter-list-rounded" className="list-round"/>
-                                    </button>
-                        </Nav.Link>  
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
-        <div className="drop">
-                        {show && 
-                                    <Container className="eventsNav ">
-                                        <Row >
-                                            <Col xs="13" md="4" className="text-left">
-                                                < Drop1/>
-                                            </Col>
-                                            <Col xs="13" md="4" className="text-left">
-                                                <Drop2 />
-                                            </Col>
-                                            <Col xs="13" md="4" className="text-left">
-                                                <Drop3 />
-                                            </Col>
-                                        </Row>
-                                    </Container>
-                        }
-                        </div>
+  const [show, setShow] = React.useState(false);
+  return (
+    <div
+      style={{
+        display: "flex",
+      }}
+    >
+      <div className="feature1"> Featured Jobs</div>
+      <div className="recommend1">Recommended</div>
+      <div className="saved1">Saved</div>
+
+      <div className="drop">
+        {show && (
+          <Container className="eventsNav ">
+            <Row>
+              <Col xs="13" md="4" className="text-left">
+                <Drop1 />
+              </Col>
+              <Col xs="13" md="4" className="text-left">
+                <Drop2 />
+              </Col>
+              <Col xs="13" md="4" className="text-left">
+                <Drop3 />
+              </Col>
+            </Row>
+          </Container>
+        )}
+      </div>
     </div>
-);}
+  );
+};
 export default Drop;

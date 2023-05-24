@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
 }
 
 .body {
@@ -29,7 +28,7 @@
 }
 
 .jobber {
-  color: #5d5fef;
+  color: #0074d9;
 }
 
 .form {
@@ -70,25 +69,25 @@
   padding: 10px;
   pointer-events: none;
   font-size: 1em;
-  color: #5d5fef;
+  color: #0074d9;
   transition: 0.5s;
 }
 
 .inputbox input:valid ~ span,
 .inputbox input:focus ~ span {
-  color: #5d5fef;
+  color: #0074d9;
   transform: translateX(10px) translateY(-7px);
   font-size: 0.65em;
   padding: 0 10px;
   background: #fafafa;
-  border-left: 1px solid #5d5fef;
-  border-right: 1px solid #5d5fef;
+  border-left: 1px solid #0074d9;
+  border-right: 1px solid #0074d9;
   letter-spacing: 0.2em;
 }
 
 .inputbox input:valid,
 .inputbox input:focus {
-  border: 1px solid #5d5fef;
+  border: 1px solid #0074d9;
 }
 
 #pass {
@@ -106,11 +105,11 @@
 .rememberme input,
 .rememberme label {
   cursor: pointer;
-  color: #5d5fef;
+  color: #0074d9;
 }
 
 .rememberme input {
-  accent-color: #5d5fef;
+  accent-color: #0074d9;
 }
 
 #forgot {
@@ -124,7 +123,7 @@
   top: 230px;
   width: 85%;
   height: 60px;
-  background-color: #5d5fef;
+  background-color: #0074d9;
   border-radius: 10px;
   border: 1px solid grey;
   color: white;
@@ -179,7 +178,7 @@
   width: 200px;
   height: 60px;
   left: 150px;
-  background-color: #5d5fef;
+  background-color: #0074d9;
   border-radius: 10px;
   border: 1px solid grey;
   color: white;
@@ -193,9 +192,9 @@
   width: 200px;
   height: 60px;
   left: 400px;
-  color: #5d5fef;
+  color: #0074d9;
   border-radius: 10px;
-  border: 1px solid #5d5fef;
+  border: 1px solid #0074d9;
   font-weight: bold;
   cursor: pointer;
 }
@@ -249,7 +248,7 @@
 .loginForm button {
   padding: 12px 0;
   width: 50%;
-  background: #5d5fef;
+  background: #0074d9;
   border: 0;
   border-radius: 20px;
   color: white;
