@@ -5,14 +5,14 @@ import "./sectionCards.css";
 const SectionCards = ({ changeLoading }) => {
   const navigate = useNavigate();
   function featuredClick() {
-    navigate("/recomend");
+    navigate("/jobs");
   }
   return (
     <>
       <div className="contientcard">
         <div className="top-section">
           <h2 style={{ marginBottom: "4%" }}>Recommended for you</h2>
-          <a href="#featured" alt="" onClick={featuredClick}>
+          <a href="/jobs" alt="" onClick={featuredClick}>
             View all
           </a>
         </div>

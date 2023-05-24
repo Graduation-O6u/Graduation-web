@@ -20,6 +20,7 @@
   flex-direction: row;
   width: 65%;
   justify-content: space-between;
+  align-items: center;
 }
 .usermeet {
   display: flex;
@@ -72,20 +73,9 @@
   color: #193185;
 }
 /* popup  */
-.po {
-  margin-top: 3%;
-}
+
 .popup {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .send {
   border: none;
@@ -94,6 +84,7 @@
   font-weight: 500;
   font-size: large;
   text-decoration: underline;
+  width: 100%;
 }
 .for {
   display: flex;
@@ -101,13 +92,7 @@
   padding: 30px;
 }
 .content {
-  position: relative;
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  width: 500px;
-  max-width: 90%;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  padding-top: 5%;
 }
 .inp {
   margin-bottom: 5%;
@@ -136,7 +121,7 @@
   color: white;
   border-radius: 15px;
   font-size: larger;
-  padding: 7px;
+  padding: 2%;
 }
 .butt:hover {
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
@@ -195,6 +180,10 @@
   .cutdrop {
     margin-top: 5%;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f44336;
   }
   .po {
     margin-top: 4%;

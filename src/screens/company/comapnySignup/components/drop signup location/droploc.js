@@ -1,18 +1,10 @@
 import Multiselect from "multiselect-react-dropdown";
 import styles from "./drop.module.css";
 
-import React, { useState, useEffect, Fragment } from "react";
-
+import React, { useState, Fragment } from "react";
+import { cites } from "../../../../../static";
 const DropLoc = ({ label, id, multiple, selectedId }) => {
-  const [jobs, setJobs] = useState([""]);
-  const [cities, setCities] = useState([""]);
-
-  useEffect(() => {
-    loadJobs();
-    loadCities();
-  }, []);
-
-  const [options] = useState(cities);
+  const [options] = useState(cites);
 
   return (
     <Fragment>
@@ -27,9 +19,9 @@ const DropLoc = ({ label, id, multiple, selectedId }) => {
           <option selected>{label}</option>
           {}
           <Multiselect options={options} />
-          {cities.map((city) => {
+          {cites.map((city) => {
             return (
-              <option value={city.code} selected={city.code == selectedId}>
+              <option value={city.code} selected={city.code === selectedId}>
                 {" "}
                 {city.name}{" "}
               </option>
@@ -39,30 +31,6 @@ const DropLoc = ({ label, id, multiple, selectedId }) => {
       </div>
     </Fragment>
   );
-
-  //===============================================================================================================================
-
-  function loadJobs() {
-    const JOBS_URL = "https://jobb-45md.onrender.com/auth/jobs";
-    fetch(JOBS_URL)
-      .then((response) => response.json())
-      .then((json) => onGetJobsData(json));
-  }
-
-  function onGetJobsData(json) {
-    setJobs(json.data);
-  }
-
-  function loadCities() {
-    const CITIES_URL = "https://jobb-45md.onrender.com/auth/cities";
-    fetch(CITIES_URL)
-      .then((response) => response.json())
-      .then((json) => onGetCitiesData(json));
-  }
-
-  function onGetCitiesData(json) {
-    setCities(json.data);
-  }
 
   //===============================================================================================================================
 };

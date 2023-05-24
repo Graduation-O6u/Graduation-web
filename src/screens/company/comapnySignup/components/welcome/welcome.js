@@ -9,7 +9,6 @@ const Welcome = () => {
         <h3>Take the first step toward your new career</h3>
       </h1>
       <div className={styles.buttonsJoin}>
-        <button className={styles.joinus}>Join us</button>
         <button className={styles.learnmore}>Learn more</button>
       </div>
     </div>

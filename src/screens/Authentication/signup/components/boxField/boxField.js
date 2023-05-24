@@ -118,7 +118,13 @@ const BoxField = () => {
           <span id={styles.terms}> Cookies Policy</span>{" "}
         </h6>
         <Or title={"Or"} />
+
         <Media login={false} />
+        <h5 id={styles.login}>
+          <a href="/signupCompany" title="signupCompany">
+            signup as company ?
+          </a>
+        </h5>
         <h5 id={styles.login}>
           Already have an account ?{" "}
           <a href="/login" title="Login">
@@ -155,9 +161,9 @@ const BoxField = () => {
     registerUser(requestJson);
   }
 
-  function registerUser(requestJson) {
+  async function registerUser(requestJson) {
     chageLoading2(true);
-    fetch(SIGN_UP_LINK, {
+    await fetch(SIGN_UP_LINK, {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import styles from "../meeting.module.css";
-function AppointmentCountdown({ setpop }) {
-  const [appointmentTime] = useState("2023-05-12T15:00:00");
+function AppointmentCountdown({ setpop, data }) {
+  const [appointmentTime] = useState(data);
   const [countdown, setCountdown] = useState("");
   useEffect(() => {
     const interval = setInterval(() => {
@@ -12,6 +12,12 @@ function AppointmentCountdown({ setpop }) {
       const remainingMinutes = diff.minutes();
       const remainingSeconds = diff.seconds();
       if (diff.asHours() > 48) {
+        setCountdown(
+          moment(appointmentTime)
+            .subtract(48, "hours")
+            .format("MMMM Do YYYY<br />h:mm A")
+        );
+      } else if (diff.asHours() < 0) {
         setCountdown(
           moment(appointmentTime)
             .subtract(48, "hours")
@@ -30,17 +36,20 @@ function AppointmentCountdown({ setpop }) {
           )}
         </div>;
       } else {
-        setCountdown(" time has passed");
+        setCountdown(data);
         clearInterval(interval);
       }
     }, 1000);
     return () => clearInterval(interval);
   }, [appointmentTime]);
+  const date = new Date();
   return (
     <div className={styles.container}>
       <div
         className={styles.text}
-        style={{ color: countdown.includes("th") ? "#666" : "red" }}
+        style={{
+          color: countdown.includes("th") || date > data ? "#666" : "red",
+        }}
         dangerouslySetInnerHTML={{ __html: countdown }}
       ></div>
     </div>

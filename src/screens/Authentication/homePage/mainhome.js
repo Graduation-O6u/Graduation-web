@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import HomeCompany from "../../homeCompany/mainCompany";
 const HomePage = () => {
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = React.useState("");
 
   const role = localStorage.getItem("role");
   if (!role) {
@@ -18,11 +19,18 @@ const HomePage = () => {
     <div>
       {role && role === "USER" ? (
         <div className={styles.containerhome}>
-          <NavbarHome titleHerf={"/"} />
-          <FindJob title={"Job"} />
+          <NavbarHome titleHerf={"/"} type={"Home"} />
+          <FindJob
+            title={"Job"}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
           <div className={styles.sectio_cards}>
             <div style={{ hight: "40%" }}>
-              <SectionCards />
+              <SectionCards
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+              />
               <SectionRecomind />
             </div>
           </div>

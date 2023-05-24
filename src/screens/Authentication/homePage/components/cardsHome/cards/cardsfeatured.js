@@ -2,24 +2,36 @@ import React, { useEffect, useState } from "react";
 import OR from "../../../../components/or/or";
 import { useNavigate } from "react-router-dom";
 import "../sectionCards.css";
-import { Job_DATA_URL, Market_DATA_URL } from "../../../../../../constants";
+import {
+  Job_DATA_URL,
+  Job_SEARCH_URL,
+  Market_DATA_URL,
+} from "../../../../../../constants";
 import { Icon } from "@iconify/react";
-const Luxury = () => {
+const Luxury = ({ searchQuery }) => {
   const navigate = useNavigate();
   const [joblist, setjoblist] = useState([]);
   const [sizeall, setsizeall] = useState(0);
   const [idmar, setidmar] = useState([]);
+  const [last, setLast] = useState("");
+
   const myHeaders = new Headers({
     "Content-Type": "application/json",
     Authorization: `Bearer ${localStorage.getItem("Access Token")}`,
   });
+  if (last !== searchQuery) {
+    Card();
+    setLast(searchQuery);
+  }
   useEffect(() => {
     Card();
   }, []);
   const handleNextClick = () => {
     const widthItem = document.querySelector(".item").offsetWidth;
     document.getElementById("formList").scrollLeft += widthItem;
-    Card();
+    if (searchQuery === "") {
+      Card();
+    }
   };
   const handlePrevClick = () => {
     const widthItem = document.querySelector(".item").offsetWidth;
@@ -113,33 +125,57 @@ const Luxury = () => {
     }).then((response) => response.json());
   }
   function getcard(e) {
+    console.log(e);
     if (e["message"] === "Unauthorized") {
       navigate("/login");
     }
-    if (joblist.length !== 0) {
-      setidmar((listt) => [...listt, ...e["data"]["FeaturedJobs"]]);
+    if (searchQuery === "") {
+      if (joblist.length !== 0) {
+        setidmar((listt) => [...listt, ...e["data"]["FeaturedJobs"]]);
 
-      setjoblist((listt) => [...listt, ...e["data"]["FeaturedJobs"]]);
+        setjoblist((listt) => [...listt, ...e["data"]["FeaturedJobs"]]);
+      } else {
+        setidmar(e["data"]["FeaturedJobs"]);
+
+        setjoblist(e["data"]["FeaturedJobs"]);
+      }
+
+      setsizeall(e["data"]["size"]);
     } else {
-      setidmar(e["data"]["FeaturedJobs"]);
-
-      setjoblist(e["data"]["FeaturedJobs"]);
+      setjoblist(e["data"]);
     }
-    setsizeall(e["data"]["size"]);
   }
   async function Card() {
-    let takee = 6;
-    if (joblist.length !== 0) {
-      takee = Math.min(sizeall - joblist.length, 6);
-    }
-    if (joblist.length < sizeall || sizeall === 0) {
-      await fetch(
-        `${Job_DATA_URL}?type=FeaturedJobs&take=${takee}&skip=${joblist.length}`,
-        {
-          method: "GET",
-          headers: myHeaders,
-        }
-      )
+    if (searchQuery === "") {
+      let takee = 6;
+      if (joblist.length !== 0) {
+        takee = Math.min(sizeall - joblist.length, 6);
+      }
+      if (joblist.length < sizeall || sizeall === 0) {
+        await fetch(
+          `${Job_DATA_URL}?type=FeaturedJobs&take=${takee}&skip=${joblist.length}`,
+          {
+            method: "GET",
+            headers: myHeaders,
+          }
+        )
+          .then((response) => response.json())
+          .then((json) => getcard(json));
+      }
+    } else {
+      const person = {
+        searchData: searchQuery,
+      };
+
+      let requestJson = JSON.stringify(person);
+
+      console.log(Job_SEARCH_URL);
+      await fetch(`${Job_SEARCH_URL}`, {
+        method: "POST",
+        body: requestJson,
+
+        headers: myHeaders,
+      })
         .then((response) => response.json())
         .then((json) => getcard(json));
     }

@@ -4,14 +4,23 @@ import cover from "../../../images/user-cover.png";
 import profile from "../../../images/default_profile_img.png";
 import egypt from "../../../images/egypt.png";
 import { cites } from "../../../static";
+import axios from "axios";
+import { CHANGE_BACKGROUND_URL, CHANGE_PROFILE_URL } from "../../../constants";
+import { useNavigate } from "react-router-dom";
 
-export const CardProfile = ({ user, setIsPopupShown }) => {
+export const CardProfile = ({ user, setIsPopupShown, setUser }) => {
+  const navigate = useNavigate();
+
   const hiddenFileInput = React.useRef(null);
   const [selectedFile, setSelectedFile] = React.useState();
+  const [changeType, setchangeType] = React.useState(false);
+
   const handleClick = (event) => {
+    console.log("zzzzzzzzzzzzzzzzzzzzzzzz");
     hiddenFileInput.current.click();
   };
   const changeHandler = (event) => {
+    console.log("/////////////////");
     setSelectedFile(event.target.files[0]);
     console.log(event.target.files);
 
@@ -20,16 +29,21 @@ export const CardProfile = ({ user, setIsPopupShown }) => {
     console.log("file", event.target.files[0].type.split("/")[1]);
 
     if (
-      event.target.files[0].type.split("/")[1] !== "png" ||
-      event.target.files[0].type.split("/")[1] !== "jpg" ||
+      event.target.files[0].type.split("/")[1] !== "png" &&
+      event.target.files[0].type.split("/")[1] !== "PNG" &&
+      event.target.files[0].type.split("/")[1] !== "jpg" &&
+      event.target.files[0].type.split("/")[1] !== "JPG" &&
+      event.target.files[0].type.split("/")[1] !== "JPEG" &&
       event.target.files[0].type.split("/")[1] !== "jpeg"
     ) {
       console.log("file type not allowed");
     } else if (event.target.files[0].size > 1000000) {
       console.log("file type not j");
     } else {
-      console.log("sucess");
-      //  uplaodFile(event.target.files[0]);
+      console.log("success");
+      // localStorage.setItem("image" , event)
+      console.log(event["target"].files[0]);
+      uplaodFile(event.target.files[0]);
     }
   };
   console.log("---------------------------------");
@@ -76,7 +90,10 @@ export const CardProfile = ({ user, setIsPopupShown }) => {
             />
             <Icon
               icon="material-symbols:edit-outline-rounded"
-              onClick={handleClick}
+              onClick={(e) => {
+                handleClick(e);
+                setchangeType(false);
+              }}
               style={{
                 fontSize: "1.5rem",
                 color: "#969696",
@@ -102,11 +119,12 @@ export const CardProfile = ({ user, setIsPopupShown }) => {
             <img
               alt="profile"
               src={user["user"]["image"]}
-              onClick={
-                user["user"]["id"] === localStorage.getItem("id")
-                  ? handleClick
-                  : "none"
-              }
+              onClick={(e) => {
+                if (user["user"]["id"] === localStorage.getItem("id")) {
+                  handleClick(e);
+                }
+                setchangeType(true);
+              }}
               style={{
                 borderRadius: "50%",
                 height: "100%",
@@ -171,7 +189,13 @@ export const CardProfile = ({ user, setIsPopupShown }) => {
             }}
           >
             <span> {cites[country]["name"]}</span>
-            <img alt="country" src={cites[country]["image"]} />
+            <img
+              alt="country"
+              src={cites[country]["image"]}
+              style={{
+                width: "50px",
+              }}
+            />
           </div>
         </div>
         <div
@@ -243,4 +267,61 @@ export const CardProfile = ({ user, setIsPopupShown }) => {
       </div>
     </div>
   );
+  async function uplaodFile(file) {
+    const formData = new FormData();
+    console.log(file);
+    formData.append("file", file);
+
+    const result = await axios.post(
+      `https://jobb-45md.onrender.com/upload/file`,
+      formData,
+      {
+        crossDomain: true,
+      }
+    );
+    const data = user;
+    if (changeType) {
+      data["user"]["image"] = result["data"]["url"];
+      console.log(data);
+      localStorage.setItem("image", result["data"]["url"]);
+      setUser(data);
+      const person = {
+        image: result["data"]["url"],
+      };
+
+      let requestJson = JSON.stringify(person);
+      fetch(CHANGE_PROFILE_URL, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("Access Token"),
+        },
+        body: requestJson,
+      })
+        .then((response) => response.json())
+        .then((json) => null);
+    } else {
+      data["user"]["backgroundImage"] = result["data"]["url"];
+      console.log(data);
+      setUser(data);
+      const person = {
+        image: result["data"]["url"],
+      };
+
+      let requestJson = JSON.stringify(person);
+      fetch(CHANGE_BACKGROUND_URL, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("Access Token"),
+        },
+        body: requestJson,
+      })
+        .then((response) => response.json())
+        .then((json) => null);
+    }
+    window.location.reload();
+    // navigate("/user");
+    console.log(user);
+  }
 };

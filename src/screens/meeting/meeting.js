@@ -1,11 +1,11 @@
 import React from "react";
-import Nav from "./components/navbarmet";
+import NavbarHome from "../Authentication/homePage/components/Navbar-home";
 import BodyMeeting from "./components/bodymeeting";
 import styles from "./meeting.module.css";
 function Meeting() {
   return (
     <div>
-      <Nav />
+      <NavbarHome type={"meeting"} />
       <div className={styles.body}>
         <BodyMeeting />
       </div>

@@ -1,28 +1,14 @@
 import React, { useState, useEffect } from "react";
-import cover from "../../images/user-cover.png";
-import profile from "../../images/default_profile_img.png";
+
 import Navbarr from "../Authentication/homePage/components/Navbar-home";
 import BoxFill from "./components/box";
-import pdf from "../../images/Fahd_Abdelhakem Said_Resume_13-04-2023-16-31-03.pdf";
-import camera from "../../images/camera.png";
-import egypt from "../../images/egypt.png";
-import pen from "../../images/pen.png";
-import o6u from "../../images/o6u.png";
-import iti from "../../images/iti.png";
-import share from "../../images/share.png";
-import git from "../../images/git.png";
-import be from "../../images/be.png";
-import cv from "../../images/cv.png";
+
 import styles from "../profile user/user.module.css";
-import { Link } from "react-router-dom";
 import { Job_DATA_URL, PROFILE_DATA_URL } from "../../constants";
 import Input from "../Authentication/components/input/input";
 import Drop from "../company/comapnySignup/components/drop edit/drop";
 import DropLoc from "../company/comapnySignup/components/drop signup location/droploc";
 import { CardProfile } from "./components/cardProfile";
-import { Document, Page } from "react-pdf";
-import logo from "../../images/o6u.png";
-import { hover } from "@testing-library/user-event/dist/hover";
 import LoadingPage from "../../components/loadingPage/loadingPage";
 import InfoCompany from "./components/infoCompany";
 const User = () => {
@@ -58,7 +44,14 @@ const User = () => {
                 x
               </div>
             </div>
-            <form className={styles.edit} onSubmit={editProfile}>
+            <form
+              className={styles.edit}
+              onSubmit={
+                localStorage.getItem("role") === "COMPANY"
+                  ? editProfile2
+                  : editProfile
+              }
+            >
               <Input
                 label={"Name"}
                 small={false}
@@ -77,34 +70,60 @@ const User = () => {
               />
               <div className={styles.small}>
                 <Drop selectedId={user["user"]["jobId"]} />
-                <DropLoc
-                  selectedId={user["user"]["cityId"]}
-                  label={"Location"}
-                  id={styles.small}
-                />
+                {localStorage.getItem("role") !== "COMPANY" ? (
+                  <DropLoc
+                    selectedId={user["user"]["cityId"]}
+                    label={"Location"}
+                    id={styles.small}
+                  />
+                ) : undefined}
               </div>
               <Input
-                label={" Your CV URL"}
+                label={
+                  localStorage.getItem("role") === "COMPANY"
+                    ? "Website Url"
+                    : " Your CV URL"
+                }
                 small={false}
                 name={"cv"}
                 type={"text"}
-                defaultValue={user["user"]["cv"]}
+                defaultValue={
+                  localStorage.getItem("role") === "COMPANY"
+                    ? user["user"]["companyDetails"]["websiteUrl"]
+                    : user["user"]["cv"]
+                }
                 req={"required"}
               />
               <div className={styles.small}>
                 <Input
-                  label={"Your Behance URL"}
+                  label={
+                    localStorage.getItem("role") === "COMPANY"
+                      ? "History"
+                      : "Your Behance URL"
+                  }
                   small={true}
                   name={"behance"}
                   type={"text"}
-                  defaultValue={user["user"]["behance"]}
+                  defaultValue={
+                    localStorage.getItem("role") === "COMPANY"
+                      ? user["user"]["companyDetails"]["history"]
+                      : user["user"]["behance"]
+                  }
                 />
                 <Input
-                  label={"Your GitHub URL"}
+                  label={
+                    localStorage.getItem("role") === "COMPANY"
+                      ? "marketing Value"
+                      : "Your GitHub URL"
+                  }
                   small={true}
                   name={"github"}
                   type={"text"}
-                  defaultValue={user["user"]["github"]}
+                  defaultValue={
+                    localStorage.getItem("role") === "COMPANY"
+                      ? user["user"]["companyDetails"]["marketingValue"]
+                      : user["user"]["github"]
+                  }
                 />
               </div>
 
@@ -132,8 +151,12 @@ const User = () => {
           />
           <div className={styles.child}>
             <div className={styles.left}>
-              <CardProfile user={user} setIsPopupShown={setIsPopupShown} />
-              {id === localStorage.getItem("id") ? (
+              <CardProfile
+                user={user}
+                setIsPopupShown={setIsPopupShown}
+                setUser={setUser}
+              />
+              {user["user"]["role"] !== "COMPANY" ? (
                 <div
                   style={{
                     marginTop: "2.5%",
@@ -263,7 +286,11 @@ const User = () => {
     setUser(json.data);
     setLoading(false);
     getJobsData(json.data);
-    if (json["data"]["user"]["role"] === "USER") getJobsData2();
+    if (
+      json["data"]["user"]["role"] === "USER" &&
+      localStorage.getItem("role") !== "COMPANY"
+    )
+      getJobsData2();
     else setLoading3(false);
     // console.log(json.data["user"]["userSkills"]);
     //  setJob(json.data.user.job)
@@ -274,21 +301,36 @@ const User = () => {
       user["user"]["role"] === "USER"
         ? "?type=FeaturedJobs&take=4"
         : `?comapny=${id}&type=FeaturedJobs&take=4`;
-    fetch(Job_DATA_URL + url, {
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => ongetJobsData(json, user));
+    if (localStorage.getItem("role") === "COMPANY") {
+      fetch(PROFILE_DATA_URL + "/CompanyJobs", {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => ongetJobsData(json, user));
+    } else {
+      fetch(Job_DATA_URL + url, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => ongetJobsData(json, user));
+    }
   }
 
   function ongetJobsData(json, user) {
     // window.alert(json.data.user.email);
     setLoading2(false);
-    setJob(json.data["FeaturedJobs"]);
+    if (localStorage.getItem("role") === "COMPANY") {
+      //  console.log(json.data["jobs"]);
+      setJob(json.data["jobs"]);
+    } else setJob(json.data["FeaturedJobs"]);
     if (user["user"]["role"] === "COMPANY") setLoading3(false);
     console.log("2");
 
@@ -362,6 +404,55 @@ const User = () => {
   }
 
   function ongetResponse(json) {
+    console.log(json);
+  }
+  function editProfile2(e) {
+    e.preventDefault();
+    console.log("///////////////////////////////////////////////////////////");
+
+    // console.log(e.target.name.value);
+    // console.log(e.target.about.value);
+    // console.log(e.target.cities.value);
+    // console.log(e.target.jobs.value);
+    // console.log(e.target.cv.value);
+    // console.log(e.target.behance.value);
+    // console.log(e.target.github.value);
+    const person = {
+      name: e.target.name.value,
+      about: e.target.about.value,
+      jobId: e.target.jobs.value,
+      Url: e.target.cv.value,
+      history: e.target.behance.value,
+      marketingValue: e.target.github.value,
+    };
+    console.log(person);
+    const user2 = user;
+    user2["user"]["name"] = person.name;
+    user2["user"]["aboutme"] = person.about;
+    user2["user"]["job"]["id"] = person.jobId;
+
+    user2["user"]["companyDetails"]["websiteUrl"] = person.cv.value;
+    user2["user"]["companyDetails"]["history"] = person.behance.value;
+    user2["user"]["companyDetails"]["marketingValue"] = person.github.value;
+    setUser(user2);
+    setIsPopupShown(false);
+
+    let requestJson = JSON.stringify(person);
+
+    var token = localStorage.getItem("Access Token");
+    fetch(PROFILE_DATA_URL + "/company", {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: requestJson,
+    })
+      .then((response) => response.json())
+      .then((json) => ongetResponse2(json));
+  }
+
+  function ongetResponse2(json) {
     console.log(json);
   }
 

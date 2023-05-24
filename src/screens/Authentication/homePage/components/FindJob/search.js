@@ -24,10 +24,8 @@
 
 // export default Search;
 import React, { useState } from "react";
-import "./findjob.css"
-const Search = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-
+import "./findjob.css";
+const Search = ({ searchQuery, setSearchQuery }) => {
   const handleSearch = (event) => {
     event.preventDefault();
     console.log("Searching for:", searchQuery);
@@ -41,9 +39,10 @@ const Search = () => {
         onChange={(event) => setSearchQuery(event.target.value)}
         className="text-inp"
       />
-      <button type="submit" className="submit"><i class="fa fa-search"></i></button>
+      <button type="submit" className="submit">
+        <i class="fa fa-search"></i>
+      </button>
     </form>
   );
 };
 export default Search;
-

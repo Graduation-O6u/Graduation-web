@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {Multiselect} from 'multiselect-react-dropdown';
+import { Multiselect } from "multiselect-react-dropdown";
 import styles from "./boxField.module.css";
 import Input from "../input/input";
 import DropIndustry from "../drop signup industry/drop";
 import Drop from "../drop signup location/droploc";
-import Or from "../or/or"
-import url from "../../../../../images/url.png"
+import Or from "../or/or";
+import url from "../../../../../images/url.png";
 import LoadingButton from "../../../../../components/loadingButton/loadingButton";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -18,6 +18,7 @@ const BoxField = () => {
   var emailValue = "";
   const [show, changeShow] = useState(false);
   const [loading, chageLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleClose = () => {
     changeShow(false);
@@ -56,11 +57,16 @@ const BoxField = () => {
           minlength={6}
         />
         <div className={styles.nameAndEmail}>
-          <DropIndustry label={"Industry"}/>
+          <DropIndustry label={"Industry"} />
         </div>
         <div className={styles.nameAndEmail}>
-          <Drop id={styles.location} label={"Location"} multiple={false}/>
-          <Input label={"History"} small={true} name={"history"} type={"text"} />
+          <Drop id={styles.location} label={"Location"} multiple={false} />
+          <Input
+            label={"History"}
+            small={true}
+            name={"history"}
+            type={"text"}
+          />
         </div>
         <Input
           label={"Your Website Url"}
@@ -68,18 +74,28 @@ const BoxField = () => {
           name={"url"}
           type={"text"}
         />
-        
+
         <Input
           label={"Marketing Value"}
           small={false}
           name={"marketing_value"}
           type={"text"}
         />
-
+        <p
+          style={{
+            color: "red",
+          }}
+        >
+          {error}
+        </p>
         {/* <button className={styles.Button} onClick={handleLog}> */}
-        <button className={styles.Button} type="submit">
-          Sign up
-        </button>
+        {loading ? (
+          <LoadingButton />
+        ) : (
+          <button className={styles.Button} type="submit">
+            Sign up
+          </button>
+        )}
         <h6 className={styles.terms}>
           By clicking Sign Up , you agree to our{" "}
           <span id={styles.terms}> Terms</span> ,
@@ -101,7 +117,7 @@ const BoxField = () => {
   function handleFormSubmit(e) {
     e.preventDefault(); // to prevent page from refreshing after click on submit button
     let nameValue = e.target.name.value;
-    emailValue = e.target.email.value;
+    emailValue = e.target.email.value.trim();
     let passwordValue = e.target.password.value;
     let passwordConfirmationValue = e.target.passwordConfirmation.value;
     // let locationValue = e.target.location.value;
@@ -109,28 +125,31 @@ const BoxField = () => {
     let websiteUrlValue = e.target.url.value;
     let marketingValue = e.target.marketing_value.value;
     let jobId = e.target.jobs.value;
+    if (passwordValue !== passwordConfirmationValue) {
+      setError("Passwords do not match");
+    } else {
+      const company = {
+        name: nameValue,
+        email: emailValue,
+        password: passwordValue,
+        history: historyValue,
+        websiteUrl: websiteUrlValue,
+        marketingValue: marketingValue,
+        jobId: jobId,
 
-    const company = {
-      name: nameValue,
-      email: emailValue,
-      password: passwordValue,
-      history: historyValue,
-      websiteUrl: websiteUrlValue,
-      marketingValue: marketingValue,
-      jobId:jobId,
-      
-      locationCode:["AD"],
-    };
+        locationCode: ["AD"],
+      };
 
-
-    let requestJson = JSON.stringify(company);
-    console.log("zzzzzz" + requestJson);
-    signupCompany(requestJson);
+      console.log(emailValue);
+      let requestJson = JSON.stringify(company);
+      console.log("zzzzzz" + requestJson);
+      signupCompany(requestJson);
+    }
   }
 
-  function signupCompany(requestJson) {
+  async function signupCompany(requestJson) {
     chageLoading(true);
-    fetch(COMPANY_SIGNUP_URL, {
+    await fetch(COMPANY_SIGNUP_URL, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -145,12 +164,13 @@ const BoxField = () => {
   function onGetSignUpResponse(json) {
     let status = json.type;
     if (status === "Success") {
-      // window.alert("success");
+      window.alert("success");
       let secret = json.data.secret;
       navigateToVerifyEmail(secret);
     } else {
-      window.alert("Error Happened");
+      setError(json.message);
     }
+    chageLoading(false);
   }
 
   function navigateToVerifyEmail(secretId) {
