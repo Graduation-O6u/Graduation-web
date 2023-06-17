@@ -45,16 +45,12 @@ const BoxField = () => {
           small={false}
           name={"password"}
           type={"password"}
-          maxlength={12}
-          minlength={6}
         />
         <Input
           label={"Confirm Password"}
           small={false}
           name={"passwordConfirmation"}
           type={"password"}
-          maxlength={12}
-          minlength={6}
         />
         <div className={styles.nameAndEmail}>
           <DropIndustry label={"Industry"} />
@@ -164,7 +160,6 @@ const BoxField = () => {
   function onGetSignUpResponse(json) {
     let status = json.type;
     if (status === "Success") {
-      window.alert("success");
       let secret = json.data.secret;
       navigateToVerifyEmail(secret);
     } else {

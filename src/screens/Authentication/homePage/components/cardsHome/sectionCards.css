@@ -13,6 +13,7 @@
 .iconeCompany {
   height: 45px;
   cursor: pointer;
+  border-radius: 50%;
 }
 .contientcard {
   margin-top: 5%;
@@ -124,10 +125,10 @@
   color: #0074d9;
 }
 @media (max-width: 910px) {
-  .top-section {
+  .top-ection {
     display: flex;
   }
-  .top-section a {
+  .top-s a {
     padding-left: 10%;
   }
   .car {

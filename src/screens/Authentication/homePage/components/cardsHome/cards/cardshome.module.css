@@ -27,6 +27,7 @@
 .iconeCompany {
   height: 50px;
   width: 50px;
+  border-radius: 50%;
 }
 @media screen and (max-width: 1150px) {
   .card {

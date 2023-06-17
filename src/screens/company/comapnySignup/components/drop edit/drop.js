@@ -44,7 +44,10 @@ const Drop = ({ label, selectedId }) => {
   }
 
   function onGetJobsData(json) {
-    setJobs(json.data);
+    const data = json.data;
+    data.sort((a, b) => a.title.localeCompare(b.title));
+
+    setJobs(data);
   }
 
   //===============================================================================================================================

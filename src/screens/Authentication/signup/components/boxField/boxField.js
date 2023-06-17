@@ -20,6 +20,8 @@ const BoxField = () => {
 
   const [isFilePicked, setIsFilePicked] = useState(false);
   const [file, setFile] = useState("");
+  const [error, setError] = useState("");
+
   const [loading, chageLoading] = useState(false);
   const [loading2, chageLoading2] = useState(false);
 
@@ -70,16 +72,12 @@ const BoxField = () => {
           small={false}
           name={"password"}
           type={"password"}
-          maxlength={12}
-          minlength={6}
         />
         <Input
           label={"Confirm Password"}
           small={false}
           name={"passwordConfirmation"}
           type={"password"}
-          maxlength={12}
-          minlength={6}
         />
         <div className={styles.nameAndEmail}>
           <Drop />
@@ -117,6 +115,13 @@ const BoxField = () => {
           <span id={styles.terms}> Privacy Policy</span> and
           <span id={styles.terms}> Cookies Policy</span>{" "}
         </h6>
+        <p
+          style={{
+            color: "red",
+          }}
+        >
+          {error}
+        </p>
         <Or title={"Or"} />
 
         <Media login={false} />
@@ -181,7 +186,8 @@ const BoxField = () => {
       let secret = json.data.secret;
       navigateToVerifyEmail(secret);
     } else {
-      window.alert("Error Happened");
+      setError(json.message);
+      // window.alert("Error Happened");
     }
   }
 
