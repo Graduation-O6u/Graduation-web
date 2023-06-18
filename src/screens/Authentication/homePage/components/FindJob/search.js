@@ -25,9 +25,11 @@
 // export default Search;
 import React, { useState } from "react";
 import "./findjob.css";
+import { SEARCH_USER } from "../../../../../constants";
 const Search = ({ searchQuery, setSearchQuery }) => {
   const handleSearch = (event) => {
     event.preventDefault();
+
     console.log("Searching for:", searchQuery);
   };
   return (
@@ -45,4 +47,5 @@ const Search = ({ searchQuery, setSearchQuery }) => {
     </form>
   );
 };
+
 export default Search;

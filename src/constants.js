@@ -14,6 +14,7 @@ export const LOGOUT_LINK = `${SERVER_LINK}/auth/logout`;
 
 /****************Default**************** */
 export const UPLOAD_LINK = `${SERVER_LINK}/upload/file`;
+export const SEARCH_USER = `${SERVER_LINK}/user/search`;
 
 /*************** User ********************/
 export const PROFILE_DATA_URL = `${SERVER_LINK}/user`;

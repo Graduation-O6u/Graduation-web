@@ -8,12 +8,7 @@ const FindJob = ({ title, searchQuery, setSearchQuery }) => {
         <div className="right">
           <div className="right-container">
             <h1 class="animate-charcter">Let’s Find Your Dream {title}</h1>
-            {localStorage.getItem("role") === "USER" ? (
-              <Search
-                searchQuery={searchQuery}
-                setSearchQuery={setSearchQuery}
-              />
-            ) : undefined}
+            <Search searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           </div>
         </div>
       </div>

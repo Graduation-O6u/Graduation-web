@@ -8,11 +8,14 @@ import Boxcomp from "./component/boxcomp";
 import { useNavigate } from "react-router-dom";
 
 import LoadingPage from "../../components/loadingPage/loadingPage";
-import { PROFILE_DATA_URL } from "../../constants";
+import { PROFILE_DATA_URL, SEARCH_USER } from "../../constants";
 const HomeCompany = () => {
   const navigate = useNavigate();
 
   const [joblist, setjoblist] = React.useState([]);
+  const [searchQuery, setSearchQuery] = React.useState(null);
+  const [last, setLast] = React.useState("");
+  const [last2, setLast2] = React.useState([]);
 
   const myHeaders = new Headers({
     "Content-Type": "application/json",
@@ -22,12 +25,48 @@ const HomeCompany = () => {
   React.useEffect(() => {
     Card();
   }, []);
+  async function searchCompany() {
+    const person = {
+      searchData: searchQuery,
+    };
+    let requestJson = JSON.stringify(person);
+
+    await fetch(SEARCH_USER, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("Access Token"),
+      },
+      body: requestJson,
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        setjoblist(json["data"]);
+      });
+  }
+  if (searchQuery !== null && searchQuery !== last) {
+    searchCompany();
+    setLast(searchQuery);
+  }
+  if (searchQuery === "" && joblist !== last2 && last2.length > 0) {
+    setjoblist(last2);
+  }
   return (
     <div>
       {!loading ? (
         <div className={styles.containerhome}>
           <NavbarHome titleHerf={"/homecompany"} />
-          <FindJob title={"Staff"} />
+          <FindJob
+            title={"job"}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
+          <div className={styles.sectio_cards}>
+            <div style={{ hight: "40%" }}>
+              {/* <ProfileCard setloading={setloading} joblist={joblist} /> */}
+            </div>
+          </div>
           <Boxcomp />
           <ProfileCard setloading={setloading} joblist={joblist} />
         </div>
@@ -43,8 +82,10 @@ const HomeCompany = () => {
     }
     if (joblist.length !== 0) {
       setjoblist((listt) => [...listt, ...e["data"]]);
+      setLast2((listt) => [...listt, ...e["data"]]);
     } else {
       setjoblist(e["data"]);
+      setLast2(e["data"]);
     }
     setloading(false);
   }
