@@ -173,7 +173,8 @@ function Popup() {
   );
   //===============================================================================================================================
   function loadJobs() {
-    const JOBS_URL = "https://jobb-45md.onrender.com/auth/jobs";
+    const JOBS_URL =
+      "https://graduation-backend-production-f50a.up.railway.app/auth/jobs";
     fetch(JOBS_URL)
       .then((response) => response.json())
       .then((json) => onGetJobsData(json));
@@ -203,7 +204,8 @@ function Popup() {
   //=================================================================================================================================
 
   function Skills() {
-    const JOBS_URL = "https://jobb-45md.onrender.com/skills";
+    const JOBS_URL =
+      "https://graduation-backend-production-f50a.up.railway.app/skills";
     fetch(JOBS_URL)
       .then((response) => response.json())
       .then((json) => onlskill(json));

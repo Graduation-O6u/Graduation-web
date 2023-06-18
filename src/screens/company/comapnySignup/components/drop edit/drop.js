@@ -37,7 +37,8 @@ const Drop = ({ label, selectedId }) => {
   //===============================================================================================================================
 
   function loadJobs() {
-    const JOBS_URL = "https://jobb-45md.onrender.com/auth/jobs";
+    const JOBS_URL =
+      "https://graduation-backend-production-f50a.up.railway.app/auth/jobs";
     fetch(JOBS_URL)
       .then((response) => response.json())
       .then((json) => onGetJobsData(json));

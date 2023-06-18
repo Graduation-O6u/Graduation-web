@@ -40,7 +40,8 @@ const Drop = ({ label }) => {
   //===============================================================================================================================
 
   function loadJobs() {
-    const JOBS_URL = "https://jobb-45md.onrender.com/auth/jobs";
+    const JOBS_URL =
+      "https://graduation-backend-production-f50a.up.railway.app/auth/jobs";
     fetch(JOBS_URL)
       .then((response) => response.json())
       .then((json) => onGetJobsData(json));
@@ -54,7 +55,8 @@ const Drop = ({ label }) => {
   }
 
   function loadCities() {
-    const CITIES_URL = "https://jobb-45md.onrender.com/auth/cities";
+    const CITIES_URL =
+      "https://graduation-backend-production-f50a.up.railway.app/auth/cities";
     fetch(CITIES_URL)
       .then((response) => response.json())
       .then((json) => onGetCitiesData(json));
