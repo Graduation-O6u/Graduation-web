@@ -3,19 +3,29 @@ import styles from "./boxField.module.css";
 import Input from "../../../components/input/input";
 import Drop from "../../../components/drop/drop";
 import Or from "../../../components/or/or";
+
 import Media from "../../../components/media/media";
 import LoadingButton from "../../../../../components/loadingButton/loadingButton";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { SIGN_UP_LINK, UPLOAD_LINK } from "../../../../../constants";
+import {
+  SERVER_LINK,
+  SIGN_UP_LINK,
+  UPLOAD_LINK,
+} from "../../../../../constants";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 const BoxField = () => {
+  const notify = async (error) => toast.error(error);
+
   const navigate = useNavigate();
 
   var emailValue = "";
 
   const [selectedFile, setSelectedFile] = useState();
+  const [fileName, setFileName] = useState("Upload Your CV");
+
   const [show, changeShow] = useState(false);
 
   const [isFilePicked, setIsFilePicked] = useState(false);
@@ -24,6 +34,8 @@ const BoxField = () => {
 
   const [loading, chageLoading] = useState(false);
   const [loading2, chageLoading2] = useState(false);
+  const [country, setCountry] = useState("");
+  const [job, setJob] = useState("");
 
   const hiddenFileInput = React.useRef(null);
   const handleClick = (event) => {
@@ -31,19 +43,14 @@ const BoxField = () => {
   };
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
-    console.log(event.target.files);
     setIsFilePicked(true);
 
-    console.log("file", event.target.files[0]);
-    console.log("file", event.target.files[0].type.split("/"));
-    console.log("file", event.target.files[0].type.split("/")[1]);
-
     if (event.target.files[0].type.split("/")[1] != "pdf") {
-      console.log("file type not allowed");
+      notify("file type not allowed");
     } else if (event.target.files[0].size > 1000000) {
-      console.log("file type not j");
+      notify("file size too big");
     } else {
-      console.log("sucess");
+      setFileName(event.target.files[0].name);
       uplaodFile(event.target.files[0]);
     }
   };
@@ -67,20 +74,23 @@ const BoxField = () => {
           <Input label={"Name"} small={true} name={"name"} type={"text"} />
           <Input label={"Email"} small={true} name={"email"} type={"email"} />
         </div>
-        <Input
-          label={"Password"}
-          small={false}
-          name={"password"}
-          type={"password"}
-        />
-        <Input
-          label={"Confirm Password"}
-          small={false}
-          name={"passwordConfirmation"}
-          type={"password"}
-        />
         <div className={styles.nameAndEmail}>
-          <Drop />
+          <Input
+            label={"Password"}
+            small={true}
+            name={"password"}
+            type={"password"}
+          />
+          <Input
+            label={"Confirm Password"}
+            small={true}
+            name={"passwordConfirmation"}
+            type={"password"}
+          />
+        </div>
+
+        <div className={styles.nameAndEmail}>
+          <Drop setCountry={setCountry} setJob={setJob} />
         </div>
         <input
           type="file"
@@ -96,7 +106,7 @@ const BoxField = () => {
             className={styles.OutButton}
             onClick={handleClick}
           >
-            Upload Your CV
+            {fileName}
           </button>
         )}
         {loading2 ? (
@@ -115,21 +125,11 @@ const BoxField = () => {
           <span id={styles.terms}> Privacy Policy</span> and
           <span id={styles.terms}> Cookies Policy</span>{" "}
         </h6>
-        <p
-          style={{
-            color: "red",
-          }}
-        >
-          {error}
-        </p>
+
         <Or title={"Or"} />
 
-        <Media login={false} />
-        <h5 id={styles.login}>
-          <a href="/signupCompany" title="signupCompany">
-            signup as company ?
-          </a>
-        </h5>
+        {/* <Media login={false} /> */}
+
         <h5 id={styles.login}>
           Already have an account ?{" "}
           <a href="/login" title="Login">
@@ -147,22 +147,47 @@ const BoxField = () => {
     emailValue = e.target.email.value;
     let passwordValue = e.target.password.value;
     let passwordConfirmationValue = e.target.passwordConfirmation.value;
-    let cityIdValue = e.target.cities.value;
-    let jobIdValue = e.target.jobs.value;
-    // let cvValue = selectedCvUrl;
+
+    if (!/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(nameValue)) {
+      return notify("Not valid name");
+    }
+    if (nameValue.length < 5) {
+      return notify("Not valid name");
+    }
+    //
+    if (
+      !/^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(passwordValue)
+    ) {
+      return notify(
+        "password must have at least 8 chars which should be between uppercase characters, lowercase characters and numbers"
+      );
+    }
+    if (passwordValue !== passwordConfirmationValue) {
+      return notify("Password not match");
+    }
     let cvValue = file;
 
     const person = {
       name: nameValue,
       email: emailValue,
       password: passwordValue,
-      jobId: jobIdValue,
-      cityId: cityIdValue,
+      jobId: job,
+      cityId: country,
       cv: cvValue,
     };
-
     let requestJson = JSON.stringify(person);
-    console.log("zzzzzz" + requestJson);
+    if (
+      !nameValue ||
+      !emailValue ||
+      !passwordValue ||
+      !passwordConfirmationValue ||
+      country === "" ||
+      job === "" ||
+      cvValue === ""
+    ) {
+      return notify("Please Fill all fields");
+    }
+
     registerUser(requestJson);
   }
 
@@ -177,16 +202,22 @@ const BoxField = () => {
     })
       .then((response) => response.json())
       .then((json) => onGetSignUpResponse(json));
-    chageLoading2(false);
   }
 
   function onGetSignUpResponse(json) {
     let status = json.type;
+    chageLoading2(false);
+
     if (status === "Success") {
       let secret = json.data.secret;
       navigateToVerifyEmail(secret);
     } else {
-      setError(json.message);
+      if (typeof json.message !== "string") {
+        notify(json.message[0]);
+      } else {
+        notify(json.message);
+      }
+
       // window.alert("Error Happened");
     }
   }
@@ -199,17 +230,12 @@ const BoxField = () => {
   //===============================================================================================================================
   async function uplaodFile(file) {
     const formData = new FormData();
-    console.log(file);
     formData.append("file", file);
 
     chageLoading(true);
-    const result = await axios.post(
-      `https://graduation-backend-production-f50a.up.railway.app/upload/file`,
-      formData,
-      {
-        crossDomain: true,
-      }
-    );
+    const result = await axios.post(`${SERVER_LINK}/upload/file`, formData, {
+      crossDomain: true,
+    });
     chageLoading(false);
     setFile(result["data"]["url"]);
   }

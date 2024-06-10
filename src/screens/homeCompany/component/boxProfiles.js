@@ -59,25 +59,45 @@ const Luxury = ({ setloading, joblist }) => {
                       className={styles.profileImg}
                     />
                     <h1 className={styles.cardh1}>{x["name"]}</h1>
-                    <p className={styles.jobTitle}>{x["job"]["title"]}</p>
+                    <p
+                      className={styles.jobTitle}
+                      style={{ textTransform: "capitalize" }}
+                    >
+                      {x["job"]["title"]}
+                    </p>
                     <ul className={styles.social}>
                       {x["github"] !== "" ? (
                         <li>
-                          <a href="# " className={styles.iconsocial}>
+                          <a
+                            href={x["github"]}
+                            target="_blank"
+                            className={styles.iconsocial}
+                            rel="noreferrer"
+                          >
                             <Icon icon="octicon:mark-github-16" color="black" />
                           </a>
                         </li>
                       ) : undefined}
                       {x["cv"] !== "" ? (
                         <li>
-                          <a href="# " className={styles.iconsocial}>
+                          <a
+                            href={x["cv"]}
+                            target="_blank"
+                            className={styles.iconsocial}
+                            rel="noreferrer"
+                          >
                             <Icon icon="tabler:file-cv" color="#2c6684" />
                           </a>
                         </li>
                       ) : undefined}
                       {x["behance"] !== "" ? (
                         <li>
-                          <a href="# " className={styles.iconsocial}>
+                          <a
+                            href={x["behance"]}
+                            target="_blank"
+                            className={styles.iconsocial}
+                            rel="noreferrer"
+                          >
                             <Icon icon="devicon:behance" />
                           </a>
                         </li>

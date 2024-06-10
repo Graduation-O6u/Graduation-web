@@ -2,12 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10%;
 }
 .Img {
   background-color: transparent;
-  width: 340px;
-  height: 70px;
   border-radius: 10px;
   display: flex;
   justify-content: center;

@@ -4,9 +4,55 @@
   height: 100vh;
   overflow-x: hidden;
 }
+.all {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  z-index: 100;
+  padding: 0 5%;
+}
+.bov {
+  display: flex;
+}
+
+.all3 {
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+}
 .log {
+  position: absolute;
+  right: 20px;
+  width: 200px;
+  background-color: #eeeeee;
+  padding: 10px;
+  border-radius: 10px;
+
+  top: 50px;
+  margin-right: 5%;
   flex-direction: row;
   justify-content: flex-end;
+  z-index: 100;
+}
+.log2 {
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.logoimg {
+  width: 150px;
+}
+.taps {
+  display: flex;
+  gap: 2;
+  align-items: center;
+  z-index: 100;
+}
+.buttons {
+  z-index: 100;
+  display: flex;
+  gap: 2;
 }
 .lo {
   background-color: #f7f7f7;
@@ -14,8 +60,6 @@
 /* hover login */
 .button-container-1 {
   position: relative;
-  width: 100px;
-  height: 50px;
   overflow: hidden;
   border: 1px solid;
   font-weight: 600;
@@ -25,7 +69,7 @@
   border: none;
 }
 .button-container-1 button {
-  width: 101%;
+  width: 100%;
   height: 100%;
   font-weight: 400;
   font-size: 20px;
@@ -81,16 +125,18 @@
 /* section left */
 .leftsection {
   height: 100%;
-  width: 45%;
-  margin: 10%;
+  display: flex;
+  width: 100%;
+  align-items: center;
 }
 .textBox {
+  width: 100%;
   letter-spacing: 2px;
 }
 .title {
-  line-height: 30px;
+  width: 100%;
+  line-height: 50px;
   filter: drop-shadow(4px 4px 2px #dcdcdc);
-  margin-bottom: 10%;
 }
 .title span {
   color: #0074d9;
@@ -128,13 +174,18 @@
 }
 /* box image */
 .boxImage {
-  position: absolute;
-  left: 46%;
-  top: 28%;
-  width: 53%;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.boxsImage {
+  position: relative;
+  width: 100%;
   height: 60%;
 }
-
 .img1 {
   position: absolute;
   width: 30%;
@@ -192,21 +243,7 @@
 .btn-primary:hover {
   background-color: #0069d9;
 }
-@media only screen and (max-width: 768px) {
-  .leftsection {
-    margin-top: 40%;
-  }
-  .card-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  .boxImage {
-    display: none;
-  }
-  .card {
-    width: 80%;
-  }
-}
+
 /* section2 */
 .card-container {
   margin-top: 6%;
@@ -292,7 +329,17 @@
     text-align: center;
   }
 }
-
+.section1 {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding: 0 5%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 1%;
+  z-index: 0;
+}
 .photo5 {
   width: 520px;
   height: 420px;
@@ -387,29 +434,149 @@
 .iconApp {
   font-size: 24px;
 }
+.all2 {
+  display: none;
+  z-index: 100;
+}
+.navs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .taps {
+    display: none;
+    z-index: -100;
+    width: 0px;
+  }
+  .boxImage {
+    display: none;
+  }
+  .card {
+    width: 80%;
+  }
+  .all2 {
+    display: flex;
+  }
+  .navs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.allNavs2 {
+  display: none;
+}
+@media screen and (max-width: 990px) {
+  .leftsection {
+    height: fit-content;
+    margin-left: -1%;
+  }
+  .allNavs {
+    display: none;
+  }
+  .allNavs2 {
+    display: block;
+  }
+}
 @media screen and (max-width: 768px) {
+  .all {
+    margin-top: -8%;
+  }
+
+  .leftsection {
+    height: fit-content;
+  }
   .Us {
     flex-direction: column;
     text-align: center;
   }
-
+  .all2 {
+    display: flex;
+  }
   .email,
   .call {
     width: 100%;
   }
+  .navs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .taps {
+    display: none;
+    z-index: -100;
+    width: 0px;
+  }
 
+  .section1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  .allNavs {
+    display: none;
+  }
+  .allNavs2 {
+    display: block;
+  }
+  .buttons {
+    z-index: -100;
+    width: 0px;
+    display: none;
+  }
   .only {
     display: none;
   }
 }
 
 @media screen and (max-width: 480px) {
+  .all {
+    margin-top: -10%;
+  }
   .down {
     font-size: 14px;
     padding: 12px 25px;
+  }
+  .all2 {
+    display: flex;
+  }
+  .taps {
+    z-index: -100;
+    width: 0px;
+    display: none;
+  }
+  .allNavs {
+    display: none;
+  }
+  .allNavs2 {
+    display: block;
+  }
+  .buttons {
+    z-index: -100;
+    width: 0px;
+    display: none;
   }
 
   .iconApp {
     font-size: 20px;
   }
+  .log2 {
+    width: 100% !important;
+    background-color: #0069d9 !important;
+    margin-right: -110px;
+  }
+}
+
+.buttons2 {
+  background-color: #0069d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }

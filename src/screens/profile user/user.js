@@ -1,16 +1,27 @@
 import React, { useState, useEffect } from "react";
+import LoadingButton from "../../components/loadingButton/loadingButton";
 
-import Navbarr from "../Authentication/homePage/components/Navbar-home";
 import BoxFill from "./components/box";
-
+import NavbarHome from "../Authentication/homePage/components/Navbar-home";
 import styles from "../profile user/user.module.css";
-import { Job_DATA_URL, PROFILE_DATA_URL } from "../../constants";
+import "react-day-picker/dist/style.css";
+
+import {
+  Job_DATA_URL,
+  PROFILE_DATA_URL,
+  Send_Meeting_DATA_URL,
+  SERVER_LINK,
+} from "../../constants";
 import Input from "../Authentication/components/input/input";
 import Drop from "../company/comapnySignup/components/drop edit/drop";
 import DropLoc from "../company/comapnySignup/components/drop signup location/droploc";
 import { CardProfile } from "./components/cardProfile";
 import LoadingPage from "../../components/loadingPage/loadingPage";
 import InfoCompany from "./components/infoCompany";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import { DayPicker } from "react-day-picker";
+import { DatePicker } from "rsuite";
 const User = () => {
   const id =
     window.location.href.split("/").pop() === "user"
@@ -18,21 +29,60 @@ const User = () => {
       : window.location.href.split("/").pop();
   const [user, setUser] = useState(null);
   const [job, setJob] = useState(null);
+  const [job3, setJob3] = useState(null);
+
   const [job2, setJob2] = useState(null);
 
   const [loading, setLoading] = useState(true);
   const [loading2, setLoading2] = useState(true);
   const [loading3, setLoading3] = useState(true);
+  const [loading4, setLoading4] = useState(false);
+  const [isFilePicked, setIsFilePicked] = useState(false);
+  const notify = async (error) => toast.error(error);
+  const notify2 = async (error) => toast.success(error);
 
   useEffect(() => {
     getProfileData();
   }, []);
-
+  const [file, setFile] = useState("");
+  const [selectedFile, setSelectedFile] = useState();
+  const [fileName, setFileName] = useState("Upload Your CV");
   const [isPopupShown, setIsPopupShown] = useState(false);
+  const [isPopupShown2, setIsPopupShown2] = useState(false);
+  const [selected, setSelected] = useState();
+
   const showHidePopup = () => {
     setIsPopupShown(!isPopupShown);
   };
+  const hiddenFileInput = React.useRef(null);
 
+  const handleClick = (event) => {
+    hiddenFileInput.current.click();
+  };
+  const changeHandler = (event) => {
+    setSelectedFile(event.target.files[0]);
+    setIsFilePicked(true);
+
+    if (event.target.files[0].type.split("/")[1] != "pdf") {
+      notify("file type not allowed");
+    } else if (event.target.files[0].size > 1000000) {
+      notify("file size too big");
+    } else {
+      setFileName(event.target.files[0].name);
+      uploadFile(event.target.files[0]);
+    }
+  };
+  async function uploadFile(file) {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    setLoading4(true);
+    const result = await axios.post(`${SERVER_LINK}/upload/file`, formData, {
+      crossDomain: true,
+    });
+    setLoading4(false);
+    setFile(result["data"]["url"]);
+  }
   function popup() {
     return (
       <>
@@ -44,14 +94,7 @@ const User = () => {
                 x
               </div>
             </div>
-            <form
-              className={styles.edit}
-              onSubmit={
-                localStorage.getItem("role") === "COMPANY"
-                  ? editProfile2
-                  : editProfile
-              }
-            >
+            <form className={styles.edit} onSubmit={editProfile}>
               <Input
                 label={"Name"}
                 small={false}
@@ -69,61 +112,41 @@ const User = () => {
                 req={"required"}
               />
               <div className={styles.small}>
-                <Drop selectedId={user["user"]["jobId"]} />
-                {localStorage.getItem("role") !== "COMPANY" ? (
-                  <DropLoc
-                    selectedId={user["user"]["cityId"]}
-                    label={"Location"}
-                    id={styles.small}
-                  />
-                ) : undefined}
+                <Drop jobId={user["user"]["jobId"]} setJob={setJob3} />
               </div>
-              <Input
-                label={
-                  localStorage.getItem("role") === "COMPANY"
-                    ? "Website Url"
-                    : " Your CV URL"
-                }
-                small={false}
-                name={"cv"}
-                type={"text"}
-                defaultValue={
-                  localStorage.getItem("role") === "COMPANY"
-                    ? user["user"]["companyDetails"]["websiteUrl"]
-                    : user["user"]["cv"]
-                }
-                req={"required"}
+
+              <input
+                type="file"
+                ref={hiddenFileInput}
+                style={{ display: "none" }}
+                onChange={changeHandler}
               />
+              {localStorage.getItem("role") === "USER" && loading4 ? (
+                <LoadingButton />
+              ) : (
+                <button
+                  type="button"
+                  className={styles.OutButton}
+                  onClick={handleClick}
+                >
+                  {fileName}
+                </button>
+              )}
+
               <div className={styles.small}>
                 <Input
-                  label={
-                    localStorage.getItem("role") === "COMPANY"
-                      ? "History"
-                      : "Your Behance URL"
-                  }
+                  label={"Your Behance URL"}
                   small={true}
                   name={"behance"}
                   type={"text"}
-                  defaultValue={
-                    localStorage.getItem("role") === "COMPANY"
-                      ? user["user"]["companyDetails"]["history"]
-                      : user["user"]["behance"]
-                  }
+                  defaultValue={user["user"]["behance"]}
                 />
                 <Input
-                  label={
-                    localStorage.getItem("role") === "COMPANY"
-                      ? "marketing Value"
-                      : "Your GitHub URL"
-                  }
+                  label={"Your GitHub URL"}
                   small={true}
                   name={"github"}
                   type={"text"}
-                  defaultValue={
-                    localStorage.getItem("role") === "COMPANY"
-                      ? user["user"]["companyDetails"]["marketingValue"]
-                      : user["user"]["github"]
-                  }
+                  defaultValue={user["user"]["github"]}
                 />
               </div>
 
@@ -136,14 +159,54 @@ const User = () => {
       </>
     );
   }
+  function popup2() {
+    return (
+      <>
+        <div id={styles.loginModal}>
+          <div className={styles.modal}>
+            <div className={styles.header}>
+              <h5>Create Meeting</h5>
+              <div
+                onClick={() => {
+                  setIsPopupShown2(!isPopupShown2);
+                  sendMeeting();
+                }}
+                className={styles.close}
+              >
+                x
+              </div>
+            </div>
+            <form className={styles.edit} onSubmit={sendMeeting}>
+              <input
+                name="date"
+                type="datetime-local"
+                format="MM/dd/yyyy HH:mm"
+                style={{
+                  width: "100%",
+                  padding: "1%",
+                  marginBottom: "20px",
+                }}
+              />
 
+              <button type="submit" className={styles.save}>
+                Create
+              </button>
+            </form>
+          </div>
+        </div>
+      </>
+    );
+  }
   return (
     <div>
+      <NavbarHome titleHerf={"-"} type={""} />
+      <ToastContainer />
+
       {!loading && !loading2 && !loading3 ? (
         <div className={styles.container}>
           {isPopupShown && popup()}
+          {isPopupShown2 && popup2()}
 
-          <Navbarr />
           <hr
             style={{
               color: "#969696",
@@ -154,6 +217,7 @@ const User = () => {
               <CardProfile
                 user={user}
                 setIsPopupShown={setIsPopupShown}
+                setIsPopupShown2={setIsPopupShown2}
                 setUser={setUser}
               />
               {user["user"]["role"] !== "COMPANY" ? (
@@ -253,7 +317,7 @@ const User = () => {
               <BoxFill title={"Recent Jobs"} jobs={job} />
               <p></p>
               {user["user"]["role"] === "USER" ? (
-                <BoxFill title={"Booked Jobs"} jobs={job2} />
+                <BoxFill title={"Saved Jobs"} jobs={job2} />
               ) : undefined}
             </div>
           </div>
@@ -368,16 +432,17 @@ const User = () => {
     // console.log(e.target.cv.value);
     // console.log(e.target.behance.value);
     // console.log(e.target.github.value);
+    const user2 = user;
+
     const person = {
       name: e.target.name.value,
       about: e.target.about.value,
-      jobId: e.target.jobs.value,
-      cityId: e.target.cities.value,
-      cv: e.target.cv.value,
+      jobId: job3,
+      cv: file === "" ? user2["user"]["cv"] : file,
       behance: e.target.behance.value,
       github: e.target.github.value,
     };
-    const user2 = user;
+    console.log(person);
     user2["user"]["name"] = person.name;
     user2["user"]["aboutme"] = person.about;
     user2["user"]["job"]["id"] = person.jobId;
@@ -406,42 +471,30 @@ const User = () => {
   function ongetResponse(json) {
     console.log(json);
   }
-  function editProfile2(e) {
+  function sendMeeting(e) {
     e.preventDefault();
-    console.log("///////////////////////////////////////////////////////////");
 
-    // console.log(e.target.name.value);
-    // console.log(e.target.about.value);
-    // console.log(e.target.cities.value);
-    // console.log(e.target.jobs.value);
-    // console.log(e.target.cv.value);
-    // console.log(e.target.behance.value);
-    // console.log(e.target.github.value);
     const person = {
-      name: e.target.name.value,
-      about: e.target.about.value,
-      jobId: e.target.jobs.value,
-      Url: e.target.cv.value,
-      history: e.target.behance.value,
-      marketingValue: e.target.github.value,
+      userId: user["user"]["id"],
+      companyId: localStorage.getItem("id"),
+      description: `${localStorage.getItem("name")} want to meet you in ${
+        e.target.date.value
+      } we will send you mail with meeting link`,
+      date: e.target.date.value,
     };
-    console.log(person);
-    const user2 = user;
-    user2["user"]["name"] = person.name;
-    user2["user"]["aboutme"] = person.about;
-    user2["user"]["job"]["id"] = person.jobId;
-
-    user2["user"]["companyDetails"]["websiteUrl"] = person.cv.value;
-    user2["user"]["companyDetails"]["history"] = person.behance.value;
-    user2["user"]["companyDetails"]["marketingValue"] = person.github.value;
-    setUser(user2);
-    setIsPopupShown(false);
+    if (!person.date) {
+      return notify("Please Choose Valid Date");
+    }
+    if (new Date(person.date) < new Date()) {
+      return notify("Please choose valid date");
+    }
+    setIsPopupShown2(false);
 
     let requestJson = JSON.stringify(person);
 
     var token = localStorage.getItem("Access Token");
-    fetch(PROFILE_DATA_URL + "/company", {
-      method: "PATCH",
+    fetch(Send_Meeting_DATA_URL, {
+      method: "POST",
       headers: {
         "content-type": "application/json",
         Authorization: "Bearer " + token,
@@ -454,6 +507,7 @@ const User = () => {
 
   function ongetResponse2(json) {
     console.log(json);
+    notify2("Create Meeting Successfully");
   }
 
   //===============================================================================================================================

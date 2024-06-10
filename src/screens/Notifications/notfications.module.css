@@ -93,6 +93,7 @@ strong:hover {
 .user_activity {
   margin-top: auto;
   margin-right: auto;
+  margin-left: 10px;
 }
 .message_card {
   display: flex;

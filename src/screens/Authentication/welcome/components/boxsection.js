@@ -7,12 +7,11 @@ const Text = () => {
       <div className="leftsection">
         <div className="textBox">
           <h1 className="title">
-            Helping you <br></br>
-            <span>Land a Job</span> and <br></br>Live your <br></br>Dreams.
+            Helping you Land a <span style={{ color: "#0074d9" }}>Job</span>{" "}
+            andLive yourDreams.
           </h1>
           <p className="desc">
-            Find jobs , create trackable <br></br>resumes and enrich your
-            <br></br> application
+            Find jobs , create trackable resumes and enrich your application
           </p>
         </div>
         {/* <Search /> */}

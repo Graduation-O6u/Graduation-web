@@ -49,6 +49,7 @@
 import React, { useState } from "react";
 import styles from "../meeting.module.css";
 import { Send_Meeting_DATA_URL } from "../../../constants";
+import ReactSelect from "react-select";
 
 const options = [
   { value: "#888888", label: "Pending" },
@@ -67,6 +68,8 @@ const CustomDropdown = ({ data, meetId }) => {
   const [availableOptions, setAvailableOptions] = useState(options);
 
   const handleOptionClick = (option) => {
+    console.log("////////");
+    console.log(option);
     setSelectedOption(option);
     setAvailableOptions(options.filter((o) => o.value !== option.value));
     meet();
@@ -74,45 +77,28 @@ const CustomDropdown = ({ data, meetId }) => {
 
   return (
     <div className={styles.dropdown}>
-      <div
-        className={styles.selected_option}
-        style={{
-          color: selectedOption.value,
-          fontWeight: "bolder",
-        }}
-      >
-        {selectedOption.label}
-      </div>
       {localStorage.getItem("role") === "COMPANY" ? (
-        <div className={styles.options}>
-          {availableOptions.map((option) => (
-            <div>
-              <p
-                key={option.value}
-                className={styles.option}
-                style={{
-                  color: option.value,
-                  fontSize: "25px",
-                  fontWeight: "bolder",
-                }}
-                onClick={() => handleOptionClick(option)}
-              >
-                {option.label}
-              </p>
-            </div>
-          ))}
+        <div style={{ width: "100%" }}>
+          <ReactSelect
+            options={availableOptions}
+            value={selectedOption}
+            onChange={(e) => {
+              setSelectedOption(e);
+              meet(e);
+            }}
+          />
         </div>
       ) : undefined}
     </div>
   );
-  function meet() {
+  function meet(e) {
     const token = localStorage.getItem("Access Token");
 
     const Data = {
-      status: selectedOption.label,
+      status: e.label,
       description: ".",
     };
-
+    console.log(Data);
     let requestJson = JSON.stringify(Data);
     fetch(Send_Meeting_DATA_URL + "/" + meetId + "/changeStatus", {
       method: "PATCH",

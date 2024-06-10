@@ -6,7 +6,7 @@ const Welcome = ({ login }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.welcomeBox}>
+    <div className={styles.all}>
       <h1 className={styles.welcome}>
         Welcome to <span className={styles.jobber}>Job Seeker</span>
         <br />
@@ -40,6 +40,14 @@ const Welcome = ({ login }) => {
             }}
           >
             Learn more
+          </button>
+          <button
+            className={styles.joinus}
+            onClick={() => {
+              navigate("/signupcompany");
+            }}
+          >
+            Company
           </button>
         </div>
       )}

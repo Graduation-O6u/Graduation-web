@@ -6,12 +6,14 @@ import Media from "../../components/media/media";
 import { SIGN_IN_LINK } from "../../../../constants";
 import { useNavigate } from "react-router-dom";
 import LoadingButton from "../../../../components/loadingButton/loadingButton";
+import { toast } from "react-toastify";
 
 const BoxField = () => {
   const [show, changeShow] = useState(false);
   const [loading, chageLoading] = useState(false);
   const [Err, setError] = useState("");
   const navigate = useNavigate();
+  const notify = async (error) => toast.error(error);
 
   return (
     <div className={styles.middle2}>
@@ -25,7 +27,6 @@ const BoxField = () => {
           name="password"
           type={"password"}
         />
-        <p className={styles.err}>{Err}</p>
         <div className={styles.name2}>
           <div className={styles.check}>
             <input
@@ -36,7 +37,7 @@ const BoxField = () => {
             />
             <label for="remeber me"> Remember me</label>
           </div>
-          <a href="/forget" title="">
+          <a href="/forget" title="" style={{ width: " fit-content" }}>
             Forget Password?
           </a>
         </div>
@@ -54,7 +55,7 @@ const BoxField = () => {
           <span id={styles.terms}> Cookies Policy</span>{" "}
         </h6>
         <Or title={"or continue with"} />
-        <Media login={true} />
+        {/* <Media login={true} /> */}
         <h5 id={styles.login}>
           Donot have an account ?{" "}
           <a href="/signup" title="Sign up">
@@ -86,7 +87,6 @@ const BoxField = () => {
     };
 
     let requestJson = JSON.stringify(loginReq);
-    console.log("zzzzzz     " + requestJson);
     signin(requestJson);
   }
 
@@ -98,7 +98,7 @@ const BoxField = () => {
     const isValidPassword = passwordRegex.test(password);
 
     if (isValidEmail == false) {
-      window.alert("Email not valid");
+      notify("Email not valid");
       return false;
     }
 
@@ -136,9 +136,9 @@ const BoxField = () => {
       localStorage.setItem("Access Token", json.data.accessToken);
       navigate("/homepage");
     } else if (type === "InternalServerError") {
-      window.alert(responseMessage);
+      notify(responseMessage);
     } else {
-      setError(responseMessage);
+      notify(responseMessage);
     }
     chageLoading(false);
   }

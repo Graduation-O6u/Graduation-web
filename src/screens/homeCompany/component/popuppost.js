@@ -2,11 +2,19 @@ import React, { useState, useEffect, Fragment } from "react";
 import styles from "../company.module.css";
 import { Icon } from "@iconify/react";
 import Input from "../../Authentication/components/input/input";
-import { GET_JOB_URL, COMPANY_PROFILE_URL } from "../../../constants";
+import {
+  GET_JOB_URL,
+  COMPANY_PROFILE_URL,
+  SERVER_LINK,
+} from "../../../constants";
+
+import ReactSelect from "react-select";
+import { toast } from "react-toastify";
 function Popup() {
   const [jobs, setJobs] = useState([""]);
   const [cities, setcities] = useState([]);
-
+  const [skills, setSkills] = useState([]);
+  const [job, setJob] = useState("");
   const [joblist, setjoblist] = useState([]);
   const [skillslist, setskillslist] = useState([]);
   useEffect(() => {
@@ -14,39 +22,89 @@ function Popup() {
     loaddlocation();
     Skills();
   }, []);
+  const notify = async (error) => toast.success(error);
+  const notify2 = async (error) => toast.error(error);
+
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      width: "100%", // Set the desired width here
+      height: "100%", // Set the desired width here
+      border: "2px solid #d3d0d0",
+      borderRadius: "4px",
+      backgroundColor: "#fafafa",
+      color: "#929292",
+      boxShadow: "none",
+      "&:hover": {
+        border: "2px solid #d3d0d0",
+      },
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? "#d3d0d0" : "transparent",
+      color: state.isSelected ? "#ffffff" : "#000000",
+      "&:hover": {
+        backgroundColor: "#d3d0d0",
+        color: "#929292",
+      },
+    }),
+    menu: (provided) => ({
+      ...provided,
+      backgroundColor: "#ffffff",
+      boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+      borderRadius: "4px",
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      fontSize: "12px",
+      color: "#929292",
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: "#000000",
+    }),
+  };
 
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("hi");
-    console.log(e.target.job.value);
-    // console.log(e.target.jobType.value);
-    // console.log(e.target.way.value);
-    // console.log(e.target.salary.value);
-    // console.log(e.target.salaryPer.value);
-    // console.log(e.target.locations.value);
-    console.log(e.target.skills.value);
-    console.log(e.target.describtion.value);
     const person = {
       jobType: e.target.jobType.value,
       jobLocationType: e.target.way.value,
       salary: parseInt(e.target.salary.value),
       salaryPer: e.target.salaryPer.value,
       jobLocationId: e.target.locations.value,
-      jobSkillId: [e.target.skills.value],
-      jobTitleId: e.target.job.value,
+      jobSkillId: skills,
+      jobTitleId: job,
       jobDescription: e.target.describtion.value,
     };
     console.log(person);
-
+    if (person.jobTitleId === "") {
+      return notify2("jobTitle mustn't be empty");
+    }
+    if (person.jobLocationId === "Location") {
+      return notify2("Location mustn't be empty");
+    }
+    if (person.jobLocationType === "The way of work") {
+      return notify2("Way of work mustn't be empty");
+    }
+    if (person.jobSkillId.length === 0) {
+      return notify2("Please choose any skill");
+    }
+    if (person.jobType === "Job Type") {
+      return notify2("job type mustn't be empty");
+    }
+    if (person.salaryPer === "Salary Per") {
+      return notify2("Salary per mustn't be empty");
+    }
     let requestJson = JSON.stringify(person);
 
     var token = localStorage.getItem("Access Token");
-    fetch(GET_JOB_URL, {
+    await fetch(GET_JOB_URL, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -55,8 +113,16 @@ function Popup() {
       body: requestJson,
     })
       .then((response) => response.json())
-      .then((json) => console.log(json));
-    setIsOpen(false);
+      .then((json) => {
+        if (json.type === "Success") {
+          setIsOpen(false);
+          setJob("");
+          setSkills([]);
+          return notify("Post job successfully");
+        } else {
+          return notify2(json.message[0]);
+        }
+      });
   };
   return (
     <div className={styles.po}>
@@ -77,7 +143,7 @@ function Popup() {
             </div>
             <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.select}>
-                <select name="job" id="format" className={styles.seel}>
+                {/* <select name="job" id="format" className={styles.seel}>
                   <option selected>Job Title</option>
                   {jobs.map((job) => {
                     return (
@@ -87,7 +153,18 @@ function Popup() {
                       </option>
                     );
                   })}
-                </select>
+                </select> */}
+                <div style={{ width: "100%" }}>
+                  <ReactSelect
+                    options={jobs.map((job) => ({
+                      value: job.id,
+                      label: job.title,
+                    }))}
+                    onChange={(e) => setJob(e.value)}
+                    styles={customStyles}
+                    placeholder="Job Title"
+                  />
+                </div>
                 <select
                   name="jobType"
                   id="format"
@@ -145,17 +222,19 @@ function Popup() {
                   })}
                 </select>
               </div>
-              <select
-                name="skills"
-                id="format"
-                className={styles.seel}
-                style={{ marginBottom: "15px", height: "45px" }}
-              >
-                <option selected>Skills</option>
-                {skillslist.map((x) => {
-                  return <option value={x["id"]}>{x["skill"]} </option>;
-                })}
-              </select>
+              <div style={{ width: "100%", marginBottom: "10px" }}>
+                <ReactSelect
+                  options={skillslist.map((skill) => ({
+                    value: skill.id,
+                    label: skill.skill,
+                  }))}
+                  isMulti
+                  onChange={(e) => setSkills(e.map((item) => item.value))}
+                  styles={customStyles}
+                  placeholder="Skills"
+                />
+              </div>
+
               <Input
                 label={"Job describtion"}
                 small={false}
@@ -173,8 +252,7 @@ function Popup() {
   );
   //===============================================================================================================================
   function loadJobs() {
-    const JOBS_URL =
-      "https://graduation-backend-production-f50a.up.railway.app/auth/jobs";
+    const JOBS_URL = `${SERVER_LINK}/auth/jobs`;
     fetch(JOBS_URL)
       .then((response) => response.json())
       .then((json) => onGetJobsData(json));
@@ -204,8 +282,7 @@ function Popup() {
   //=================================================================================================================================
 
   function Skills() {
-    const JOBS_URL =
-      "https://graduation-backend-production-f50a.up.railway.app/skills";
+    const JOBS_URL = `${SERVER_LINK}/skills`;
     fetch(JOBS_URL)
       .then((response) => response.json())
       .then((json) => onlskill(json));

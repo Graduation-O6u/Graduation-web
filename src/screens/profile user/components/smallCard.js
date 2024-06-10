@@ -1,8 +1,10 @@
 import React from "react";
 import logo from "../../../images/o6u.png";
 import calculateDateDistance from "../../../util/calcDistance";
+import { useNavigate } from "react-router-dom";
 export default function SmallCard({ data }) {
   const date = new Date();
+  const navigate = useNavigate();
 
   return (
     <div
@@ -23,12 +25,14 @@ export default function SmallCard({ data }) {
         }}
       >
         <img
+          onClick={() => navigate("/user/" + data["company"]["id"])}
           src={data["company"]["image"]}
           alt="logo"
           style={{
             width: "50px",
             height: "50px",
             borderRadius: "50%",
+            cursor: "pointer",
           }}
         />
         <div
@@ -39,6 +43,7 @@ export default function SmallCard({ data }) {
           }}
         >
           <h1
+            onClick={() => navigate("/apply/" + data["company"]["id"])}
             id={data["id"]}
             style={{
               fontSize: "16px",

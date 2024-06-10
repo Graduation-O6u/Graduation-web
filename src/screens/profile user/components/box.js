@@ -2,6 +2,7 @@ import React from "react";
 import SmallCard from "./smallCard";
 export default function BoxFill({ title, jobs }) {
   if (jobs) {
+    console.log(jobs);
     console.log(jobs.length);
   }
   return (
@@ -36,13 +37,21 @@ export default function BoxFill({ title, jobs }) {
         <div>
           {jobs && jobs.length > 0 ? (
             <div>
-              {jobs[0] ? <SmallCard data={jobs[0]} /> : undefined}
-              {jobs[1] ? <hr /> : undefined}
-              {jobs[1] ? <SmallCard data={jobs[1]} /> : undefined}
-              {jobs[2] ? <hr /> : undefined}
-              {jobs[2] ? <SmallCard data={jobs[2]} /> : undefined}
-              {jobs[3] ? <hr /> : undefined}
-              {jobs[3] ? <SmallCard data={jobs[3]} /> : undefined}
+              {jobs.length > 0 && jobs[0] ? (
+                <SmallCard data={jobs[0]} />
+              ) : undefined}
+              {jobs.length > 1 && jobs[1] ? <hr /> : undefined}
+              {jobs.length > 1 && jobs[1] ? (
+                <SmallCard data={jobs[1]} />
+              ) : undefined}
+              {jobs.length > 2 && jobs[2] ? <hr /> : undefined}
+              {jobs.length > 2 && jobs[2] ? (
+                <SmallCard data={jobs[2]} />
+              ) : undefined}
+              {jobs.length > 3 && jobs[3] ? <hr /> : undefined}
+              {jobs.length > 3 && jobs[3] ? (
+                <SmallCard data={jobs[3]} />
+              ) : undefined}
             </div>
           ) : (
             <p>There isnot any jobs for you</p>
@@ -51,7 +60,7 @@ export default function BoxFill({ title, jobs }) {
       ) : (
         <div>
           {jobs && jobs.length > 0 ? (
-            <SmallCard data={jobs[0]["jobs"]} />
+            <SmallCard data={jobs[0]} />
           ) : (
             <p>There isnot any jobs for you</p>
           )}

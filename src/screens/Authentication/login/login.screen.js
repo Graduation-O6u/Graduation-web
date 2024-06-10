@@ -6,12 +6,13 @@ import Facebook from "../images #/facebook.png";
 import { useState } from "react";
 import Welcome from "../signup/components/welcome/welcome";
 import BoxField from "./components/boxField";
+import { ToastContainer } from "react-toastify";
 
 const Login = () => {
   return (
     <div className={styles.body}>
       <Logo />
-
+      <ToastContainer />
       <div className={styles.container}>
         <div className={styles.middle1}>
           <Welcome login={false} />

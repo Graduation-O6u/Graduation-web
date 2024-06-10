@@ -1,33 +1,28 @@
 import React from "react";
 import { Icon } from "@iconify/react";
-import cover from "../../../images/user-cover.png";
-import profile from "../../../images/default_profile_img.png";
-import egypt from "../../../images/egypt.png";
 import { cites } from "../../../static";
 import axios from "axios";
-import { CHANGE_BACKGROUND_URL, CHANGE_PROFILE_URL } from "../../../constants";
-import { useNavigate } from "react-router-dom";
+import {
+  CHANGE_BACKGROUND_URL,
+  CHANGE_PROFILE_URL,
+  SERVER_LINK,
+} from "../../../constants";
 
-export const CardProfile = ({ user, setIsPopupShown, setUser }) => {
-  const navigate = useNavigate();
-
+export const CardProfile = ({
+  user,
+  setIsPopupShown,
+  setIsPopupShown2,
+  setUser,
+}) => {
   const hiddenFileInput = React.useRef(null);
   const [selectedFile, setSelectedFile] = React.useState();
   const [changeType, setchangeType] = React.useState(false);
 
   const handleClick = (event) => {
-    console.log("zzzzzzzzzzzzzzzzzzzzzzzz");
     hiddenFileInput.current.click();
   };
   const changeHandler = (event) => {
-    console.log("/////////////////");
     setSelectedFile(event.target.files[0]);
-    console.log(event.target.files);
-
-    console.log("file", event.target.files[0]);
-    console.log("file", event.target.files[0].type.split("/"));
-    console.log("file", event.target.files[0].type.split("/")[1]);
-
     if (
       event.target.files[0].type.split("/")[1] !== "png" &&
       event.target.files[0].type.split("/")[1] !== "PNG" &&
@@ -46,8 +41,6 @@ export const CardProfile = ({ user, setIsPopupShown, setUser }) => {
       uplaodFile(event.target.files[0]);
     }
   };
-  console.log("---------------------------------");
-  console.log(user["user"]);
   const country = cites.findIndex((obj) => obj.code === user["user"]["cityId"]);
 
   return (
@@ -63,7 +56,7 @@ export const CardProfile = ({ user, setIsPopupShown, setUser }) => {
           src={user["user"]["backgroundImage"]}
           style={{
             width: "100%",
-            height: "300px",
+            height: "200px",
             borderRadius: "10px 10px 0 0",
           }}
         />
@@ -109,11 +102,11 @@ export const CardProfile = ({ user, setIsPopupShown, setUser }) => {
               boxShadow: "2px 2px 4px 0 rgba(0, 0, 0, 0.5)",
               position: "absolute",
               left: "2%",
-              bottom: "-10%",
+              bottom: "-20%",
               borderRadius: "50%",
-              border: "8px solid white",
-              height: "45%",
-              width: "18%",
+              border: "5px solid white",
+              height: "150px",
+              width: "150px",
             }}
           >
             <img
@@ -155,31 +148,45 @@ export const CardProfile = ({ user, setIsPopupShown, setUser }) => {
           }}
         >
           {user["user"]["id"] === localStorage.getItem("id") ? (
-            <Icon
-              icon="material-symbols:edit-outline-rounded"
-              onClick={() => {
-                setIsPopupShown(true);
-              }}
-              style={{
-                fontSize: "1.5rem",
-                color: "#0074d9",
-                cursor: "pointer",
-                position: "absolute",
-                right: "0",
-                top: "-45%",
-              }}
-            />
-          ) : undefined}
-          <h2
-            style={{
-              fontWeight: "600",
-              fontSize: "25px",
-              color: "#222222",
-            }}
-          >
-            {user["user"]["name"]}
-          </h2>
-          <div
+            <>
+              <h2
+                style={{
+                  fontWeight: "600",
+                  fontSize: "25px",
+                  textTransform: "capitalize",
+                  color: "#222222",
+                  marginBottom: "-4px",
+                  marginTop: "12px",
+                }}
+              >
+                {user["user"]["name"]}
+              </h2>
+              <span
+                style={{
+                  cursor: "pointer",
+                  textDecoration: "underline",
+                }}
+                onClick={() => {
+                  setIsPopupShown(true);
+                }}
+              >
+                Edit Profile
+              </span>
+            </>
+          ) : //  <Icon
+          //     icon="material-symbols:edit-outline-rounded"
+          //                style={{
+          //       fontSize: "1.5rem",
+          //       color: "#0074d9",
+          //       cursor: "pointer",
+          //       position: "absolute",
+          //       right: "0",
+          //       top: "-45%",
+          //     }}
+          //   />
+          undefined}
+
+          {/* <div
             style={{
               display: "flex",
               marginRight: "2%",
@@ -196,35 +203,90 @@ export const CardProfile = ({ user, setIsPopupShown, setUser }) => {
                 width: "50px",
               }}
             />
-          </div>
+          </div> */}
         </div>
         <div
           style={{
             display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
+            flexDirection: "column",
+            alignItems: "start",
           }}
         >
-          <p
-            style={{
-              fontSize: "18px",
-              color: "#222222",
-              fontWeight: "500",
-            }}
-          >
-            {user["user"]["job"]["title"]}
-          </p>
+          {localStorage.getItem("role") === "COMPANY" && (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                width: "100%",
+                alignItems: "center",
+              }}
+            >
+              <div>
+                <h2
+                  style={{
+                    fontWeight: "600",
+                    fontSize: "25px",
+                    textTransform: "capitalize",
+                    color: "#222222",
+                    marginBottom: "-4px",
+                    marginTop: "12px",
+                  }}
+                >
+                  {user["user"]["name"]}
+                </h2>
+
+                <p
+                  style={{
+                    fontSize: "18px",
+                    color: "#222222",
+                    fontWeight: "500",
+                    marginTop: "5px",
+                  }}
+                >
+                  {user["user"]["job"]["title"]}
+                </p>
+              </div>
+
+              <span
+                style={{
+                  cursor: "pointer",
+                  textDecoration: "underline",
+                }}
+                onClick={() => {
+                  setIsPopupShown2(true);
+                }}
+              >
+                Meet
+              </span>
+            </div>
+          )}
+          {localStorage.getItem("role") === "USER" && (
+            <p
+              style={{
+                fontSize: "18px",
+                color: "#222222",
+                fontWeight: "500",
+                marginTop: "5px",
+              }}
+            >
+              {user["user"]["job"]["title"]}
+            </p>
+          )}
           {user["user"]["role"] === "USER" ? (
             <div
               style={{
                 display: "flex",
                 gap: "10px",
-                marginTop: "2%",
+                alignItems: "center",
+                marginTop: "-10px",
               }}
             >
               {user["user"]["github"] ? (
                 <Icon
+                  onClick={() => {
+                    window.open(user["user"]["github"], "_blank");
+                  }}
                   icon="mdi:github"
                   style={{
                     fontSize: "2rem",
@@ -234,17 +296,22 @@ export const CardProfile = ({ user, setIsPopupShown, setUser }) => {
               ) : undefined}
               {user["user"]["cv"] ? (
                 <Icon
+                  onClick={() => {
+                    window.open(user["user"]["cv"], "_blank");
+                  }}
                   icon="academicons:cv-square"
                   style={{
                     color: "red",
-                    fontSize: "1.8rem",
-                    borderRadius: "50%",
+                    fontSize: "1.4rem",
                     cursor: "pointer",
                   }}
                 />
               ) : undefined}
               {user["user"]["behance"] ? (
                 <Icon
+                  onClick={() => {
+                    window.open(user["user"]["behance"], "_blank");
+                  }}
                   icon="ant-design:behance-circle-filled"
                   style={{
                     color: "blue",
@@ -272,13 +339,9 @@ export const CardProfile = ({ user, setIsPopupShown, setUser }) => {
     console.log(file);
     formData.append("file", file);
 
-    const result = await axios.post(
-      `https://graduation-backend-production-f50a.up.railway.app/upload/file`,
-      formData,
-      {
-        crossDomain: true,
-      }
-    );
+    const result = await axios.post(`${SERVER_LINK}/upload/file`, formData, {
+      crossDomain: true,
+    });
     const data = user;
     if (changeType) {
       data["user"]["image"] = result["data"]["url"];

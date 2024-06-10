@@ -22,6 +22,7 @@ import Home from "./layout/home";
 import Meetings from "./screens/Apply job/meetings/meetings";
 import Admin from "./screens/admin/admin";
 import Learn from "./screens/learnmore/learn.screen.";
+
 const App = () => {
   return (
     <BrowserRouter>

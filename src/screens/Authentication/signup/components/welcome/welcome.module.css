@@ -59,9 +59,12 @@ h3 {
     width: 90%;
   }
   .container {
-    display: block;
+    display: flex;
   }
-
+  .all {
+    display: none !important;
+    background-color: #0074d9;
+  }
   .welcomeBox {
     margin-top: 50%;
     margin-bottom: 20%;

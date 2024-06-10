@@ -4,6 +4,7 @@ body {
 .containerhome {
   width: 100%;
   height: 100vh;
+  padding-top: 1%;
   overflow-x: hidden;
 }
 .allnavbar {

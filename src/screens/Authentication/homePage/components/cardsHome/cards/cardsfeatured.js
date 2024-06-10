@@ -8,6 +8,7 @@ import {
   Market_DATA_URL,
 } from "../../../../../../constants";
 import { Icon } from "@iconify/react";
+import { getTimeDifference } from "../../../../../../function/calcDifference";
 const Luxury = ({ searchQuery }) => {
   const navigate = useNavigate();
   const [joblist, setjoblist] = useState([]);
@@ -83,7 +84,7 @@ const Luxury = ({ searchQuery }) => {
                     {x["salary"]}/{x["salaryPer"]}
                   </button>
                 </div>
-                <OR title="1 hour ago" job="true" />
+                <OR title={getTimeDifference(x["createdAt"])} job="true" />
                 <div className="company-box">
                   <img
                     src={x["company"]["image"]}

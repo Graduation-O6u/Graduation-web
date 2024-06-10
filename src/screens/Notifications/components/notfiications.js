@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../not.css";
 import styles from "../notfications.module.css";
 import { NOTIFICATIONS_URL } from "../../../constants";
+import Navbarr from "../../Authentication/homePage/components/Navbar-home";
 function Notfication() {
   //*****************************************************************************
   useEffect(() => {
@@ -69,24 +70,27 @@ function Notfication() {
         </p>
       </header>
       <main>
-        {messages.map((message) => (
-          <div
-            key={message.id}
-            className={`notif_card ${message.isUnread ? "unread" : ""}`}
-            onClick={() => handleUnreadMessageClick(message.id)}
-          >
-            <div className={styles.description}>
-              <img src={message.avatar} className={styles.avatar} alt=" " />
-              <p className={styles.user_activity}>
-                <strong>{message.user}</strong>{" "}
-              </p>
-              <p className={styles.time}>{message.time}</p>
+        {messages.map((message) => {
+          console.log(message);
+          return (
+            <div
+              key={message.id}
+              className={`notif_card ${message.isUnread ? "unread" : ""}`}
+              onClick={() => handleUnreadMessageClick(message.id)}
+            >
+              <div className={styles.description}>
+                <img src={message.avatar} className={styles.avatar} alt=" " />
+                <p className={styles.user_activity}>
+                  <strong>{message.user}</strong>{" "}
+                </p>
+                <p className={styles.time}>{message.time}</p>
+              </div>
+              <div className={styles.message}>
+                <p className={styles.p}>{message.message}</p>
+              </div>
             </div>
-            <div className={styles.message}>
-              <p className={styles.p}>{message.message}</p>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </main>
     </div>
   );
@@ -133,8 +137,8 @@ function Notfication() {
   function convertNotificationObjToMessageObj(id, notificationObj) {
     var messageObj = {
       id: id,
-      avatar: notificationObj.user.image,
-      user: notificationObj.user.name,
+      avatar: notificationObj.company.image,
+      user: notificationObj.company.name,
       time: getNotificationTime(notificationObj.createdAt),
       message: notificationObj.description,
       isUnread: !notificationObj.read,

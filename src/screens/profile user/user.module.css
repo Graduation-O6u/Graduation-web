@@ -17,6 +17,23 @@
   justify-content: center;
   flex: 1;
 }
+.OutButton {
+  transition: 0.9s;
+
+  width: 100%;
+  background-color: #fafafa;
+  border-radius: 10px;
+  border: 1px solid #0074d9;
+  color: #0074d9;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.editProfile {
+  cursor: pointer;
+  text-decoration: underline;
+}
 .plang {
   display: flex;
   box-shadow: 0 3px #0074d9;

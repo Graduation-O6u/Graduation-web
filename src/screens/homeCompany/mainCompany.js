@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 import LoadingPage from "../../components/loadingPage/loadingPage";
 import { PROFILE_DATA_URL, SEARCH_USER } from "../../constants";
+import { ToastContainer } from "react-toastify";
 const HomeCompany = () => {
   const navigate = useNavigate();
 
@@ -54,9 +55,10 @@ const HomeCompany = () => {
   }
   return (
     <div>
+      <ToastContainer />
       {!loading ? (
         <div className={styles.containerhome}>
-          <NavbarHome titleHerf={"/homecompany"} />
+          <NavbarHome titleHerf={"/"} type={"Home"} />
           <FindJob
             title={"job"}
             searchQuery={searchQuery}
@@ -90,7 +92,6 @@ const HomeCompany = () => {
     setloading(false);
   }
   async function Card() {
-    console.log("hiiiiiiiiiiiiiiiii");
     let takee = 20;
 
     await fetch(`${PROFILE_DATA_URL}/all?type=USER&take=${takee}`, {

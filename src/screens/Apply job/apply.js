@@ -84,14 +84,18 @@ const Apply = () => {
                   </p>
                 ) : undefined}
                 <button
-                  disabled={Applay ? true : false}
+                  disabled={Applay || job["applayJob"] ? true : false}
                   onClick={role === "COMPANY" ? Delete : applay}
                   className={styles.submit}
                   style={{
                     backgroundColor: role === "COMPANY" ? "#FF0000" : "#0074d9",
                   }}
                 >
-                  {role === "COMPANY" ? "Delete" : "Applay"}
+                  {role === "COMPANY"
+                    ? "Delete"
+                    : job["applayJob"] || Applay
+                    ? "Applied"
+                    : "Apply"}
                 </button>
               </div>
               <hr

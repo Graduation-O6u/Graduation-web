@@ -182,8 +182,7 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: #f44336;
+    justify-content: space-between;
   }
   .po {
     margin-top: 4%;

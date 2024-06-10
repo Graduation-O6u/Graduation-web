@@ -1,8 +1,8 @@
 .container {
-  margin: 5%;
+  margin: 0 5%;
+  padding: 0px;
 }
 .applyline {
-  margin-top: 2%;
 }
 
 .H2 {
@@ -75,15 +75,16 @@
   display: flex;
   align-items: start;
   flex-direction: row;
+  height: 100%;
 }
 .hrr2 {
-  height: 100vh;
+  height: 60vh;
   border: none;
   border-left: 1px solid #969696; /* Adjust the color and thickness as needed */
   transform: rotate(180deg);
 }
 .hrr {
-  height: 100vh;
+  height: 100%;
   border: none;
   border-left: 1px solid #969696; /* Adjust the color and thickness as needed */
   transform: rotate(180deg);
@@ -216,17 +217,59 @@
 }
 
 @media (max-width: 800px) {
+  .all {
+    flex-direction: column;
+    justify-content: start;
+  }
+  .hrr {
+    opacity: 0;
+  }
+  .hrr2 {
+    height: 1px;
+
+    width: 80vw;
+    transform: rotate(0deg);
+    margin: 0;
+  }
   .pcontainer {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 650px) {
+  .all {
+    flex-direction: column;
+    justify-content: start;
+  }
+  .hrr {
+    opacity: 0;
+  }
+  .hrr2 {
+    height: 1px;
+
+    width: 80vw;
+    transform: rotate(0deg);
+    margin: 0;
+  }
   .pcontainer {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 500px) {
+  .all {
+    flex-direction: column;
+    justify-content: start;
+  }
+  .hrr {
+    opacity: 0;
+  }
+  .hrr2 {
+    height: 1px;
+
+    width: 80vw;
+    transform: rotate(0deg);
+    margin: 0;
+  }
   .pcontainer {
     grid-template-columns: repeat(1, 1fr);
   }
