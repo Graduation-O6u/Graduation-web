@@ -89,7 +89,7 @@ const Forget = () => {
     let type = json.type;
     let responseMessage = json.message;
     if (type === "Success") {
-      navigate("/changePassword");
+      navigate("/login");
     } else if (type === "InternalServerError") {
       window.alert(responseMessage);
     } else {
