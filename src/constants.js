@@ -1,7 +1,7 @@
 /***************Server**************** */
 // export const SERVER_LINK =
 //   "https://graduation-backend-production-f50a.up.railway.app";
-export const SERVER_LINK = "http://api.ammd.website";
+export const SERVER_LINK = "https://api.ammd.website";
 
 /****************Auth**************** */
 export const SIGN_IN_LINK = `${SERVER_LINK}/auth/signin`;
