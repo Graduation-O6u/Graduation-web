@@ -48,7 +48,10 @@ const Changepass = () => {
           </div>
         </form>
       ) : (
-        <form className={styles.middle2}>
+        <form
+          className={styles.middle2}
+          onSubmit={handleChangePasswordFormSubmission}
+        >
           <div>
             <h2 className={styles.vertext}>Change Password</h2>
             <br />
